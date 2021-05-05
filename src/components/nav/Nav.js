@@ -9,7 +9,7 @@ import { IconContext } from "react-icons";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export default function Nav() {
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
   const handleShowSidebar = () => {
     setSidebar(!sidebar);
   };
@@ -25,6 +25,7 @@ export default function Nav() {
             <Link to="#" className="menu-bars">
               <TiThMenu onClick={handleShowSidebar} />
             </Link>
+            <h2 className="navbar-logo">Self taught</h2>
           </div>
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul
@@ -37,12 +38,14 @@ export default function Nav() {
             >
               <li className="navbar-toggle">
                 {matches ? null : (
-                  <Link to="#" className="menu-bars">
+                  <Link to="#" className="menu-bars close">
                     <AiOutlineClose />
                   </Link>
                 )}
               </li>
 
+              <h1 className="nav-logo">Self taught</h1>
+              <hr className="nav-hr" />
               {NavItems.map((item) => (
                 <li key={item.id} className={item.cName}>
                   <Link to={item.path}>
