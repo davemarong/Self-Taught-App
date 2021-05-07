@@ -14,6 +14,7 @@
 .close {
   left: 165px;
   position: absolute;
+  z-index: 3;
 }
 .nav-logo {
   color: white;
@@ -47,6 +48,7 @@
 .nav-menu.active {
   left: 0;
   transition: 350ms;
+  z-index: 3;
 }
 
 .nav-text {
@@ -87,6 +89,6 @@
   align-items: center;
 }
 
-span {
+.nav-text span {
   margin-left: 16px;
 }
