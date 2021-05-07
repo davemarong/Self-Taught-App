@@ -17,6 +17,9 @@ export default function Nav() {
   useEffect(() => {
     setSidebar(true);
   }, [matches]);
+  useEffect(() => {
+    setSidebar(false);
+  }, []);
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>

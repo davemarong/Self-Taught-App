@@ -7,19 +7,19 @@ const NavItems = [
   },
   {
     title: "Skills",
-    id: 1,
+    id: 2,
     path: "/skills",
     cName: "nav-text",
   },
   {
     title: "Projects",
-    id: 1,
+    id: 3,
     path: "/projects",
     cName: "nav-text",
   },
   {
     title: "Account",
-    id: 1,
+    id: 4,
     path: "/account",
     cName: "nav-text",
   },
