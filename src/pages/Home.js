@@ -3,6 +3,7 @@ import MainSubjects from "../components/mainSubjects/MainSubjects";
 export default function Home() {
   return (
     <div>
+      Home
       <MainSubjects />
     </div>
   );
