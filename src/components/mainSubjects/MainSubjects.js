@@ -34,7 +34,6 @@ export default function MainSubjects() {
     clickEnterAddSkill,
     addSkillInputRef,
   } = useMainSubjectData();
-  const dispatch = useDispatch();
   const mainSubjectNameRef = useRef();
 
   useEffect(() => {

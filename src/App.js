@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
@@ -11,10 +16,13 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/skills" component={Skills} />
           <Route path="/projects" component={Projects} />
           <Route path="/account" component={Account} />
+          <Route path="/">
+            <Redirect to="/home" />
+          </Route>
         </Switch>
       </Router>
     </div>
