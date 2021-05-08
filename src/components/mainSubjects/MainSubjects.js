@@ -33,12 +33,15 @@ export default function MainSubjects() {
     focusInput,
     clickEnterAddSkill,
     addSkillInputRef,
+    handleToggleLearnedSkill,
   } = useMainSubjectData();
   const mainSubjectNameRef = useRef();
+  const [render, setRender] = useState();
 
   useEffect(() => {
     focusInput(mainSubjectNameRef);
   }, []);
+
   return (
     <div>
       <Card>
@@ -74,8 +77,8 @@ export default function MainSubjects() {
         <List>
           {currentSkills.map((item, index) => {
             return (
-              <ListItem key={index}>
-                <ListItemText>{item}</ListItemText>
+              <ListItem key={item.title}>
+                <ListItemText>{item.title}</ListItemText>
               </ListItem>
             );
           })}
@@ -92,23 +95,40 @@ export default function MainSubjects() {
         </CardActions>
         <CardContent>
           <List>
-            {mainSubjects.map((item, topIndex) => {
+            {mainSubjects.map((item, topLevelIndex) => {
               return (
-                <ListItem key={item.title}>
+                <ListItem key={item[0].title}>
                   <ListItemText>Name: {item[0].title}</ListItemText>
                   <ListItemText>
                     Tasks:
-                    {item[1].map((task) => {
+                    {item[1].map((task, lowLevelIndex) => {
                       return (
-                        <div key={task}>
-                          {task}
-                          <button
+                        <div key={task.title}>
+                          {task.title}
+                          <Button
+                            variant="outlined"
                             onClick={() => {
-                              handleFilterRemoveOneItem(topIndex, task);
+                              handleFilterRemoveOneItem(
+                                topLevelIndex,
+                                task.title
+                              );
+                              setRender(task.title);
                             }}
                           >
                             Delete
-                          </button>
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              handleToggleLearnedSkill(
+                                topLevelIndex,
+                                task.title,
+                                lowLevelIndex
+                              );
+                            }}
+                            variant="outlined"
+                          >
+                            Learned
+                          </Button>
                         </div>
                       );
                     })}
