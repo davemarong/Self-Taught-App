@@ -6,9 +6,9 @@ export default function useMainSubjectData() {
   const [mainSubjectName, setMainSubjectName] = useState("");
   const [newSkill, setNewSkill] = useState();
   const [currentSkills, setCurrentSkills] = useState([]);
-
+  const [render, setRender] = useState();
+  const [extraSkill, setExtraSkill] = useState();
   const addSkillInputRef = useRef();
-
   const dispatch = useDispatch();
 
   const mainSubjects = useSelector((state) => state.mainSubjects);
@@ -23,8 +23,31 @@ export default function useMainSubjectData() {
   const handleToggleLearnedSkill = (topLevelIndex, task, lowLevelIndex) => {
     const updatedSkill = { title: task, learned: true };
     mainSubjects[topLevelIndex][1].splice(lowLevelIndex, 1, updatedSkill);
+    console.log(mainSubjects);
+    const subjectTitle = getTitleSubjectName(topLevelIndex);
+    const totalSkills = getTotalNumberOfSkills(topLevelIndex);
+    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex);
+    const updatedMainSubject = {
+      title: subjectTitle,
+      totalSkills: totalSkills,
+      learnedSkills: learnedSkills,
+    };
+    mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
     dispatch(change_main_subjects(mainSubjects));
   };
+  const update_Title_LearnedSkills_TotalSkills = (topLevelIndex) => {
+    const subjectTitle = getTitleSubjectName(topLevelIndex);
+    const totalSkills = getTotalNumberOfSkills(topLevelIndex);
+    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex);
+    const updatedMainSubject = {
+      title: subjectTitle,
+      totalSkills: totalSkills,
+      learnedSkills: learnedSkills,
+    };
+    mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
+    dispatch(change_main_subjects(mainSubjects));
+  };
+  const updateTotalLearnedSkills = (topLevelIndex) => {};
   const handleAddNewSkill = () => {
     if (newSkill) {
       setCurrentSkills([...currentSkills, { title: newSkill, learned: false }]);
@@ -32,18 +55,11 @@ export default function useMainSubjectData() {
   };
 
   const handlePushInfoToRedux = () => {
-    let learnedSkills = 0;
-    const findNumberOfLearnedSkills = currentSkills.filter((item) => {
-      if (item.learned === true) {
-        learnedSkills++;
-      }
-    });
-
     const updatedMainSubject = [
       {
         title: mainSubjectName,
         totalSkills: currentSkills.length,
-        learnedSkills: learnedSkills,
+        learnedSkills: 0,
       },
       currentSkills,
     ];
@@ -60,6 +76,34 @@ export default function useMainSubjectData() {
       focusInput(addSkillInputRef);
     }
   };
+
+  const handleExtraSkill = (event) => {
+    setExtraSkill(event.target.value);
+  };
+  const handleAddExtraSkill = (topLevelIndex) => {
+    const updatedSkill = [
+      ...mainSubjects[topLevelIndex][1],
+      { title: extraSkill, learned: false },
+    ];
+    mainSubjects[topLevelIndex].splice(1, 1, updatedSkill);
+    dispatch(change_main_subjects(mainSubjects));
+    setExtraSkill("");
+  };
+  const getTotalNumberOfLearnedSkills = (topLevelIndex) => {
+    let learnedSkills = 0;
+    const findNumberOfLearnedSkills = mainSubjects[topLevelIndex][1].filter(
+      (item) => {
+        if (item.learned === true) {
+          learnedSkills++;
+        }
+      }
+    );
+    return learnedSkills;
+  };
+  const getTotalNumberOfSkills = (topLevelIndex) =>
+    mainSubjects[topLevelIndex][1].length;
+  const getTitleSubjectName = (topLevelIndex) =>
+    mainSubjects[topLevelIndex][0].title;
 
   const handleMainSubjectName = (event) => {
     setMainSubjectName(event.target.value);
@@ -84,5 +128,14 @@ export default function useMainSubjectData() {
     clickEnterAddSkill,
     addSkillInputRef,
     handleToggleLearnedSkill,
+    render,
+    setRender,
+    extraSkill,
+    setExtraSkill,
+    handleExtraSkill,
+    handleAddExtraSkill,
+    getTotalNumberOfLearnedSkills,
+    getTotalNumberOfSkills,
+    update_Title_LearnedSkills_TotalSkills,
   };
 }

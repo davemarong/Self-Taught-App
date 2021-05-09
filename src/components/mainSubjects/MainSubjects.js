@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
@@ -11,8 +11,6 @@ import CardActions from "@material-ui/core/CardActions";
 
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import { useDispatch, useSelector } from "react-redux";
-import { change_main_subjects } from "../../redux/actions/index";
 import useMainSubjectData from "./useMainSubjectData";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -34,9 +32,13 @@ export default function MainSubjects() {
     clickEnterAddSkill,
     addSkillInputRef,
     handleToggleLearnedSkill,
+    setRender,
+    extraSkill,
+    handleExtraSkill,
+    handleAddExtraSkill,
+    update_Title_LearnedSkills_TotalSkills,
   } = useMainSubjectData();
   const mainSubjectNameRef = useRef();
-  const [render, setRender] = useState();
 
   useEffect(() => {
     focusInput(mainSubjectNameRef);
@@ -112,6 +114,9 @@ export default function MainSubjects() {
                                 topLevelIndex,
                                 task.title
                               );
+                              update_Title_LearnedSkills_TotalSkills(
+                                topLevelIndex
+                              );
                               setRender(task.title);
                             }}
                           >
@@ -132,6 +137,21 @@ export default function MainSubjects() {
                         </div>
                       );
                     })}
+                    <TextField
+                      onChange={handleExtraSkill}
+                      variant="outlined"
+                      label="Add skill..."
+                      value={extraSkill}
+                    ></TextField>
+                    <Button
+                      onClick={() => {
+                        handleAddExtraSkill(topLevelIndex);
+                        update_Title_LearnedSkills_TotalSkills(topLevelIndex);
+                      }}
+                      variant="outlined"
+                    >
+                      Add skill
+                    </Button>
                   </ListItemText>
                 </ListItem>
               );
