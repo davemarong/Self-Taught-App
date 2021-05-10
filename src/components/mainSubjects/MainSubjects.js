@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
@@ -7,14 +7,18 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
-
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import useMainSubjectData from "./useMainSubjectData";
 import IconButton from "@material-ui/core/IconButton";
-
+import { useDispatch, useSelector } from "react-redux";
+import { get_top_level_index } from "../../redux/actions/index";
 import { ListItemText } from "@material-ui/core";
+import Modal from "@material-ui/core/Modal";
+import MainSubjectModal from "./MainSubjectModal";
+
 export default function MainSubjects() {
   const {
     mainSubjects,
@@ -38,11 +42,20 @@ export default function MainSubjects() {
     handleAddExtraSkill,
     update_Title_LearnedSkills_TotalSkills,
   } = useMainSubjectData();
+  const dispatch = useDispatch();
   const mainSubjectNameRef = useRef();
-
+  const topLevelIndex = useSelector((state) => state.topLevelIndex);
+  const [mainSubjectModal, setMainSubjectModal] = useState(false);
   useEffect(() => {
     focusInput(mainSubjectNameRef);
   }, []);
+
+  const openMainSubjectModal = () => {
+    setMainSubjectModal(true);
+  };
+  const closeMainSubjectModal = () => {
+    setMainSubjectModal(false);
+  };
 
   return (
     <div>
@@ -99,61 +112,26 @@ export default function MainSubjects() {
           <List>
             {mainSubjects.map((item, topLevelIndex) => {
               return (
-                <ListItem key={item[0].title}>
-                  <ListItemText>Name: {item[0].title}</ListItemText>
-                  <ListItemText>
-                    Tasks:
-                    {item[1].map((task, lowLevelIndex) => {
-                      return (
-                        <div key={task.title}>
-                          {task.title}
-                          <Button
-                            variant="outlined"
-                            onClick={() => {
-                              handleFilterRemoveOneItem(
-                                topLevelIndex,
-                                task.title
-                              );
-                              update_Title_LearnedSkills_TotalSkills(
-                                topLevelIndex
-                              );
-                              setRender(task.title);
-                            }}
-                          >
-                            Delete
-                          </Button>
-                          <Button
-                            onClick={() => {
-                              handleToggleLearnedSkill(
-                                topLevelIndex,
-                                task.title,
-                                lowLevelIndex
-                              );
-                            }}
-                            variant="outlined"
-                          >
-                            Learned
-                          </Button>
-                        </div>
-                      );
-                    })}
-                    <TextField
-                      onChange={handleExtraSkill}
-                      variant="outlined"
-                      label="Add skill..."
-                      value={extraSkill}
-                    ></TextField>
-                    <Button
-                      onClick={() => {
-                        handleAddExtraSkill(topLevelIndex);
-                        update_Title_LearnedSkills_TotalSkills(topLevelIndex);
-                      }}
-                      variant="outlined"
-                    >
-                      Add skill
-                    </Button>
-                  </ListItemText>
-                </ListItem>
+                <Card>
+                  <Modal
+                    open={mainSubjectModal}
+                    onClose={closeMainSubjectModal}
+                  >
+                    <MainSubjectModal />
+                  </Modal>
+                  <CardActions
+                    onClick={() => {
+                      dispatch(get_top_level_index(topLevelIndex));
+                      openMainSubjectModal();
+                    }}
+                  >
+                    {mainSubjects[topLevelIndex][0].title}
+                  </CardActions>
+                  <CardContent>
+                    {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
+                    {mainSubjects[topLevelIndex][0].totalSkills} skills learned
+                  </CardContent>
+                </Card>
               );
             })}
           </List>

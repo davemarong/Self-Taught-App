@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import MainSubjectModal from "./components/mainSubjects/MainSubjectModal";
 import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
@@ -19,7 +20,7 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/skills" component={Skills} />
           <Route path="/projects" component={Projects} />
-          <Route path="/account" component={Account} />
+          <Route path="/account" component={MainSubjectModal} />
           <Route path="/">
             <Redirect to="/home" />
           </Route>
