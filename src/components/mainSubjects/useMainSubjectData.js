@@ -1,15 +1,20 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { change_main_subjects } from "../../redux/actions/index";
+import { useSnackbar } from "notistack";
 
 export default function useMainSubjectData() {
+  const addTopicRef = useRef();
   const [mainSubjectName, setMainSubjectName] = useState("");
   const [newSkill, setNewSkill] = useState();
   const [currentSkills, setCurrentSkills] = useState([]);
   const [render, setRender] = useState();
   const [extraSkill, setExtraSkill] = useState();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const addSkillInputRef = useRef();
   const dispatch = useDispatch();
+
+  const topLevelIndex = useSelector((state) => state.topLevelIndex);
 
   const mainSubjects = useSelector((state) => state.mainSubjects);
 
@@ -18,12 +23,13 @@ export default function useMainSubjectData() {
       (item) => item.title != task
     );
     mainSubjects[topLevelIndex].splice(1, 1, updatedMainSubject);
-    dispatch(change_main_subjects(mainSubjects));
   };
+
   const handleToggleLearnedSkill = (topLevelIndex, task, lowLevelIndex) => {
-    const updatedSkill = { title: task, learned: true };
+    const currentLearnedValue =
+      mainSubjects[topLevelIndex][1][lowLevelIndex].learned;
+    const updatedSkill = { title: task, learned: !currentLearnedValue };
     mainSubjects[topLevelIndex][1].splice(lowLevelIndex, 1, updatedSkill);
-    console.log(mainSubjects);
     const subjectTitle = getTitleSubjectName(topLevelIndex);
     const totalSkills = getTotalNumberOfSkills(topLevelIndex);
     const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex);
@@ -33,7 +39,6 @@ export default function useMainSubjectData() {
       learnedSkills: learnedSkills,
     };
     mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
-    dispatch(change_main_subjects(mainSubjects));
   };
   const update_Title_LearnedSkills_TotalSkills = (topLevelIndex) => {
     const subjectTitle = getTitleSubjectName(topLevelIndex);
@@ -45,9 +50,7 @@ export default function useMainSubjectData() {
       learnedSkills: learnedSkills,
     };
     mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
-    dispatch(change_main_subjects(mainSubjects));
   };
-  const updateTotalLearnedSkills = (topLevelIndex) => {};
   const handleAddNewSkill = () => {
     if (newSkill) {
       setCurrentSkills([...currentSkills, { title: newSkill, learned: false }]);
@@ -76,7 +79,15 @@ export default function useMainSubjectData() {
       focusInput(addSkillInputRef);
     }
   };
-
+  const clickEnterExtraAddSkill = (event) => {
+    if (event.key === "Enter") {
+      handleAddExtraSkill(topLevelIndex);
+      setNewSkill("");
+      focusInput(addTopicRef);
+      addTopicSnackbar();
+      setRender(extraSkill);
+    }
+  };
   const handleExtraSkill = (event) => {
     setExtraSkill(event.target.value);
   };
@@ -86,7 +97,6 @@ export default function useMainSubjectData() {
       { title: extraSkill, learned: false },
     ];
     mainSubjects[topLevelIndex].splice(1, 1, updatedSkill);
-    dispatch(change_main_subjects(mainSubjects));
     setExtraSkill("");
   };
   const getTotalNumberOfLearnedSkills = (topLevelIndex) => {
@@ -100,6 +110,14 @@ export default function useMainSubjectData() {
     );
     return learnedSkills;
   };
+
+  const addTopicSnackbar = () => {
+    enqueueSnackbar(
+      `"${extraSkill}" added to "${mainSubjects[topLevelIndex][0].title}"`,
+      { variant: "success", autoHideDuration: 2000 }
+    );
+  };
+
   const getTotalNumberOfSkills = (topLevelIndex) =>
     mainSubjects[topLevelIndex][1].length;
   const getTitleSubjectName = (topLevelIndex) =>
@@ -137,5 +155,8 @@ export default function useMainSubjectData() {
     getTotalNumberOfLearnedSkills,
     getTotalNumberOfSkills,
     update_Title_LearnedSkills_TotalSkills,
+    addTopicRef,
+    clickEnterExtraAddSkill,
+    addTopicSnackbar,
   };
 }
