@@ -12,32 +12,46 @@ import EditIcon from "@material-ui/icons/Edit";
 import { useSelector } from "react-redux";
 import Modal from "@material-ui/core/Modal";
 import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-export default function MainSubjectModal() {
+import AddTopicModal from "./AddTopicModal";
+import useMainSubjectData from "../useMainSubjectData";
+import Checkbox from "@material-ui/core/Checkbox";
+
+export default function MainSubjectModal({ setRenderMainSubject }) {
+  const {
+    handleToggleLearnedSkill,
+    handleFilterRemoveOneItem,
+    update_Title_LearnedSkills_TotalSkills,
+    setRender,
+  } = useMainSubjectData();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
+  const [addTopicModal, setAddTopicModal] = useState(false);
+  const [renderAgain, setRenderAgain] = useState();
+  const openAddTopicModal = () => {
+    setAddTopicModal(true);
+  };
+  const closeAddTopicModal = () => {
+    setAddTopicModal(false);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   return (
     <div>
-      {/* <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
-      <Modal open={open} onClose={handleClose}> */}
       <Container maxWidth="sm">
+        <Modal open={addTopicModal} onClose={closeAddTopicModal}>
+          <AddTopicModal setRenderMainSubject={setRenderMainSubject} />
+        </Modal>
         <Card>
           <Typography variant="h3">
             {mainSubjects[topLevelIndex][0].title}
           </Typography>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              openAddTopicModal();
+            }}
+          >
             <AddCircleOutlineIcon />
           </IconButton>
           <IconButton>
@@ -58,12 +72,32 @@ export default function MainSubjectModal() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {mainSubjects[topLevelIndex][1].map((item, index) => (
+                {mainSubjects[topLevelIndex][1].map((item, lowLevelIndex) => (
                   <TableRow key={item.title}>
                     <TableCell component="th" scope="row">
                       {item.title}
                     </TableCell>
-                    <TableCell>{item.learned ? "yes" : "no"}</TableCell>
+                    <TableCell
+                      onClick={() => {
+                        handleToggleLearnedSkill(
+                          topLevelIndex,
+                          item.title,
+                          lowLevelIndex
+                        );
+                        setRender(Math.floor(Math.random() * 100));
+                      }}
+                    >
+                      {item.learned ? "yes" : "no"}
+                    </TableCell>
+                    <TableCell
+                      onClick={() => {
+                        handleFilterRemoveOneItem(topLevelIndex, item.title);
+                        update_Title_LearnedSkills_TotalSkills(topLevelIndex);
+                        setRenderMainSubject(item.title);
+                      }}
+                    >
+                      Delete
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -71,22 +105,6 @@ export default function MainSubjectModal() {
           </TableContainer>
         </Card>
       </Container>
-      {/* </Modal> */}
     </div>
   );
-}
-{
-  /* <div>
-      <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        {body}
-      </Modal>
-    </div> */
 }

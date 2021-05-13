@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { get_top_level_index } from "../../redux/actions/index";
 import { ListItemText } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
-import MainSubjectModal from "./MainSubjectModal";
+import MainSubjectModal from "./modal/MainSubjectModal";
 
 export default function MainSubjects() {
   const {
@@ -46,6 +46,7 @@ export default function MainSubjects() {
   const mainSubjectNameRef = useRef();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const [mainSubjectModal, setMainSubjectModal] = useState(false);
+  const [renderMainSubject, setRenderMainSubject] = useState("hei");
   useEffect(() => {
     focusInput(mainSubjectNameRef);
   }, []);
@@ -56,7 +57,6 @@ export default function MainSubjects() {
   const closeMainSubjectModal = () => {
     setMainSubjectModal(false);
   };
-
   return (
     <div>
       <Card>
@@ -117,7 +117,9 @@ export default function MainSubjects() {
                     open={mainSubjectModal}
                     onClose={closeMainSubjectModal}
                   >
-                    <MainSubjectModal />
+                    <MainSubjectModal
+                      setRenderMainSubject={setRenderMainSubject}
+                    />
                   </Modal>
                   <CardActions
                     onClick={() => {
