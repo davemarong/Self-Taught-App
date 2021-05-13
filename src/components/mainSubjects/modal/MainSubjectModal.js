@@ -16,16 +16,18 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import AddTopicModal from "./AddTopicModal";
-import useMainSubjectData from "../useMainSubjectData";
 import Checkbox from "@material-ui/core/Checkbox";
+import useRemoveTopics from "../../customHooks/useRemoveTopics";
+import useLearnTopics from "../../customHooks/useLearnTopics";
+import useAddTopics from "../../customHooks/useAddTopics";
+import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
 
 export default function MainSubjectModal({ setRenderMainSubject }) {
-  const {
-    handleToggleLearnedSkill,
-    handleFilterRemoveOneItem,
-    update_Title_LearnedSkills_TotalSkills,
-    setRender,
-  } = useMainSubjectData();
+  const { handleFilterRemoveOneItem } = useRemoveTopics();
+  const { handleToggleLearnedSkill } = useLearnTopics();
+  const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
+
+  const { setRender } = useAddTopics();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const [addTopicModal, setAddTopicModal] = useState(false);

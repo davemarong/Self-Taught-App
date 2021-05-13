@@ -1,27 +1,29 @@
 import React, { useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import useMainSubjectData from "../useMainSubjectData";
-import AddTopicModal_Logic from "./AddTopicModal_Logic";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
+import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
+import useAddTopics from "../../customHooks/useAddTopics";
+
 export default function AddTopicModal({ setRenderMainSubject }) {
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
+
+  const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
 
   const {
     handleAddExtraSkill,
     extraSkill,
-    update_Title_LearnedSkills_TotalSkills,
     handleExtraSkill,
     focusInput,
     addTopicRef,
     addTopicSnackbar,
     setNewSkill,
-  } = useMainSubjectData();
+  } = useAddTopics();
   useEffect(() => {
     focusInput(addTopicRef);
   }, []);

@@ -11,39 +11,37 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import useMainSubjectData from "./useMainSubjectData";
 import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import { get_top_level_index } from "../../redux/actions/index";
 import { ListItemText } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
+import useAddTopics from "../customHooks/useAddTopics";
 
 export default function MainSubjects() {
   const {
-    mainSubjects,
-    handleMainSubjectName,
-    mainSubjectName,
-    setMainSubjectName,
-    handleNewSkill,
+    currentSkills,
+    setCurrentSkills,
+    extraSkill,
     newSkill,
     setNewSkill,
-    handleFilterRemoveOneItem,
+    handleNewSkill,
     handleAddNewSkill,
-    currentSkills,
-    handlePushInfoToRedux,
-    focusInput,
-    clickEnterAddSkill,
-    addSkillInputRef,
-    handleToggleLearnedSkill,
-    setRender,
-    extraSkill,
-    handleExtraSkill,
     handleAddExtraSkill,
-    update_Title_LearnedSkills_TotalSkills,
-  } = useMainSubjectData();
+    setRender,
+    clickEnterAddSkill,
+    focusInput,
+    addSkillInputRef,
+    handlePushInfoToRedux,
+    mainSubjectName,
+    handleMainSubjectName,
+    setMainSubjectName,
+  } = useAddTopics();
   const dispatch = useDispatch();
   const mainSubjectNameRef = useRef();
+  const mainSubjects = useSelector((state) => state.mainSubjects);
+
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const [mainSubjectModal, setMainSubjectModal] = useState(false);
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
