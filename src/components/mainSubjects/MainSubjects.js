@@ -13,11 +13,17 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
-import { get_top_level_index } from "../../redux/actions/index";
+
+import {
+  get_top_level_index,
+  change_subject_type,
+} from "../../redux/actions/index";
 import { ListItemText } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
 import useAddTopics from "../customHooks/useAddTopics";
+import CreateSubjectModal from "./modal/CreateSubjectModal";
+import SecondarySubjects from "../secondarySubjects/SecondarySubjects";
 
 export default function MainSubjects() {
   const {
@@ -39,101 +45,153 @@ export default function MainSubjects() {
     setMainSubjectName,
   } = useAddTopics();
   const dispatch = useDispatch();
-  const mainSubjectNameRef = useRef();
   const mainSubjects = useSelector((state) => state.mainSubjects);
-
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
-  const [mainSubjectModal, setMainSubjectModal] = useState(false);
-  const [renderMainSubject, setRenderMainSubject] = useState("hei");
-  useEffect(() => {
-    focusInput(mainSubjectNameRef);
-  }, []);
+  const subjectType = useSelector((state) => state.subjectType);
 
+  const mainSubjectNameRef = useRef();
+  const [mainSubjectModal, setMainSubjectModal] = useState(false);
+  const [createSubjectModal, setCreateSubjectModal] = useState();
+  const [renderMainSubject, setRenderMainSubject] = useState("hei");
+  const [subjectsType, setSubjectsType] = useState();
   const openMainSubjectModal = () => {
     setMainSubjectModal(true);
   };
   const closeMainSubjectModal = () => {
     setMainSubjectModal(false);
   };
+  const openCreateSubjectModal = () => {
+    setCreateSubjectModal(true);
+  };
+  const closeCreateSubjectModal = () => {
+    setCreateSubjectModal(false);
+  };
+
   return (
     <div>
+      <Modal open={createSubjectModal} onClose={closeCreateSubjectModal}>
+        <CreateSubjectModal subjectsType={subjectsType} />
+      </Modal>
+
       <Card>
         <CardContent>
-          <TextField
-            inputRef={mainSubjectNameRef}
-            label="Name"
-            onChange={handleMainSubjectName}
-            variant="outlined"
-            value={mainSubjectName}
-          ></TextField>
-        </CardContent>
-        <CardContent>
-          <TextField
-            inputRef={addSkillInputRef}
-            onKeyPress={clickEnterAddSkill}
-            onChange={handleNewSkill}
-            variant="outlined"
-            label="Add skill..."
-            value={newSkill}
-          ></TextField>
-
-          <Button
-            onClick={() => {
-              handleAddNewSkill(currentSkills);
-              setNewSkill("");
-              focusInput(addSkillInputRef);
-            }}
-          >
-            Add
-          </Button>
-        </CardContent>
-        <List>
-          {currentSkills.map((item, index) => {
-            return (
-              <ListItem key={item.title}>
-                <ListItemText>{item.title}</ListItemText>
-              </ListItem>
-            );
-          })}
-        </List>
-        <CardActions>
-          <Button
-            onClick={() => {
-              handlePushInfoToRedux();
-              setMainSubjectName("");
-            }}
-          >
-            Save
-          </Button>
-        </CardActions>
-        <CardContent>
           <List>
-            {mainSubjects.map((item, topLevelIndex) => {
-              return (
-                <Card>
-                  <Modal
-                    open={mainSubjectModal}
-                    onClose={closeMainSubjectModal}
-                  >
-                    <MainSubjectModal
-                      setRenderMainSubject={setRenderMainSubject}
-                    />
-                  </Modal>
-                  <CardActions
-                    onClick={() => {
-                      dispatch(get_top_level_index(topLevelIndex));
-                      openMainSubjectModal();
-                    }}
-                  >
-                    {mainSubjects[topLevelIndex][0].title}
-                  </CardActions>
-                  <CardContent>
-                    {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
-                    {mainSubjects[topLevelIndex][0].totalSkills} skills learned
-                  </CardContent>
-                </Card>
-              );
-            })}
+            <Button
+              onClick={() => {
+                setSubjectsType("mainSubjects");
+                openCreateSubjectModal();
+              }}
+            >
+              Create new (main)
+            </Button>
+
+            <Grid container direction="row" spacing={4}>
+              {mainSubjects.map((item, topLevelIndex) => {
+                return (
+                  <Grid item>
+                    <Modal
+                      open={mainSubjectModal}
+                      onClose={closeMainSubjectModal}
+                    >
+                      <MainSubjectModal
+                        setRenderMainSubject={setRenderMainSubject}
+                      />
+                    </Modal>
+                    <Typography align="center">50%</Typography>
+                    <CardActionArea
+                      onClick={() => {
+                        dispatch(get_top_level_index(topLevelIndex));
+                        dispatch(change_subject_type(mainSubjects));
+                        openMainSubjectModal();
+                      }}
+                    >
+                      <Card
+                        style={{
+                          width: 200,
+                          height: 110,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <CardContent>
+                          <Typography align="center">
+                            {mainSubjects[topLevelIndex][0].title}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </CardActionArea>
+                    <Typography align="center">
+                      {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
+                      {mainSubjects[topLevelIndex][0].totalSkills} skills
+                      learned
+                    </Typography>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </List>
+
+          <List>
+            <Button
+              onClick={() => {
+                setSubjectsType("secondarySubjects");
+
+                openCreateSubjectModal();
+              }}
+            >
+              Create new (secondary)
+            </Button>
+            <Grid container direction="row" spacing={4}>
+              {secondarySubjects.map((item, topLevelIndex) => {
+                return (
+                  <Grid item>
+                    <Modal
+                      open={mainSubjectModal}
+                      onClose={closeMainSubjectModal}
+                    >
+                      <MainSubjectModal
+                        setRenderMainSubject={setRenderMainSubject}
+                      />
+                    </Modal>
+                    <Typography align="center">50%</Typography>
+
+                    <CardActionArea
+                      onClick={() => {
+                        dispatch(get_top_level_index(topLevelIndex));
+                        dispatch(change_subject_type(secondarySubjects));
+                        openMainSubjectModal();
+                      }}
+                    >
+                      <Card
+                        styling={{
+                          width: 150,
+                          height: 80,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CardContent>
+                          <Typography align="center">
+                            {secondarySubjects[topLevelIndex][0].title}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </CardActionArea>
+                    <Typography>
+                      {secondarySubjects[topLevelIndex][0].learnedSkills} of{" "}
+                      {secondarySubjects[topLevelIndex][0].totalSkills} skills
+                      learned
+                    </Typography>
+                  </Grid>
+                );
+              })}
+            </Grid>
           </List>
         </CardContent>
       </Card>

@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 export default function useRemoveTopics() {
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
-  const handleFilterRemoveOneItem = (topLevelIndex, task) => {
-    const updatedMainSubject = mainSubjects[topLevelIndex][1].filter(
+  const handleFilterRemoveOneItem = (topLevelIndex, task, subject) => {
+    const updatedMainSubject = subject[topLevelIndex][1].filter(
       (item) => item.title != task
     );
-    mainSubjects[topLevelIndex].splice(1, 1, updatedMainSubject);
+    subject[topLevelIndex].splice(1, 1, updatedMainSubject);
   };
   return { handleFilterRemoveOneItem };
 }

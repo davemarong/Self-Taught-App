@@ -9,9 +9,12 @@ import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
 import useAddTopics from "../../customHooks/useAddTopics";
+import MainSubjects from "../MainSubjects";
 
 export default function AddTopicModal({ setRenderMainSubject }) {
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
+  const mainSubjects = useSelector((state) => state.mainSubjects);
+  const subjectType = useSelector((state) => state.subjectType);
 
   const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
 
@@ -29,10 +32,10 @@ export default function AddTopicModal({ setRenderMainSubject }) {
   }, []);
   const clickEnterExtraAddSkill = (event) => {
     if (event.key === "Enter") {
-      handleAddExtraSkill(topLevelIndex);
+      handleAddExtraSkill(topLevelIndex, subjectType);
       setNewSkill("");
       focusInput(addTopicRef);
-      addTopicSnackbar();
+      addTopicSnackbar(subjectType);
       setRenderMainSubject(extraSkill);
     }
   };
@@ -59,10 +62,10 @@ export default function AddTopicModal({ setRenderMainSubject }) {
           <Grid item>
             <Button
               onClick={() => {
-                handleAddExtraSkill(topLevelIndex);
+                handleAddExtraSkill(topLevelIndex, subjectType);
                 update_Title_LearnedSkills_TotalSkills(topLevelIndex);
                 focusInput(addTopicRef);
-                addTopicSnackbar();
+                addTopicSnackbar(subjectType);
                 setRenderMainSubject(extraSkill);
               }}
               variant="outlined"

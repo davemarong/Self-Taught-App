@@ -30,6 +30,7 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
   const { setRender } = useAddTopics();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const subjectType = useSelector((state) => state.subjectType);
   const [addTopicModal, setAddTopicModal] = useState(false);
   const [renderAgain, setRenderAgain] = useState();
   const openAddTopicModal = () => {
@@ -47,7 +48,7 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
         </Modal>
         <Card>
           <Typography variant="h3">
-            {mainSubjects[topLevelIndex][0].title}
+            {subjectType[topLevelIndex][0].title}
           </Typography>
           <IconButton
             onClick={() => {
@@ -60,10 +61,10 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
             <EditIcon />
           </IconButton>
           <Typography>
-            Total learned: {mainSubjects[topLevelIndex][0].learnedSkills}
+            Total learned: {subjectType[topLevelIndex][0].learnedSkills}
           </Typography>
           <Typography>
-            Total Topics: {mainSubjects[topLevelIndex][0].totalSkills}
+            Total Topics: {subjectType[topLevelIndex][0].totalSkills}
           </Typography>
           <TableContainer>
             <Table>
@@ -74,7 +75,7 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {mainSubjects[topLevelIndex][1].map((item, lowLevelIndex) => (
+                {subjectType[topLevelIndex][1].map((item, lowLevelIndex) => (
                   <TableRow key={item.title}>
                     <TableCell component="th" scope="row">
                       {item.title}
@@ -84,7 +85,8 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
                         handleToggleLearnedSkill(
                           topLevelIndex,
                           item.title,
-                          lowLevelIndex
+                          lowLevelIndex,
+                          subjectType
                         );
                         setRender(Math.floor(Math.random() * 100));
                       }}
@@ -93,8 +95,15 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
                     </TableCell>
                     <TableCell
                       onClick={() => {
-                        handleFilterRemoveOneItem(topLevelIndex, item.title);
-                        update_Title_LearnedSkills_TotalSkills(topLevelIndex);
+                        handleFilterRemoveOneItem(
+                          topLevelIndex,
+                          item.title,
+                          subjectType
+                        );
+                        update_Title_LearnedSkills_TotalSkills(
+                          topLevelIndex,
+                          subjectType
+                        );
                         setRenderMainSubject(item.title);
                       }}
                     >

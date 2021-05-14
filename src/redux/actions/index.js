@@ -10,3 +10,16 @@ export const get_top_level_index = (index) => {
     payload: index,
   };
 };
+export const change_secondary_subjects = (subject) => {
+  return {
+    type: "CHANGE_SECONDARY_SUBJECTS",
+    payload: subject,
+  };
+};
+
+export const change_subject_type = (subjectType) => {
+  return {
+    type: "CHANGE_SUBJECT_TYPE",
+    payload: subjectType,
+  };
+};
