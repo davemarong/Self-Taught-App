@@ -39,7 +39,7 @@ function App() {
   return (
     <div
       style={{
-        background: "linear-gradient(45deg, #D586F7 30%, #3C54D6 90%)",
+        background: "linear-gradient(45deg, #3C54D6 30%, #D586F7 90%)",
         paddingBottom: 100,
       }}
     >

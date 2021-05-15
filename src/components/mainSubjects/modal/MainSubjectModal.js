@@ -32,7 +32,6 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const subjectType = useSelector((state) => state.subjectType);
   const [addTopicModal, setAddTopicModal] = useState(false);
-  const [renderAgain, setRenderAgain] = useState();
   const openAddTopicModal = () => {
     setAddTopicModal(true);
   };

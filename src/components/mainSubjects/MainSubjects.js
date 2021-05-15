@@ -67,13 +67,18 @@ export default function MainSubjects() {
   const closeCreateSubjectModal = () => {
     setCreateSubjectModal(false);
   };
-
+  const numberToPercent = (lowNumber, highNumber) => {
+    const percent = (lowNumber / highNumber) * 100;
+    return Math.trunc(percent);
+  };
   return (
     <div>
       <Modal open={createSubjectModal} onClose={closeCreateSubjectModal}>
         <CreateSubjectModal subjectsType={subjectsType} />
       </Modal>
-
+      <Modal open={mainSubjectModal} onClose={closeMainSubjectModal}>
+        <MainSubjectModal setRenderMainSubject={setRenderMainSubject} />
+      </Modal>
       <Card>
         <CardContent>
           <List>
@@ -86,19 +91,39 @@ export default function MainSubjects() {
               Create new (main)
             </Button>
 
-            <Grid container direction="row" spacing={4}>
+            <Grid container direction="row" justify="center" spacing={4}>
               {mainSubjects.map((item, topLevelIndex) => {
                 return (
                   <Grid item>
-                    <Modal
-                      open={mainSubjectModal}
-                      onClose={closeMainSubjectModal}
+                    <div
+                      style={{
+                        width: 200,
+                        height: 15,
+                        borderRadius: 50,
+                        background: "grey",
+                      }}
                     >
-                      <MainSubjectModal
-                        setRenderMainSubject={setRenderMainSubject}
-                      />
-                    </Modal>
-                    <Typography align="center">50%</Typography>
+                      <div
+                        style={{
+                          width: `
+                          ${numberToPercent(
+                            mainSubjects[topLevelIndex][0].learnedSkills,
+                            mainSubjects[topLevelIndex][0].totalSkills
+                          )}%`,
+                          height: 15,
+                          borderRadius: 50,
+                          background: "green",
+                        }}
+                      ></div>
+                    </div>
+                    <Typography align="center">
+                      {" "}
+                      {numberToPercent(
+                        mainSubjects[topLevelIndex][0].learnedSkills,
+                        mainSubjects[topLevelIndex][0].totalSkills
+                      )}
+                      %
+                    </Typography>
                     <CardActionArea
                       onClick={() => {
                         dispatch(get_top_level_index(topLevelIndex));
@@ -115,10 +140,12 @@ export default function MainSubjects() {
                           justifyContent: "center",
                           alignItems: "center",
                           cursor: "pointer",
+                          background:
+                            "linear-gradient(10deg, #D6543C 10%, #D586F7 60%)",
                         }}
                       >
                         <CardContent>
-                          <Typography align="center">
+                          <Typography variant="h4" align="center">
                             {mainSubjects[topLevelIndex][0].title}
                           </Typography>
                         </CardContent>
@@ -145,19 +172,37 @@ export default function MainSubjects() {
             >
               Create new (secondary)
             </Button>
-            <Grid container direction="row" spacing={4}>
+            <Grid container direction="row" justify="center" spacing={4}>
               {secondarySubjects.map((item, topLevelIndex) => {
                 return (
                   <Grid item>
-                    <Modal
-                      open={mainSubjectModal}
-                      onClose={closeMainSubjectModal}
+                    <div
+                      style={{
+                        width: 200,
+                        height: 15,
+                        borderRadius: 50,
+                        background: "grey",
+                      }}
                     >
-                      <MainSubjectModal
-                        setRenderMainSubject={setRenderMainSubject}
-                      />
-                    </Modal>
-                    <Typography align="center">50%</Typography>
+                      <div
+                        style={{
+                          width: `${numberToPercent(
+                            secondarySubjects[topLevelIndex][0].learnedSkills,
+                            secondarySubjects[topLevelIndex][0].totalSkills
+                          )}%`,
+                          height: 15,
+                          borderRadius: 50,
+                          background: "green",
+                        }}
+                      ></div>
+                    </div>
+                    <Typography align="center">
+                      {numberToPercent(
+                        secondarySubjects[topLevelIndex][0].learnedSkills,
+                        secondarySubjects[topLevelIndex][0].totalSkills
+                      )}
+                      %
+                    </Typography>
 
                     <CardActionArea
                       onClick={() => {
@@ -169,15 +214,20 @@ export default function MainSubjects() {
                       <Card
                         styling={{
                           width: 150,
-                          height: 80,
+                          height: 800,
                           display: "flex",
                           flexWrap: "wrap",
                           justifyContent: "center",
                           alignItems: "center",
                         }}
                       >
-                        <CardContent>
-                          <Typography align="center">
+                        <CardContent
+                          style={{
+                            background:
+                              "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
+                          }}
+                        >
+                          <Typography variant="h6" align="center">
                             {secondarySubjects[topLevelIndex][0].title}
                           </Typography>
                         </CardContent>
