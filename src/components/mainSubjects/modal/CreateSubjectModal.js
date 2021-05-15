@@ -13,8 +13,12 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import useAddTopics from "../../customHooks/useAddTopics";
 import { useDispatch, useSelector } from "react-redux";
-
-export default function CreateSubjectModal({ subjectsType }) {
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+export default function CreateSubjectModal({
+  subjectsType,
+  closeCreateSubjectModal,
+}) {
   const {
     currentSkills,
     setCurrentSkills,
@@ -42,8 +46,11 @@ export default function CreateSubjectModal({ subjectsType }) {
     focusInput(mainSubjectNameRef);
   }, []);
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={{ marginTop: 100 }}>
       <Card>
+        <IconButton onClick={closeCreateSubjectModal}>
+          <CloseIcon />
+        </IconButton>
         <CardContent>
           <TextField
             inputRef={mainSubjectNameRef}

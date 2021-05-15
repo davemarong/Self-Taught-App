@@ -21,8 +21,11 @@ import useRemoveTopics from "../../customHooks/useRemoveTopics";
 import useLearnTopics from "../../customHooks/useLearnTopics";
 import useAddTopics from "../../customHooks/useAddTopics";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
-
-export default function MainSubjectModal({ setRenderMainSubject }) {
+import CloseIcon from "@material-ui/icons/Close";
+export default function MainSubjectModal({
+  setRenderMainSubject,
+  closeMainSubjectModal,
+}) {
   const { handleFilterRemoveOneItem } = useRemoveTopics();
   const { handleToggleLearnedSkill } = useLearnTopics();
   const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
@@ -41,11 +44,17 @@ export default function MainSubjectModal({ setRenderMainSubject }) {
 
   return (
     <div>
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" style={{ marginTop: 70 }}>
         <Modal open={addTopicModal} onClose={closeAddTopicModal}>
-          <AddTopicModal setRenderMainSubject={setRenderMainSubject} />
+          <AddTopicModal
+            closeAddTopicModal={closeAddTopicModal}
+            setRenderMainSubject={setRenderMainSubject}
+          />
         </Modal>
-        <Card>
+        <Card style={{ maxHeight: 500, overflowY: "scroll" }}>
+          <IconButton onClick={closeMainSubjectModal}>
+            <CloseIcon />
+          </IconButton>
           <Typography variant="h3">
             {subjectType[topLevelIndex][0].title}
           </Typography>

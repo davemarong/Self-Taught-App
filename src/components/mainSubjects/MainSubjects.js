@@ -13,12 +13,12 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
-
+import AddIcon from "@material-ui/icons/Add";
 import {
   get_top_level_index,
   change_subject_type,
 } from "../../redux/actions/index";
-import { ListItemText } from "@material-ui/core";
+import { Icon, ListItemText } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
 import useAddTopics from "../customHooks/useAddTopics";
@@ -74,33 +74,51 @@ export default function MainSubjects() {
   return (
     <div>
       <Modal open={createSubjectModal} onClose={closeCreateSubjectModal}>
-        <CreateSubjectModal subjectsType={subjectsType} />
+        <CreateSubjectModal
+          subjectsType={subjectsType}
+          closeCreateSubjectModal={closeCreateSubjectModal}
+        />
       </Modal>
       <Modal open={mainSubjectModal} onClose={closeMainSubjectModal}>
-        <MainSubjectModal setRenderMainSubject={setRenderMainSubject} />
+        <MainSubjectModal
+          closeMainSubjectModal={closeMainSubjectModal}
+          setRenderMainSubject={setRenderMainSubject}
+        />
       </Modal>
       <Card>
         <CardContent>
           <List>
             <Button
+              variant="outlined"
+              endIcon={<AddIcon />}
               onClick={() => {
                 setSubjectsType("mainSubjects");
                 openCreateSubjectModal();
               }}
             >
-              Create new (main)
+              Create new
             </Button>
 
             <Grid container direction="row" justify="center" spacing={4}>
               {mainSubjects.map((item, topLevelIndex) => {
                 return (
                   <Grid item>
+                    <Typography variant="h3" align="center">
+                      {" "}
+                      {numberToPercent(
+                        mainSubjects[topLevelIndex][0].learnedSkills,
+                        mainSubjects[topLevelIndex][0].totalSkills
+                      )}
+                      %
+                    </Typography>
                     <div
                       style={{
                         width: 200,
                         height: 15,
                         borderRadius: 50,
                         background: "grey",
+                        marginBottom: 20,
+                        marginTop: 5,
                       }}
                     >
                       <div
@@ -116,14 +134,7 @@ export default function MainSubjects() {
                         }}
                       ></div>
                     </div>
-                    <Typography align="center">
-                      {" "}
-                      {numberToPercent(
-                        mainSubjects[topLevelIndex][0].learnedSkills,
-                        mainSubjects[topLevelIndex][0].totalSkills
-                      )}
-                      %
-                    </Typography>
+
                     <CardActionArea
                       onClick={() => {
                         dispatch(get_top_level_index(topLevelIndex));
@@ -133,6 +144,7 @@ export default function MainSubjects() {
                     >
                       <Card
                         style={{
+                          borderRadius: 15,
                           width: 200,
                           height: 110,
                           display: "flex",
@@ -151,7 +163,7 @@ export default function MainSubjects() {
                         </CardContent>
                       </Card>
                     </CardActionArea>
-                    <Typography align="center">
+                    <Typography variant="body1" align="center">
                       {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
                       {mainSubjects[topLevelIndex][0].totalSkills} skills
                       learned
@@ -164,24 +176,35 @@ export default function MainSubjects() {
 
           <List>
             <Button
+              variant="outlined"
+              endIcon={<AddIcon />}
               onClick={() => {
                 setSubjectsType("secondarySubjects");
-
                 openCreateSubjectModal();
               }}
             >
-              Create new (secondary)
+              Create new
             </Button>
             <Grid container direction="row" justify="center" spacing={4}>
               {secondarySubjects.map((item, topLevelIndex) => {
                 return (
                   <Grid item>
+                    <Typography variant="h6" align="center">
+                      {numberToPercent(
+                        secondarySubjects[topLevelIndex][0].learnedSkills,
+                        secondarySubjects[topLevelIndex][0].totalSkills
+                      )}
+                      %
+                    </Typography>
+
                     <div
                       style={{
-                        width: 200,
+                        width: 150,
                         height: 15,
                         borderRadius: 50,
                         background: "grey",
+                        marginBottom: 20,
+                        marginTop: 5,
                       }}
                     >
                       <div
@@ -196,13 +219,6 @@ export default function MainSubjects() {
                         }}
                       ></div>
                     </div>
-                    <Typography align="center">
-                      {numberToPercent(
-                        secondarySubjects[topLevelIndex][0].learnedSkills,
-                        secondarySubjects[topLevelIndex][0].totalSkills
-                      )}
-                      %
-                    </Typography>
 
                     <CardActionArea
                       onClick={() => {
@@ -212,28 +228,27 @@ export default function MainSubjects() {
                       }}
                     >
                       <Card
-                        styling={{
+                        style={{
+                          borderRadius: 15,
                           width: 150,
-                          height: 800,
+                          height: 80,
                           display: "flex",
                           flexWrap: "wrap",
                           justifyContent: "center",
                           alignItems: "center",
+                          margin: "auto",
+                          background:
+                            "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
                         }}
                       >
-                        <CardContent
-                          style={{
-                            background:
-                              "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
-                          }}
-                        >
-                          <Typography variant="h6" align="center">
+                        <CardContent>
+                          <Typography variant="h5" align="center">
                             {secondarySubjects[topLevelIndex][0].title}
                           </Typography>
                         </CardContent>
                       </Card>
                     </CardActionArea>
-                    <Typography>
+                    <Typography variant="body2" align="center">
                       {secondarySubjects[topLevelIndex][0].learnedSkills} of{" "}
                       {secondarySubjects[topLevelIndex][0].totalSkills} skills
                       learned
