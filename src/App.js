@@ -1,9 +1,12 @@
+import React, { useEffect, useRef, useState } from "react";
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+
 import MainSubjectModal from "./components/mainSubjects/modal/MainSubjectModal";
 import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
@@ -12,10 +15,34 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import { SnackbarProvider } from "notistack";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  main_subjects,
+  secondary_subjects,
+} from "./components/roadmapTemplate/RoadmapTemplate";
+import {
+  get_top_level_index,
+  change_subject_type,
+  change_main_subjects,
+  change_secondary_subjects,
+} from "./redux/actions/index";
+
 import "./styles/App.css";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(change_main_subjects(main_subjects));
+    dispatch(change_secondary_subjects(secondary_subjects));
+  }, []);
   return (
-    <div>
+    <div
+      style={{
+        background: "linear-gradient(45deg, #3C54D6 30%, #D586F7 90%)",
+        paddingBottom: 100,
+      }}
+    >
       <SnackbarProvider maxSnack={4}>
         <Router>
           <Nav />

@@ -15,11 +15,13 @@ export default function Nav() {
   };
   const matches = useMediaQuery("(min-width:1224px)");
   useEffect(() => {
-    setSidebar(true);
+    if (matches) {
+      setSidebar(true);
+    } else if (!matches) {
+      setSidebar(false);
+    }
   }, [matches]);
-  useEffect(() => {
-    setSidebar(false);
-  }, []);
+
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>

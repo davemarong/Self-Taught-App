@@ -1,45 +1,39 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
-import { change_main_subjects } from "../../redux/actions/index";
+import {
+  change_main_subjects,
+  change_secondary_subjects,
+} from "../../redux/actions/index";
 
 export default function useAddTopics() {
   const [newSkill, setNewSkill] = useState();
   const [currentSkills, setCurrentSkills] = useState([]);
   const [extraSkill, setExtraSkill] = useState();
   const [render, setRender] = useState();
-
   const [mainSubjectName, setMainSubjectName] = useState("");
-  const dispatch = useDispatch();
-  const handleMainSubjectName = (event) => {
-    setMainSubjectName(event.target.value);
-  };
-  const handlePushInfoToRedux = () => {
-    const updatedMainSubject = [
-      {
-        title: mainSubjectName,
-        totalSkills: currentSkills.length,
-        learnedSkills: 0,
-      },
-      currentSkills,
-    ];
-    dispatch(change_main_subjects([...mainSubjects, updatedMainSubject]));
-    setCurrentSkills([]);
-  };
-
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const addTopicRef = useRef();
   const addSkillInputRef = useRef();
 
+  const dispatch = useDispatch();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
-
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
   const handleAddNewSkill = () => {
     if (newSkill) {
       setCurrentSkills([...currentSkills, { title: newSkill, learned: false }]);
     }
+  };
+  const handleAddExtraSkill = (topLevelIndex, subject) => {
+    const updatedSkill = [
+      ...subject[topLevelIndex][1],
+      { title: extraSkill, learned: false },
+    ];
+    subject[topLevelIndex].splice(1, 1, updatedSkill);
+    setExtraSkill("");
   };
   const handleNewSkill = (event) => {
     setNewSkill(event.target.value);
@@ -47,13 +41,8 @@ export default function useAddTopics() {
   const handleExtraSkill = (event) => {
     setExtraSkill(event.target.value);
   };
-  const handleAddExtraSkill = (topLevelIndex) => {
-    const updatedSkill = [
-      ...mainSubjects[topLevelIndex][1],
-      { title: extraSkill, learned: false },
-    ];
-    mainSubjects[topLevelIndex].splice(1, 1, updatedSkill);
-    setExtraSkill("");
+  const handleMainSubjectName = (event) => {
+    setMainSubjectName(event.target.value);
   };
   const focusInput = (ref) => {
     ref.current.focus();
@@ -74,11 +63,29 @@ export default function useAddTopics() {
       setRender(extraSkill);
     }
   };
-  const addTopicSnackbar = () => {
+  const addTopicSnackbar = (subject) => {
     enqueueSnackbar(
-      `"${extraSkill}" added to "${mainSubjects[topLevelIndex][0].title}"`,
+      `"${extraSkill}" added to "${subject[topLevelIndex][0].title}"`,
       { variant: "success", autoHideDuration: 2000 }
     );
+  };
+
+  const handlePushInfoToRedux = (subject) => {
+    const updatedMainSubject = [
+      {
+        title: mainSubjectName,
+        totalSkills: currentSkills.length,
+        learnedSkills: 0,
+      },
+      currentSkills,
+    ];
+    if (subject === mainSubjects) {
+      dispatch(change_main_subjects([...subject, updatedMainSubject]));
+    }
+    if (subject === secondarySubjects) {
+      dispatch(change_secondary_subjects([...subject, updatedMainSubject]));
+    }
+    setCurrentSkills([]);
   };
 
   return {

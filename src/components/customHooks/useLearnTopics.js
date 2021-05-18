@@ -10,20 +10,27 @@ export default function useLearnTopics() {
   } = useGetSkillAndSubjectData();
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
-  const handleToggleLearnedSkill = (topLevelIndex, task, lowLevelIndex) => {
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
+
+  const handleToggleLearnedSkill = (
+    topLevelIndex,
+    task,
+    lowLevelIndex,
+    subject
+  ) => {
     const currentLearnedValue =
-      mainSubjects[topLevelIndex][1][lowLevelIndex].learned;
+      subject[topLevelIndex][1][lowLevelIndex].learned;
     const updatedSkill = { title: task, learned: !currentLearnedValue };
-    mainSubjects[topLevelIndex][1].splice(lowLevelIndex, 1, updatedSkill);
-    const subjectTitle = getTitleSubjectName(topLevelIndex);
-    const totalSkills = getTotalNumberOfSkills(topLevelIndex);
-    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex);
+    subject[topLevelIndex][1].splice(lowLevelIndex, 1, updatedSkill);
+    const subjectTitle = getTitleSubjectName(topLevelIndex, subject);
+    const totalSkills = getTotalNumberOfSkills(topLevelIndex, subject);
+    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex, subject);
     const updatedMainSubject = {
       title: subjectTitle,
       totalSkills: totalSkills,
       learnedSkills: learnedSkills,
     };
-    mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
+    subject[topLevelIndex].splice(0, 1, updatedMainSubject);
   };
 
   return { handleToggleLearnedSkill };

@@ -11,17 +11,18 @@ export default function useUpdateSubjectInfo() {
 
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
-  const update_Title_LearnedSkills_TotalSkills = (topLevelIndex) => {
-    const subjectTitle = getTitleSubjectName(topLevelIndex);
-    const totalSkills = getTotalNumberOfSkills(topLevelIndex);
-    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex);
+  const update_Title_LearnedSkills_TotalSkills = (topLevelIndex, subject) => {
+    const subjectTitle = getTitleSubjectName(topLevelIndex, subject);
+    const totalSkills = getTotalNumberOfSkills(topLevelIndex, subject);
+    const learnedSkills = getTotalNumberOfLearnedSkills(topLevelIndex, subject);
     const updatedMainSubject = {
       title: subjectTitle,
       totalSkills: totalSkills,
       learnedSkills: learnedSkills,
     };
-    mainSubjects[topLevelIndex].splice(0, 1, updatedMainSubject);
+    subject[topLevelIndex].splice(0, 1, updatedMainSubject);
   };
 
   return { update_Title_LearnedSkills_TotalSkills };

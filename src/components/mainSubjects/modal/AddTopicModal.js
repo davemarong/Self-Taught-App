@@ -9,9 +9,17 @@ import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
 import useAddTopics from "../../customHooks/useAddTopics";
+import MainSubjects from "../MainSubjects";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
 
-export default function AddTopicModal({ setRenderMainSubject }) {
+export default function AddTopicModal({
+  setRenderMainSubject,
+  closeAddTopicModal,
+}) {
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
+  const mainSubjects = useSelector((state) => state.mainSubjects);
+  const subjectType = useSelector((state) => state.subjectType);
 
   const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
 
@@ -29,17 +37,21 @@ export default function AddTopicModal({ setRenderMainSubject }) {
   }, []);
   const clickEnterExtraAddSkill = (event) => {
     if (event.key === "Enter") {
-      handleAddExtraSkill(topLevelIndex);
+      handleAddExtraSkill(topLevelIndex, subjectType);
       setNewSkill("");
+      update_Title_LearnedSkills_TotalSkills(topLevelIndex, subjectType);
       focusInput(addTopicRef);
-      addTopicSnackbar();
+      addTopicSnackbar(subjectType);
       setRenderMainSubject(extraSkill);
     }
   };
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={{ marginTop: 200 }}>
       <Card>
         <Grid container direction="column" alignItems="center" spacing={3}>
+          <IconButton onClick={closeAddTopicModal}>
+            <CloseIcon />
+          </IconButton>
           <Grid item>
             <CardContent>
               <Typography>Add topic</Typography>
@@ -59,10 +71,13 @@ export default function AddTopicModal({ setRenderMainSubject }) {
           <Grid item>
             <Button
               onClick={() => {
-                handleAddExtraSkill(topLevelIndex);
-                update_Title_LearnedSkills_TotalSkills(topLevelIndex);
+                handleAddExtraSkill(topLevelIndex, subjectType);
+                update_Title_LearnedSkills_TotalSkills(
+                  topLevelIndex,
+                  subjectType
+                );
                 focusInput(addTopicRef);
-                addTopicSnackbar();
+                addTopicSnackbar(subjectType);
                 setRenderMainSubject(extraSkill);
               }}
               variant="outlined"
