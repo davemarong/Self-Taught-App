@@ -26,7 +26,7 @@ export default function Register() {
   const handleSignUp = () => {
     if (username.length > 3 && email.length > 10 && password.length > 3) {
       axios
-        .post("http://localhost:1337/auth/local/register", {
+        .post("https://self-taught-web-dev.herokuapp.com/auth/local/register", {
           username: username,
           email: email,
           password: password,
