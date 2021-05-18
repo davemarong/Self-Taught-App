@@ -28,6 +28,8 @@ import {
 } from "./redux/actions/index";
 
 import "./styles/App.css";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,7 +52,9 @@ function App() {
             <Route path="/home" component={Home} />
             <Route path="/skills" component={Skills} />
             <Route path="/projects" component={Projects} />
-            <Route path="/account" component={MainSubjectModal} />
+            <Route path="/account" component={Account} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/login" component={LoginPage} />
             <Route path="/">
               <Redirect to="/home" />
             </Route>

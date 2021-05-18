@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useGetSkillAndSubjectData from "./useGetSkillAndSubjectData";
-
+import usePushDataToServer from "./usePushDataToServer";
+import axios from "axios";
 export default function useLearnTopics() {
   const {
     getTotalNumberOfLearnedSkills,
@@ -11,7 +12,10 @@ export default function useLearnTopics() {
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
-
+  const userProfileData = useSelector((state) => state.userProfileData);
+  const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
+    usePushDataToServer();
+  const { id } = userProfileData;
   const handleToggleLearnedSkill = (
     topLevelIndex,
     task,
@@ -31,6 +35,11 @@ export default function useLearnTopics() {
       learnedSkills: learnedSkills,
     };
     subject[topLevelIndex].splice(0, 1, updatedMainSubject);
+    if (subject === mainSubjects) {
+      updateMainSubjectsInServer(subject);
+    } else if (subject === secondarySubjects) {
+      updateSecondarySubjectsInServer(subject);
+    }
   };
 
   return { handleToggleLearnedSkill };
