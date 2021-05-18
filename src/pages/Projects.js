@@ -3,10 +3,5 @@ import CreateSubjectModal from "../components/mainSubjects/modal/CreateSubjectMo
 import SecondarySubjects from "../components/secondarySubjects/SecondarySubjects";
 
 export default function Projects() {
-  return (
-    <div>
-      secondary
-      <SecondarySubjects />{" "}
-    </div>
-  );
+  return <div>Projects</div>;
 }

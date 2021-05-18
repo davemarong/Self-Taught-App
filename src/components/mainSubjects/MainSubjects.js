@@ -1,56 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@material-ui/icons/Add";
 import {
   get_top_level_index,
   change_subject_type,
 } from "../../redux/actions/index";
-import { Icon, ListItemText } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
-import useAddTopics from "../customHooks/useAddTopics";
 import CreateSubjectModal from "./modal/CreateSubjectModal";
-import SecondarySubjects from "../secondarySubjects/SecondarySubjects";
 
 export default function MainSubjects() {
-  const {
-    currentSkills,
-    setCurrentSkills,
-    extraSkill,
-    newSkill,
-    setNewSkill,
-    handleNewSkill,
-    handleAddNewSkill,
-    handleAddExtraSkill,
-    setRender,
-    clickEnterAddSkill,
-    focusInput,
-    addSkillInputRef,
-    handlePushInfoToRedux,
-    mainSubjectName,
-    handleMainSubjectName,
-    setMainSubjectName,
-  } = useAddTopics();
   const dispatch = useDispatch();
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
-  const topLevelIndex = useSelector((state) => state.topLevelIndex);
-  const subjectType = useSelector((state) => state.subjectType);
 
-  const mainSubjectNameRef = useRef();
   const [mainSubjectModal, setMainSubjectModal] = useState(false);
   const [createSubjectModal, setCreateSubjectModal] = useState();
   const [renderMainSubject, setRenderMainSubject] = useState("hei");

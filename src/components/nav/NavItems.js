@@ -23,5 +23,17 @@ const NavItems = [
     path: "/account",
     cName: "nav-text",
   },
+  {
+    title: "Register",
+    id: 5,
+    path: "/register",
+    cName: "nav-text",
+  },
+  {
+    title: "Login",
+    id: 6,
+    path: "/login",
+    cName: "nav-text",
+  },
 ];
 export default NavItems;

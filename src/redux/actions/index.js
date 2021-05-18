@@ -23,3 +23,14 @@ export const change_subject_type = (subjectType) => {
     payload: subjectType,
   };
 };
+export const get_user_profile_data = (data) => {
+  return {
+    type: "GET_USER_PROFILE_DATA",
+    payload: data,
+  };
+};
+export const sign_in = () => {
+  return {
+    type: "SIGN_IN",
+  };
+};
