@@ -22,6 +22,7 @@ import useLearnTopics from "../../customHooks/useLearnTopics";
 import useAddTopics from "../../customHooks/useAddTopics";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
 import CloseIcon from "@material-ui/icons/Close";
+import DeleteIcon from "@material-ui/icons/Delete";
 export default function MainSubjectModal({
   setRenderMainSubject,
   closeMainSubjectModal,
@@ -35,6 +36,7 @@ export default function MainSubjectModal({
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const subjectType = useSelector((state) => state.subjectType);
   const [addTopicModal, setAddTopicModal] = useState(false);
+  const [showDeleteOption, setShowDeleteOption] = useState(false);
   const openAddTopicModal = () => {
     setAddTopicModal(true);
   };
@@ -43,87 +45,140 @@ export default function MainSubjectModal({
   };
 
   return (
-    <div>
-      <Container maxWidth="sm" style={{ marginTop: 70 }}>
-        <Modal open={addTopicModal} onClose={closeAddTopicModal}>
-          <AddTopicModal
-            closeAddTopicModal={closeAddTopicModal}
-            setRenderMainSubject={setRenderMainSubject}
-          />
-        </Modal>
-        <Card style={{ maxHeight: 500, overflowY: "scroll" }}>
-          <IconButton onClick={closeMainSubjectModal}>
-            <CloseIcon />
-          </IconButton>
-          <Typography variant="h3">
-            {subjectType[topLevelIndex][0].title}
-          </Typography>
-          <IconButton
-            onClick={() => {
-              openAddTopicModal();
-            }}
-          >
-            <AddCircleOutlineIcon />
-          </IconButton>
-          <IconButton>
-            <EditIcon />
-          </IconButton>
-          <Typography>
-            Total learned: {subjectType[topLevelIndex][0].learnedSkills}
-          </Typography>
-          <Typography>
-            Total Topics: {subjectType[topLevelIndex][0].totalSkills}
-          </Typography>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Topic</TableCell>
-                  <TableCell>Learned</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {subjectType[topLevelIndex][1].map((item, lowLevelIndex) => (
-                  <TableRow key={item.title}>
-                    <TableCell component="th" scope="row">
-                      {item.title}
+    <Container maxWidth="sm" style={{ marginTop: 70 }}>
+      <Modal open={addTopicModal} onClose={closeAddTopicModal}>
+        <AddTopicModal
+          closeAddTopicModal={closeAddTopicModal}
+          setRenderMainSubject={setRenderMainSubject}
+        />
+      </Modal>
+      <Card style={{ maxHeight: 500 }}>
+        <Grid container direction="row">
+          <Grid container justify="flex-end" item xs={12}>
+            <IconButton onClick={closeMainSubjectModal}>
+              <CloseIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography
+              align="center"
+              variant="h3"
+              style={{ position: "relative", bottom: 10 }}
+            >
+              {subjectType[topLevelIndex][0].title}
+            </Typography>
+          </Grid>
+
+          <Grid item xs={6}>
+            <TableContainer style={{ height: 400, overflowY: "scroll" }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell style={{ fontWeight: "bold" }}>Topic</TableCell>
+                    <TableCell style={{ padding: 0, fontWeight: "bold" }}>
+                      Learned
                     </TableCell>
-                    <TableCell
-                      onClick={() => {
-                        handleToggleLearnedSkill(
-                          topLevelIndex,
-                          item.title,
-                          lowLevelIndex,
-                          subjectType
-                        );
-                        setRender(Math.floor(Math.random() * 100));
-                      }}
-                    >
-                      {item.learned ? "yes" : "no"}
-                    </TableCell>
-                    <TableCell
-                      onClick={() => {
-                        handleFilterRemoveOneItem(
-                          topLevelIndex,
-                          item.title,
-                          subjectType
-                        );
-                        update_Title_LearnedSkills_TotalSkills(
-                          topLevelIndex,
-                          subjectType
-                        );
-                        setRenderMainSubject(item.title);
-                      }}
-                    >
-                      Delete
-                    </TableCell>
+                    <TableCell style={{ padding: 0 }}></TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Card>
-      </Container>
-    </div>
+                </TableHead>
+                <TableBody>
+                  {subjectType[topLevelIndex][1].map((item, lowLevelIndex) => (
+                    <TableRow key={item.title}>
+                      <TableCell component="th" scope="row">
+                        {item.title}
+                      </TableCell>
+                      <TableCell
+                        style={{ width: 10, padding: 0 }}
+                        onClick={() => {
+                          handleToggleLearnedSkill(
+                            topLevelIndex,
+                            item.title,
+                            lowLevelIndex,
+                            subjectType
+                          );
+                          setRender(Math.floor(Math.random() * 100));
+                        }}
+                      >
+                        {item.learned ? (
+                          <Checkbox checked={true} />
+                        ) : (
+                          <Checkbox checked={false} />
+                        )}
+                      </TableCell>
+                      <TableCell
+                        style={{ padding: 0 }}
+                        onClick={() => {
+                          handleFilterRemoveOneItem(
+                            topLevelIndex,
+                            item.title,
+                            subjectType
+                          );
+                          update_Title_LearnedSkills_TotalSkills(
+                            topLevelIndex,
+                            subjectType
+                          );
+                          setRenderMainSubject(item.title);
+                        }}
+                      >
+                        {showDeleteOption ? (
+                          <IconButton>
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        ) : null}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
+          <Grid container justify="flex-end" item xs={6}>
+            <Grid item>
+              <IconButton
+                onClick={() => {
+                  openAddTopicModal();
+                }}
+              >
+                <AddCircleOutlineIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setShowDeleteOption(!showDeleteOption);
+                }}
+              >
+                <EditIcon />
+              </IconButton>
+            </Grid>
+            <Grid container item xs={12} spacing={0}>
+              <Grid
+                container
+                direction="column"
+                style={{ position: "relative", bottom: 30 }}
+              >
+                <Typography variant="h6" align="center">
+                  Total learned <br />{" "}
+                </Typography>
+                <Typography variant="h3" align="center">
+                  {subjectType[topLevelIndex][0].learnedSkills}
+                </Typography>
+              </Grid>
+
+              <Grid
+                container
+                direction="column"
+                style={{ position: "relative", bottom: 30 }}
+              >
+                <Typography variant="h6" align="center">
+                  Total Topics <br />
+                </Typography>
+                <Typography variant="h3" align="center">
+                  {subjectType[topLevelIndex][0].totalSkills}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Card>
+    </Container>
   );
 }

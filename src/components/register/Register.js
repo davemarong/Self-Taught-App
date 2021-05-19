@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -7,12 +8,19 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { get_user_profile_data } from "../../redux/actions/index";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 export default function Register() {
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
 
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  let history = useHistory();
+
   const handleUsername = (event) => {
     setUsername(event.target.value);
   };
@@ -25,6 +33,8 @@ export default function Register() {
 
   const handleSignUp = () => {
     if (username.length > 3 && email.length > 10 && password.length > 3) {
+      setLoading(true);
+
       axios
         .post("https://self-taught-web-dev.herokuapp.com/auth/local/register", {
           username: username,
@@ -35,9 +45,13 @@ export default function Register() {
           console.log("Register successful");
           dispatch(get_user_profile_data(response.data.user));
           localStorage.setItem("jwt", response.data.jwt);
+          setLoading(false);
+
+          history.push("/login");
         })
         .catch((error) => {
           console.log("An error occurred:", error.response);
+          setLoading(false);
         });
     }
   };
@@ -112,6 +126,7 @@ export default function Register() {
             </Grid>
           </Grid>
         </Grid>
+        {loading ? <CircularProgress /> : null}
       </Container>
     </div>
   );

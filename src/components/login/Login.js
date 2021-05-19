@@ -8,11 +8,17 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { get_user_profile_data, sign_in } from "../../redux/actions/index";
+import { useHistory } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 export default function Login() {
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  let history = useHistory();
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -22,8 +28,9 @@ export default function Login() {
   };
 
   const handleSignIn = () => {
+    setLoading(true);
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post("https://self-taught-web-dev.herokuapp.com/auth/local", {
         identifier: email,
         password: password,
       })
@@ -32,9 +39,12 @@ export default function Login() {
         localStorage.setItem("jwt", response.data.jwt);
         dispatch(get_user_profile_data(response.data.user));
         dispatch(sign_in(true));
+        setLoading(false);
+        history.push("/home");
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
+        setLoading(false);
       });
   };
   return (
@@ -90,6 +100,7 @@ export default function Login() {
             </Grid>
           </Grid>
         </Grid>
+        {loading ? <CircularProgress /> : null}
       </Container>
     </div>
   );

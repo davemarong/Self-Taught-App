@@ -18,7 +18,6 @@ export default function Home() {
   const classes = useStyles();
   return (
     <div className={matches ? classes.full : classes.mobile}>
-      Home
       <MainSubjects />
     </div>
   );

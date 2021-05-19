@@ -55,20 +55,9 @@ export default function MainSubjects() {
           setRenderMainSubject={setRenderMainSubject}
         />
       </Modal>
-      <Card>
+      <Card style={{ marginBottom: 100 }}>
         <CardContent>
           <List>
-            <Button
-              variant="outlined"
-              endIcon={<AddIcon />}
-              onClick={() => {
-                setSubjectsType("mainSubjects");
-                openCreateSubjectModal();
-              }}
-            >
-              Create new
-            </Button>
-
             <Grid container direction="row" justify="center" spacing={4}>
               {mainSubjects.map((item, topLevelIndex) => {
                 return (
@@ -141,20 +130,25 @@ export default function MainSubjects() {
                   </Grid>
                 );
               })}
+              <Grid container justify="flex-end" item xs={12}>
+                <Button
+                  variant="outlined"
+                  endIcon={<AddIcon />}
+                  onClick={() => {
+                    setSubjectsType("mainSubjects");
+                    openCreateSubjectModal();
+                  }}
+                >
+                  Create new
+                </Button>
+              </Grid>
             </Grid>
           </List>
-
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent>
           <List>
-            <Button
-              variant="outlined"
-              endIcon={<AddIcon />}
-              onClick={() => {
-                setSubjectsType("secondarySubjects");
-                openCreateSubjectModal();
-              }}
-            >
-              Create new
-            </Button>
             <Grid container direction="row" justify="center" spacing={4}>
               {secondarySubjects.map((item, topLevelIndex) => {
                 return (
@@ -226,6 +220,18 @@ export default function MainSubjects() {
                   </Grid>
                 );
               })}
+              <Grid container justify="flex-end" item xs={12}>
+                <Button
+                  variant="outlined"
+                  endIcon={<AddIcon />}
+                  onClick={() => {
+                    setSubjectsType("secondarySubjects");
+                    openCreateSubjectModal();
+                  }}
+                >
+                  Create new
+                </Button>
+              </Grid>
             </Grid>
           </List>
         </CardContent>
