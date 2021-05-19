@@ -46,16 +46,16 @@ export default function AddTopicModal({
     }
   };
   return (
-    <Container maxWidth="sm" style={{ marginTop: 200 }}>
+    <Container style={{ marginTop: 200, maxWidth: 400 }}>
       <Card>
         <Grid container direction="column" alignItems="center" spacing={3}>
-          <IconButton onClick={closeAddTopicModal}>
-            <CloseIcon />
-          </IconButton>
+          <Grid container justify="flex-end" item style={{ paddingBottom: 0 }}>
+            <IconButton onClick={closeAddTopicModal}>
+              <CloseIcon />
+            </IconButton>
+          </Grid>
           <Grid item>
-            <CardContent>
-              <Typography>Add topic</Typography>
-            </CardContent>
+            <Typography variant="h4">Add topic</Typography>
           </Grid>
           <Grid item>
             <TextField
@@ -63,13 +63,14 @@ export default function AddTopicModal({
               inputRef={addTopicRef}
               onChange={handleExtraSkill}
               variant="outlined"
-              label="Add skill..."
+              label="Topic..."
               value={extraSkill}
             ></TextField>
           </Grid>
 
           <Grid item>
             <Button
+              style={{ marginBottom: 20 }}
               onClick={() => {
                 handleAddExtraSkill(topLevelIndex, subjectType);
                 update_Title_LearnedSkills_TotalSkills(
@@ -82,7 +83,7 @@ export default function AddTopicModal({
               }}
               variant="outlined"
             >
-              Add skill
+              Add
             </Button>
           </Grid>
         </Grid>

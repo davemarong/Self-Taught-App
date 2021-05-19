@@ -70,7 +70,7 @@ export default function MainSubjectModal({
           </Grid>
 
           <Grid item xs={6}>
-            <TableContainer style={{ height: 400, overflowY: "scroll" }}>
+            <TableContainer style={{ height: 400, overflowY: "auto" }}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -141,6 +141,7 @@ export default function MainSubjectModal({
               >
                 <AddCircleOutlineIcon />
               </IconButton>
+
               <IconButton
                 onClick={() => {
                   setShowDeleteOption(!showDeleteOption);
