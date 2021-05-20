@@ -42,6 +42,8 @@ function App() {
     <div
       style={{
         background: "linear-gradient(45deg, #3C54D6 30%, #D586F7 90%)",
+        background:
+          "linear-gradient(45deg, rgb(73 101 255 / 75%) 30%, rgb(197 62 255 / 72%) 90%)",
         paddingBottom: 100,
       }}
     >

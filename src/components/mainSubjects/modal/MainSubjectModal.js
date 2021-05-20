@@ -23,6 +23,9 @@ import useAddTopics from "../../customHooks/useAddTopics";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { motion, useCycle } from "framer-motion";
+import Zoom from "@material-ui/core/Zoom";
+
 export default function MainSubjectModal({
   setRenderMainSubject,
   closeMainSubjectModal,
@@ -47,10 +50,14 @@ export default function MainSubjectModal({
   return (
     <Container maxWidth="sm" style={{ marginTop: 70 }}>
       <Modal open={addTopicModal} onClose={closeAddTopicModal}>
-        <AddTopicModal
-          closeAddTopicModal={closeAddTopicModal}
-          setRenderMainSubject={setRenderMainSubject}
-        />
+        <Zoom timeout={300} in={addTopicModal}>
+          <div>
+            <AddTopicModal
+              closeAddTopicModal={closeAddTopicModal}
+              setRenderMainSubject={setRenderMainSubject}
+            />
+          </div>
+        </Zoom>
       </Modal>
       <Card style={{ maxHeight: 500 }}>
         <Grid container direction="row">
@@ -143,6 +150,7 @@ export default function MainSubjectModal({
               </IconButton>
 
               <IconButton
+                style={showDeleteOption ? { background: "#9e9e9eb0" } : null}
                 onClick={() => {
                   setShowDeleteOption(!showDeleteOption);
                 }}

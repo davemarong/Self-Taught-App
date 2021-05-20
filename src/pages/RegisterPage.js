@@ -18,7 +18,6 @@ export default function RegisterPage() {
   const classes = useStyles();
   return (
     <div className={matches ? classes.full : classes.mobile}>
-      <p>Register</p>
       <Register />
     </div>
   );

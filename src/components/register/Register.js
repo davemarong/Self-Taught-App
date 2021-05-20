@@ -9,9 +9,11 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { get_user_profile_data } from "../../redux/actions/index";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useSnackbar } from "notistack";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [loading, setLoading] = useState(false);
 
@@ -52,20 +54,34 @@ export default function Register() {
         .catch((error) => {
           console.log("An error occurred:", error.response);
           setLoading(false);
+          enqueueSnackbar(
+            `${error.response.data.data[0].messages[0].message}`,
+            {
+              variant: "error",
+              autoHideDuration: 4000,
+            }
+          );
         });
     }
   };
   return (
     <div>
-      <Container>
+      <Container
+        maxWidth="sm"
+        style={{
+          border: "1px solid grey",
+          borderRadius: 10,
+          padding: 20,
+          boxShadow: "0 0 4px",
+        }}
+      >
         <Grid container direction="column">
           <Grid item>
-            <Typography>Sign up</Typography>
+            <Typography variant="h3" align="center">
+              Register
+            </Typography>
           </Grid>
 
-          <Grid item>
-            <Typography>Please enter your personal info</Typography>
-          </Grid>
           <Grid container item direction="column">
             <Grid item>
               <TextField
@@ -97,7 +113,7 @@ export default function Register() {
                 name="password"
               ></TextField>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <TextField
                 label="Re enter password"
                 variant="outlined"
@@ -105,7 +121,7 @@ export default function Register() {
                 fullWidth
                 name="reEnterPassword"
               ></TextField>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <Button
                 onClick={handleSignUp}
@@ -116,17 +132,19 @@ export default function Register() {
                 Sign up
               </Button>
             </Grid>
-            <Grid container item>
+            {/* <Grid container item>
               <Grid item>
-                <Button variant="outlined">Sign in</Button>
+                <Button variant="outlined">Log in</Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined">Sign up</Button>
+                <Button variant="outlined">Register</Button>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
-        {loading ? <CircularProgress /> : null}
+        <Grid container justify="center" item>
+          {loading ? <CircularProgress /> : null}
+        </Grid>
       </Container>
     </div>
   );

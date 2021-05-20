@@ -70,7 +70,10 @@ export default function AddTopicModal({
 
           <Grid item>
             <Button
-              style={{ marginBottom: 20 }}
+              style={{
+                marginBottom: 20,
+                background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+              }}
               onClick={() => {
                 handleAddExtraSkill(topLevelIndex, subjectType);
                 update_Title_LearnedSkills_TotalSkills(

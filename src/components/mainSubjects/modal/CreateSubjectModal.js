@@ -77,7 +77,9 @@ export default function CreateSubjectModal({
                 ></TextField>
               </Grid>
               <Grid item xs={12}>
-                <List style={{ maxHeight: 200, overflowY: "auto" }}>
+                <List
+                  style={{ minHeight: 100, maxHeight: 200, overflowY: "auto" }}
+                >
                   {currentSkills.map((item, index) => {
                     return (
                       <ListItem key={item.title}>
@@ -110,7 +112,10 @@ export default function CreateSubjectModal({
                 style={{ marginTop: "auto" }}
               >
                 <Button
-                  style={{ width: 100 }}
+                  style={{
+                    width: 100,
+                    background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                  }}
                   variant="outlined"
                   onClick={() => {
                     if (subjectsType === "mainSubjects") {

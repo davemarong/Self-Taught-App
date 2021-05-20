@@ -15,6 +15,9 @@ import {
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
 import CreateSubjectModal from "./modal/CreateSubjectModal";
+import { motion } from "framer-motion";
+import Backdrop from "@material-ui/core/Backdrop";
+import Zoom from "@material-ui/core/Zoom";
 
 export default function MainSubjects() {
   const dispatch = useDispatch();
@@ -43,17 +46,41 @@ export default function MainSubjects() {
   };
   return (
     <div>
-      <Modal open={createSubjectModal} onClose={closeCreateSubjectModal}>
-        <CreateSubjectModal
-          subjectsType={subjectsType}
-          closeCreateSubjectModal={closeCreateSubjectModal}
-        />
+      <Modal
+        open={createSubjectModal}
+        onClose={closeCreateSubjectModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Zoom timeout={300} in={createSubjectModal}>
+          <div>
+            <CreateSubjectModal
+              subjectsType={subjectsType}
+              closeCreateSubjectModal={closeCreateSubjectModal}
+            />
+          </div>
+        </Zoom>
       </Modal>
-      <Modal open={mainSubjectModal} onClose={closeMainSubjectModal}>
-        <MainSubjectModal
-          closeMainSubjectModal={closeMainSubjectModal}
-          setRenderMainSubject={setRenderMainSubject}
-        />
+      <Modal
+        open={mainSubjectModal}
+        onClose={closeMainSubjectModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Zoom timeout={300} in={mainSubjectModal}>
+          <div>
+            <MainSubjectModal
+              closeMainSubjectModal={closeMainSubjectModal}
+              setRenderMainSubject={setRenderMainSubject}
+            />
+          </div>
+        </Zoom>
       </Modal>
       <Card style={{ marginBottom: 100 }}>
         <CardContent>
@@ -61,7 +88,20 @@ export default function MainSubjects() {
             <Grid container direction="row" justify="center" spacing={4}>
               {mainSubjects.map((item, topLevelIndex) => {
                 return (
-                  <Grid item>
+                  <Grid
+                    item
+                    style={{ cursor: "pointer" }}
+                    component={motion.div}
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { duration: 0.3 },
+                    }}
+                    onClick={() => {
+                      dispatch(get_top_level_index(topLevelIndex));
+                      dispatch(change_subject_type(mainSubjects));
+                      openMainSubjectModal();
+                    }}
+                  >
                     <Typography variant="h3" align="center">
                       {" "}
                       {numberToPercent(
@@ -89,39 +129,33 @@ export default function MainSubjects() {
                           )}%`,
                           height: 15,
                           borderRadius: 50,
-                          background: "green",
+                          background: "#57ca10",
                         }}
                       ></div>
                     </div>
 
-                    <CardActionArea
-                      onClick={() => {
-                        dispatch(get_top_level_index(topLevelIndex));
-                        dispatch(change_subject_type(mainSubjects));
-                        openMainSubjectModal();
+                    <Card
+                      style={{
+                        borderRadius: 15,
+                        width: 200,
+                        height: 110,
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                        // background:
+                        //   "linear-gradient(10deg, #D6543C 10%, #D586F7 60%)",
+                        background:
+                          "linear-gradient(10deg, #ff5e41 10%, #c445fb 60%)",
                       }}
                     >
-                      <Card
-                        style={{
-                          borderRadius: 15,
-                          width: 200,
-                          height: 110,
-                          display: "flex",
-                          flexWrap: "wrap",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          cursor: "pointer",
-                          background:
-                            "linear-gradient(10deg, #D6543C 10%, #D586F7 60%)",
-                        }}
-                      >
-                        <CardContent>
-                          <Typography variant="h4" align="center">
-                            {mainSubjects[topLevelIndex][0].title}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </CardActionArea>
+                      <CardContent>
+                        <Typography variant="h4" align="center">
+                          {mainSubjects[topLevelIndex][0].title}
+                        </Typography>
+                      </CardContent>
+                    </Card>
                     <Typography variant="body1" align="center">
                       {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
                       {mainSubjects[topLevelIndex][0].totalSkills} skills
@@ -132,6 +166,9 @@ export default function MainSubjects() {
               })}
               <Grid container justify="flex-end" item xs={12}>
                 <Button
+                  style={{
+                    background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                  }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {
@@ -152,7 +189,20 @@ export default function MainSubjects() {
             <Grid container direction="row" justify="center" spacing={4}>
               {secondarySubjects.map((item, topLevelIndex) => {
                 return (
-                  <Grid item>
+                  <Grid
+                    item
+                    style={{ cursor: "pointer" }}
+                    component={motion.div}
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { duration: 0.3 },
+                    }}
+                    onClick={() => {
+                      dispatch(get_top_level_index(topLevelIndex));
+                      dispatch(change_subject_type(secondarySubjects));
+                      openMainSubjectModal();
+                    }}
+                  >
                     <Typography variant="h6" align="center">
                       {numberToPercent(
                         secondarySubjects[topLevelIndex][0].learnedSkills,
@@ -179,39 +229,33 @@ export default function MainSubjects() {
                           )}%`,
                           height: 15,
                           borderRadius: 50,
-                          background: "green",
+                          background: "#57ca10",
                         }}
                       ></div>
                     </div>
 
-                    <CardActionArea
-                      onClick={() => {
-                        dispatch(get_top_level_index(topLevelIndex));
-                        dispatch(change_subject_type(secondarySubjects));
-                        openMainSubjectModal();
+                    <Card
+                      style={{
+                        borderRadius: 15,
+                        width: 150,
+                        height: 80,
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: "auto",
+                        // background:
+                        //   "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
+                        background:
+                          "linear-gradient(10deg, #D6AD3C 10%, #c445fb 60%)",
                       }}
                     >
-                      <Card
-                        style={{
-                          borderRadius: 15,
-                          width: 150,
-                          height: 80,
-                          display: "flex",
-                          flexWrap: "wrap",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          margin: "auto",
-                          background:
-                            "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
-                        }}
-                      >
-                        <CardContent>
-                          <Typography variant="h5" align="center">
-                            {secondarySubjects[topLevelIndex][0].title}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </CardActionArea>
+                      <CardContent>
+                        <Typography variant="h5" align="center">
+                          {secondarySubjects[topLevelIndex][0].title}
+                        </Typography>
+                      </CardContent>
+                    </Card>
                     <Typography variant="body2" align="center">
                       {secondarySubjects[topLevelIndex][0].learnedSkills} of{" "}
                       {secondarySubjects[topLevelIndex][0].totalSkills} skills
@@ -222,6 +266,9 @@ export default function MainSubjects() {
               })}
               <Grid container justify="flex-end" item xs={12}>
                 <Button
+                  style={{
+                    background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                  }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {
