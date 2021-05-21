@@ -86,7 +86,7 @@ export default function MainSubjects() {
         <CardContent>
           <List>
             <Grid container direction="row" justify="center" spacing={4}>
-              {mainSubjects.map((item, topLevelIndex) => {
+              {mainSubjects.map((subject, topLevelIndex) => {
                 return (
                   <Grid
                     item
@@ -105,8 +105,8 @@ export default function MainSubjects() {
                     <Typography variant="h3" align="center">
                       {" "}
                       {numberToPercent(
-                        mainSubjects[topLevelIndex][0].learnedSkills,
-                        mainSubjects[topLevelIndex][0].totalSkills
+                        subject[0].learnedSkills,
+                        subject[0].totalSkills
                       )}
                       %
                     </Typography>
@@ -124,8 +124,8 @@ export default function MainSubjects() {
                         style={{
                           width: `
                           ${numberToPercent(
-                            mainSubjects[topLevelIndex][0].learnedSkills,
-                            mainSubjects[topLevelIndex][0].totalSkills
+                            subject[0].learnedSkills,
+                            subject[0].totalSkills
                           )}%`,
                           height: 15,
                           borderRadius: 50,
@@ -152,14 +152,13 @@ export default function MainSubjects() {
                     >
                       <CardContent>
                         <Typography variant="h4" align="center">
-                          {mainSubjects[topLevelIndex][0].title}
+                          {subject[0].title}
                         </Typography>
                       </CardContent>
                     </Card>
                     <Typography variant="body1" align="center">
-                      {mainSubjects[topLevelIndex][0].learnedSkills} of{" "}
-                      {mainSubjects[topLevelIndex][0].totalSkills} skills
-                      learned
+                      {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
+                      skills learned
                     </Typography>
                   </Grid>
                 );
@@ -169,6 +168,10 @@ export default function MainSubjects() {
                   style={{
                     background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
                   }}
+                  // component={motion.button}
+                  // whileHover={{
+                  //   background: "linear-gradient(10deg, #37b16f, #8bbd47)",
+                  // }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {
@@ -187,7 +190,7 @@ export default function MainSubjects() {
         <CardContent>
           <List>
             <Grid container direction="row" justify="center" spacing={4}>
-              {secondarySubjects.map((item, topLevelIndex) => {
+              {secondarySubjects.map((subject, topLevelIndex) => {
                 return (
                   <Grid
                     item
@@ -205,8 +208,8 @@ export default function MainSubjects() {
                   >
                     <Typography variant="h6" align="center">
                       {numberToPercent(
-                        secondarySubjects[topLevelIndex][0].learnedSkills,
-                        secondarySubjects[topLevelIndex][0].totalSkills
+                        subject[0].learnedSkills,
+                        subject[0].totalSkills
                       )}
                       %
                     </Typography>
@@ -224,8 +227,8 @@ export default function MainSubjects() {
                       <div
                         style={{
                           width: `${numberToPercent(
-                            secondarySubjects[topLevelIndex][0].learnedSkills,
-                            secondarySubjects[topLevelIndex][0].totalSkills
+                            subject[0].learnedSkills,
+                            subject[0].totalSkills
                           )}%`,
                           height: 15,
                           borderRadius: 50,
@@ -252,14 +255,13 @@ export default function MainSubjects() {
                     >
                       <CardContent>
                         <Typography variant="h5" align="center">
-                          {secondarySubjects[topLevelIndex][0].title}
+                          {subject[0].title}
                         </Typography>
                       </CardContent>
                     </Card>
                     <Typography variant="body2" align="center">
-                      {secondarySubjects[topLevelIndex][0].learnedSkills} of{" "}
-                      {secondarySubjects[topLevelIndex][0].totalSkills} skills
-                      learned
+                      {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
+                      skills learned
                     </Typography>
                   </Grid>
                 );
@@ -269,6 +271,10 @@ export default function MainSubjects() {
                   style={{
                     background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
                   }}
+                  // component={motion.button}
+                  // whileHover={{
+                  //   background: "linear-gradient(10deg, #37b16f, #8bbd47)",
+                  // }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {

@@ -1,6 +1,7 @@
 import React from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
+import Topics from "../components/topics/Topics";
 
 const useStyles = makeStyles({
   full: {
@@ -14,5 +15,9 @@ const useStyles = makeStyles({
 export default function Skills() {
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
-  return <div className={matches ? classes.full : classes.mobile}>Skills</div>;
+  return (
+    <div className={matches ? classes.full : classes.mobile}>
+      <Topics />
+    </div>
+  );
 }
