@@ -13,6 +13,8 @@ import useAddTopics from "../../customHooks/useAddTopics";
 import { useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import { motion } from "framer-motion";
+
 export default function CreateSubjectModal({
   subjectsType,
   closeCreateSubjectModal,
@@ -93,7 +95,15 @@ export default function CreateSubjectModal({
             <Grid container direction="column" xs={5}>
               <Grid item>
                 <Button
-                  style={{ margin: 10 }}
+                  style={{
+                    margin: 10,
+                    background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                  }}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
+                  }}
                   variant="outlined"
                   onClick={() => {
                     handleAddNewSkill(currentSkills);
@@ -115,6 +125,11 @@ export default function CreateSubjectModal({
                   style={{
                     width: 100,
                     background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                  }}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
                   }}
                   variant="outlined"
                   onClick={() => {

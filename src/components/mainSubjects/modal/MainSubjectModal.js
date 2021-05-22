@@ -59,7 +59,7 @@ export default function MainSubjectModal({
           </div>
         </Zoom>
       </Modal>
-      <Card style={{ maxHeight: 500 }}>
+      <Card style={{ maxHeight: 510, overflowY: "auto" }}>
         <Grid container direction="row">
           <Grid container justify="flex-end" item xs={12}>
             <IconButton onClick={closeMainSubjectModal}>
@@ -76,16 +76,85 @@ export default function MainSubjectModal({
             </Typography>
           </Grid>
 
-          <Grid item xs={6}>
-            <TableContainer style={{ height: 400, overflowY: "auto" }}>
+          <Grid container justify="flex-end" item xs={12} sm={6}>
+            <Grid item xs={12}>
+              <IconButton
+                onClick={() => {
+                  openAddTopicModal();
+                }}
+              >
+                <AddCircleOutlineIcon />
+              </IconButton>
+
+              <IconButton
+                style={showDeleteOption ? { background: "#9e9e9eb0" } : null}
+                onClick={() => {
+                  setShowDeleteOption(!showDeleteOption);
+                }}
+              >
+                <EditIcon />
+              </IconButton>
+            </Grid>
+            <Grid container item xs={12} spacing={0} style={{ marginTop: 30 }}>
+              <Grid
+                container
+                item
+                direction="column"
+                style={{ position: "relative", bottom: 30 }}
+              >
+                <Typography variant="h6" align="center">
+                  Total learned <br />{" "}
+                </Typography>
+                <Typography variant="h3" align="center">
+                  {subjectType[topLevelIndex][0].learnedSkills}
+                </Typography>
+              </Grid>
+
+              <Grid
+                container
+                direction="column"
+                style={{ position: "relative", bottom: 30 }}
+              >
+                <Typography variant="h6" align="center">
+                  Total Topics <br />
+                </Typography>
+                <Typography variant="h3" align="center">
+                  {subjectType[topLevelIndex][0].totalSkills}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <TableContainer
+              style={{ height: 400, overflowY: "auto", paddingRight: 10 }}
+            >
               <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell style={{ fontWeight: "bold" }}>Topic</TableCell>
-                    <TableCell style={{ padding: 0, fontWeight: "bold" }}>
+                    <TableCell
+                      style={{
+                        padding: 0,
+                        fontWeight: "bold",
+                      }}
+                    >
                       Learned
                     </TableCell>
-                    <TableCell style={{ padding: 0 }}></TableCell>
+                    <TableCell style={{ padding: 0 }}>
+                      {showDeleteOption ? (
+                        <Typography
+                          align="right"
+                          style={{
+                            padding: 0,
+
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Delete
+                        </Typography>
+                      ) : null}
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -113,6 +182,7 @@ export default function MainSubjectModal({
                         )}
                       </TableCell>
                       <TableCell
+                        align="right"
                         style={{ padding: 0 }}
                         onClick={() => {
                           handleFilterRemoveOneItem(
@@ -138,53 +208,6 @@ export default function MainSubjectModal({
                 </TableBody>
               </Table>
             </TableContainer>
-          </Grid>
-          <Grid container justify="flex-end" item xs={6}>
-            <Grid item>
-              <IconButton
-                onClick={() => {
-                  openAddTopicModal();
-                }}
-              >
-                <AddCircleOutlineIcon />
-              </IconButton>
-
-              <IconButton
-                style={showDeleteOption ? { background: "#9e9e9eb0" } : null}
-                onClick={() => {
-                  setShowDeleteOption(!showDeleteOption);
-                }}
-              >
-                <EditIcon />
-              </IconButton>
-            </Grid>
-            <Grid container item xs={12} spacing={0}>
-              <Grid
-                container
-                direction="column"
-                style={{ position: "relative", bottom: 30 }}
-              >
-                <Typography variant="h6" align="center">
-                  Total learned <br />{" "}
-                </Typography>
-                <Typography variant="h3" align="center">
-                  {subjectType[topLevelIndex][0].learnedSkills}
-                </Typography>
-              </Grid>
-
-              <Grid
-                container
-                direction="column"
-                style={{ position: "relative", bottom: 30 }}
-              >
-                <Typography variant="h6" align="center">
-                  Total Topics <br />
-                </Typography>
-                <Typography variant="h3" align="center">
-                  {subjectType[topLevelIndex][0].totalSkills}
-                </Typography>
-              </Grid>
-            </Grid>
           </Grid>
         </Grid>
       </Card>

@@ -48,7 +48,7 @@ export default function Topics() {
                   </Typography>
                 </Grid>
 
-                <Grid container justify="space-evenly" item>
+                <Grid container justify="flex-start" item>
                   {" "}
                   {subject[1].map((topic) => {
                     return (
@@ -68,7 +68,12 @@ export default function Topics() {
                           style={{ padding: 5 }}
                         >
                           <Grid item xs>
-                            <Typography align="left">{topic.title}</Typography>
+                            <Typography
+                              align="left"
+                              style={{ overflowX: "auto" }}
+                            >
+                              {topic.title}
+                            </Typography>
                           </Grid>
                           <Grid item xs={2}>
                             {topic.learned ? (
@@ -140,7 +145,12 @@ export default function Topics() {
                           style={{ padding: 5 }}
                         >
                           <Grid item xs>
-                            <Typography align="left">{topic.title}</Typography>
+                            <Typography
+                              align="left"
+                              style={{ overflowX: "auto" }}
+                            >
+                              {topic.title}
+                            </Typography>
                           </Grid>
                           <Grid item xs={2}>
                             {topic.learned ? (

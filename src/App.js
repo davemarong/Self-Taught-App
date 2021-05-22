@@ -30,6 +30,7 @@ import {
 import "./styles/App.css";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import Introduction from "./components/introduction/Introduction";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function App() {
             <Route path="/home" component={Home} />
             <Route path="/skills" component={Skills} />
             <Route path="/projects" component={Projects} />
-            <Route path="/account" component={Account} />
+            <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/">

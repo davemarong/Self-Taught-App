@@ -12,6 +12,7 @@ import useAddTopics from "../../customHooks/useAddTopics";
 import MainSubjects from "../MainSubjects";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import { motion } from "framer-motion";
 
 export default function AddTopicModal({
   setRenderMainSubject,
@@ -73,6 +74,11 @@ export default function AddTopicModal({
               style={{
                 marginBottom: 20,
                 background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+              }}
+              component={motion.div}
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 0.3 },
               }}
               onClick={() => {
                 handleAddExtraSkill(topLevelIndex, subjectType);

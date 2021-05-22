@@ -19,6 +19,8 @@ import { motion } from "framer-motion";
 import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
 
+import "../../styles/Home.css";
+
 export default function MainSubjects() {
   const dispatch = useDispatch();
   const mainSubjects = useSelector((state) => state.mainSubjects);
@@ -56,7 +58,7 @@ export default function MainSubjects() {
         }}
       >
         <Zoom timeout={300} in={createSubjectModal}>
-          <div>
+          <div style={{ maxWidth: 560, margin: "auto" }}>
             <CreateSubjectModal
               subjectsType={subjectsType}
               closeCreateSubjectModal={closeCreateSubjectModal}
@@ -74,7 +76,7 @@ export default function MainSubjects() {
         }}
       >
         <Zoom timeout={300} in={mainSubjectModal}>
-          <div>
+          <div style={{ maxWidth: 560, margin: "auto", padding: 0 }}>
             <MainSubjectModal
               closeMainSubjectModal={closeMainSubjectModal}
               setRenderMainSubject={setRenderMainSubject}
@@ -168,10 +170,11 @@ export default function MainSubjects() {
                   style={{
                     background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
                   }}
-                  // component={motion.button}
-                  // whileHover={{
-                  //   background: "linear-gradient(10deg, #37b16f, #8bbd47)",
-                  // }}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
+                  }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {
@@ -271,10 +274,11 @@ export default function MainSubjects() {
                   style={{
                     background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
                   }}
-                  // component={motion.button}
-                  // whileHover={{
-                  //   background: "linear-gradient(10deg, #37b16f, #8bbd47)",
-                  // }}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
+                  }}
                   variant="outlined"
                   endIcon={<AddIcon />}
                   onClick={() => {
