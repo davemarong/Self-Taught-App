@@ -35,18 +35,18 @@ export const main_subjects = [
       { title: "Variables", learned: false },
     ],
   ],
-  [
-    { title: "React", totalSkills: 7, learnedSkills: 0 },
-    [
-      { title: "Import", learned: false },
-      { title: "Destructuring", learned: false },
-      { title: "Map", learned: false },
-      { title: "Filter", learned: false },
-      { title: "Reduce", learned: false },
-      { title: "Hooks", learned: false },
-      { title: "State", learned: false },
-    ],
-  ],
+  // [
+  //   { title: "React", totalSkills: 7, learnedSkills: 0 },
+  //   [
+  //     { title: "Import", learned: false },
+  //     { title: "Destructuring", learned: false },
+  //     { title: "Map", learned: false },
+  //     { title: "Filter", learned: false },
+  //     { title: "Reduce", learned: false },
+  //     { title: "Hooks", learned: false },
+  //     { title: "State", learned: false },
+  //   ],
+  // ],
 ];
 export const secondary_subjects = [
   [
@@ -94,27 +94,27 @@ export const secondary_subjects = [
       { title: "Domain", learned: false },
     ],
   ],
-  [
-    { title: "VSCode", totalSkills: 6, learnedSkills: 2 },
-    [
-      { title: "Prettier", learned: true },
-      { title: "Lint", learned: false },
-      { title: "Keyboard shortcuts", learned: true },
-      { title: "Live server", learned: false },
-      { title: "Debugging", learned: false },
-      { title: "Git", learned: false },
-    ],
-  ],
-  [
-    { title: "Web browser", totalSkills: 7, learnedSkills: 0 },
-    [
-      { title: "Chrome", learned: false },
-      { title: "Dev tools", learned: false },
-      { title: "Cookie", learned: false },
-      { title: "Sessions", learned: false },
-      { title: "Local Storrage", learned: false },
-      { title: "HTTPS", learned: false },
-      { title: "Loading time", learned: false },
-    ],
-  ],
+  // [
+  //   { title: "VSCode", totalSkills: 6, learnedSkills: 2 },
+  //   [
+  //     { title: "Prettier", learned: true },
+  //     { title: "Lint", learned: false },
+  //     { title: "Keyboard shortcuts", learned: true },
+  //     { title: "Live server", learned: false },
+  //     { title: "Debugging", learned: false },
+  //     { title: "Git", learned: false },
+  //   ],
+  // ],
+  // [
+  //   { title: "Web browser", totalSkills: 7, learnedSkills: 0 },
+  //   [
+  //     { title: "Chrome", learned: false },
+  //     { title: "Dev tools", learned: false },
+  //     { title: "Cookie", learned: false },
+  //     { title: "Sessions", learned: false },
+  //     { title: "Local Storrage", learned: false },
+  //     { title: "HTTPS", learned: false },
+  //     { title: "Loading time", learned: false },
+  //   ],
+  // ],
 ];

@@ -48,7 +48,7 @@ export default function MainSubjectModal({
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: 70 }}>
+    <Container maxWidth="sm" style={{ marginTop: 20 }}>
       <Modal open={addTopicModal} onClose={closeAddTopicModal}>
         <Zoom timeout={300} in={addTopicModal}>
           <div>
