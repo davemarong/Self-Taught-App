@@ -11,10 +11,13 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 export default function Nav() {
   const [sidebar, setSidebar] = useState(false);
   const handleShowSidebar = () => {
+    console.log(matches);
     setSidebar(!sidebar);
   };
   const matches = useMediaQuery("(min-width:1224px)");
   useEffect(() => {
+    console.log(matches);
+
     if (matches) {
       setSidebar(true);
     } else if (!matches) {

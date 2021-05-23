@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,6 +20,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
 
 import "../../styles/Home.css";
+import Introduction from "../introduction/Introduction";
 
 export default function MainSubjects() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function MainSubjects() {
 
   const [mainSubjectModal, setMainSubjectModal] = useState(false);
   const [createSubjectModal, setCreateSubjectModal] = useState();
+  const [introductionModal, setIntroductionModal] = useState();
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
   const [subjectsType, setSubjectsType] = useState();
   const openMainSubjectModal = () => {
@@ -42,12 +44,36 @@ export default function MainSubjects() {
   const closeCreateSubjectModal = () => {
     setCreateSubjectModal(false);
   };
+  const openIntroductionModal = () => {
+    setIntroductionModal(true);
+  };
+  const closeIntroductionModal = () => {
+    setIntroductionModal(false);
+  };
   const numberToPercent = (lowNumber, highNumber) => {
     const percent = (lowNumber / highNumber) * 100;
     return Math.trunc(percent);
   };
+  useEffect(() => {
+    openIntroductionModal();
+  }, []);
   return (
     <div>
+      <Modal
+        open={introductionModal}
+        onClose={closeIntroductionModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Zoom timeout={300} in={introductionModal}>
+          <div style={{ maxWidth: 560, margin: "auto" }}>
+            <Introduction />
+          </div>
+        </Zoom>
+      </Modal>
       <Modal
         open={createSubjectModal}
         onClose={closeCreateSubjectModal}

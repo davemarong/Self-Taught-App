@@ -3,6 +3,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
@@ -10,7 +11,6 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { bindKeyboard } from "react-swipeable-views-utils";
 import introductionData from "./IntroductionData";
-
 import mainSubjectVideo from "../../assets/MainSubjects.mp4";
 import sideSubjectVideo from "../../assets/sideSubjects.mp4";
 import topicsVideo from "../../assets/TopicsBig.mp4";
@@ -20,18 +20,16 @@ const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 400,
-    flexGrow: 1,
+    // flexGrow: 1,
+    // marginTop: 70,
   },
   header: {
-    paddingLeft: theme.spacing(4),
-    backgroundColor: theme.palette.background.default,
+    // paddingLeft: theme.spacing(4),
+    // backgroundColor: theme.palette.background.default,
   },
   img: {
-    // height: 255,
-    display: "block",
-    maxWidth: 400,
-    overflow: "hidden",
+    // display: "block",
+    // overflow: "hidden",
     width: "100%",
   },
 }));
@@ -73,65 +71,82 @@ export default function Introduction() {
     restartVideo();
   }, []);
   return (
-    <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
-        <Typography>{introductionData[activeStep].title}</Typography>
-        <Typography>{introductionData[activeStep].description}</Typography>
-      </Paper>
-
-      <BindKeyboardSwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-        onTransitionEnd={restartVideo}
-      >
-        <video ref={videoPlay} controls loop className={classes.img}>
-          <source src={mainSubjectVideo} type="video/mp4" />
-        </video>
-        <video ref={videoPlay1} controls loop className={classes.img}>
-          <source src={sideSubjectVideo} type="video/mp4" />
-        </video>
-        <video ref={videoPlay2} controls loop className={classes.img}>
-          <source src={topicsVideo} type="video/mp4" />
-        </video>
-        <video ref={videoPlay3} controls loop className={classes.img}>
-          <source src={createSubjectVideo} type="video/mp4" />
-        </video>
-        <video ref={videoPlay4} controls loop className={classes.img}>
-          <source src={editSubjectVideo} type="video/mp4" />
-        </video>
-      </BindKeyboardSwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </div>
+    <Grid container style={{ maxHeight: 600, background: "white" }}>
+      <Grid item xs={12}>
+        <Paper square elevation={0} className={classes.header}>
+          <Typography variant="h4" align="center">
+            {introductionData[activeStep].title}
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item style={{ padding: 20 }}>
+        <BindKeyboardSwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+          onTransitionEnd={restartVideo}
+        >
+          <video ref={videoPlay} controls loop className={classes.img}>
+            <source src={mainSubjectVideo} type="video/mp4" />
+          </video>
+          <video ref={videoPlay1} controls loop className={classes.img}>
+            <source src={sideSubjectVideo} type="video/mp4" />
+          </video>
+          <video ref={videoPlay2} controls loop className={classes.img}>
+            <source src={topicsVideo} type="video/mp4" />
+          </video>
+          <video ref={videoPlay3} controls loop className={classes.img}>
+            <source src={createSubjectVideo} type="video/mp4" />
+          </video>
+          <video ref={videoPlay4} controls loop className={classes.img}>
+            <source src={editSubjectVideo} type="video/mp4" />
+          </video>
+        </BindKeyboardSwipeableViews>
+      </Grid>
+      <Grid item>
+        <Paper>
+          <Typography style={{ margin: "0 60px", paddingBottom: 20 }}>
+            {introductionData[activeStep].description}
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          variant="text"
+          activeStep={activeStep}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === maxSteps - 1}
+            >
+              Next
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+      </Grid>
+    </Grid>
   );
 }
