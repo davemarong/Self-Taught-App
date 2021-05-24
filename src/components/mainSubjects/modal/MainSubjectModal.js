@@ -48,7 +48,7 @@ export default function MainSubjectModal({
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: 70 }}>
+    <Container maxWidth="md" style={{ marginTop: 70 }}>
       <Modal open={addTopicModal} onClose={closeAddTopicModal}>
         <Zoom timeout={300} in={addTopicModal}>
           <div>
@@ -76,7 +76,7 @@ export default function MainSubjectModal({
             </Typography>
           </Grid>
 
-          <Grid container justify="flex-end" item xs={12} sm={6}>
+          <Grid container justify="flex-end" item xs={12} sm={4}>
             <Grid item xs={12}>
               <IconButton
                 onClick={() => {
@@ -125,7 +125,7 @@ export default function MainSubjectModal({
             </Grid>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={8}>
             <TableContainer
               style={{ height: 400, overflowY: "auto", paddingRight: 10 }}
             >
@@ -135,14 +135,17 @@ export default function MainSubjectModal({
                     <TableCell style={{ fontWeight: "bold", fontSize: 18 }}>
                       Topic
                     </TableCell>
-                    <TableCell
-                      style={{
-                        padding: 0,
-                        fontWeight: "bolder",
-                        fontSize: 18,
-                      }}
-                    >
-                      Learned
+                    <TableCell>
+                      <Typography
+                        align="center"
+                        style={{
+                          padding: 0,
+                          fontWeight: "bolder",
+                          fontSize: 18,
+                        }}
+                      >
+                        Learned
+                      </Typography>
                     </TableCell>
                     <TableCell style={{ padding: 0 }}>
                       {showDeleteOption ? (
@@ -150,9 +153,13 @@ export default function MainSubjectModal({
                           align="right"
                           style={{
                             padding: 0,
-                            fontWeight: "bold",
+                            fontSize: 18,
+
+                            fontWeight: "bolder",
                           }}
-                        ></Typography>
+                        >
+                          Delete
+                        </Typography>
                       ) : null}
                     </TableCell>
                   </TableRow>
@@ -160,10 +167,15 @@ export default function MainSubjectModal({
                 <TableBody>
                   {subjectType[topLevelIndex][1].map((item, lowLevelIndex) => (
                     <TableRow key={item.title}>
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        style={{ maxWidth: 115, overflowX: "auto" }}
+                        component="th"
+                        scope="row"
+                      >
                         {item.title}
                       </TableCell>
                       <TableCell
+                        align="center"
                         style={{ width: 10, padding: 0 }}
                         onClick={() => {
                           handleToggleLearnedSkill(
@@ -182,7 +194,7 @@ export default function MainSubjectModal({
                         )}
                       </TableCell>
                       <TableCell
-                        align="right"
+                        align="center"
                         style={{ padding: 0 }}
                         onClick={() => {
                           handleFilterRemoveOneItem(
