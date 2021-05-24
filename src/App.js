@@ -46,6 +46,7 @@ function App() {
         background:
           "linear-gradient(45deg, rgb(73 101 255 / 75%) 30%, rgb(197 62 255 / 72%) 90%)",
         paddingBottom: 100,
+        minHeight: "100vh",
       }}
     >
       <SnackbarProvider maxSnack={4}>

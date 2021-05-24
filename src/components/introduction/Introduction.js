@@ -96,26 +96,6 @@ export default function Introduction({ closeIntroductionModal }) {
               </video>
             );
           })}
-
-          {/* <video ref={videoPlay0} controls loop className={classes.img}>
-            <source src={overview} type="video/mp4" />
-          </video>
-          <video ref={videoPlay} controls loop className={classes.img}>
-            <source src={mainSubjectVideo} type="video/mp4" />
-          </video>
-
-          <video ref={videoPlay1} controls loop className={classes.img}>
-            <source src={sideSubjectVideo} type="video/mp4" />
-          </video>
-          <video ref={videoPlay2} controls loop className={classes.img}>
-            <source src={topicsVideo} type="video/mp4" />
-          </video>
-          <video ref={videoPlay3} controls loop className={classes.img}>
-            <source src={createSubjectVideo} type="video/mp4" />
-          </video>
-          <video ref={videoPlay4} controls loop className={classes.img}>
-            <source src={editSubjectVideo} type="video/mp4" />
-          </video> */}
         </BindKeyboardSwipeableViews>
       </Grid>
       <Grid item>
