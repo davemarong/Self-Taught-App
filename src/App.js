@@ -53,7 +53,7 @@ function App() {
           <Nav />
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/skills" component={Skills} />
+            <Route path="/topics" component={Skills} />
             <Route path="/projects" component={Projects} />
             <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />

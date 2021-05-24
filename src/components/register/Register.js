@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { get_user_profile_data } from "../../redux/actions/index";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSnackbar } from "notistack";
+import Checkbox from "@material-ui/core/Checkbox";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -48,7 +49,10 @@ export default function Register() {
           dispatch(get_user_profile_data(response.data.user));
           localStorage.setItem("jwt", response.data.jwt);
           setLoading(false);
-
+          enqueueSnackbar(`Registration successful`, {
+            variant: "success",
+            autoHideDuration: 4000,
+          });
           history.push("/login");
         })
         .catch((error) => {
@@ -62,6 +66,14 @@ export default function Register() {
             }
           );
         });
+    }
+  };
+  const passwordField = useRef();
+  const togglePassword = () => {
+    if (passwordField.current.type === "text") {
+      passwordField.current.type = "password";
+    } else if (passwordField.current.type === "password") {
+      passwordField.current.type = "text";
     }
   };
   return (
@@ -105,13 +117,19 @@ export default function Register() {
             </Grid>
             <Grid item>
               <TextField
+                inputRef={passwordField}
                 onChange={handlePassword}
                 label="Password"
                 variant="outlined"
                 margin="normal"
                 fullWidth
                 name="password"
+                type="password"
               ></TextField>
+            </Grid>
+            <Grid container alignItems="center" item>
+              <Typography>Show password</Typography>
+              <Checkbox onChange={togglePassword} />
             </Grid>
             {/* <Grid item>
               <TextField

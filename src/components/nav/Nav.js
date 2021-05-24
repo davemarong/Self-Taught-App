@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavItems from "./NavItems";
+import Button from "@material-ui/core/Button";
 import React from "react";
 import { Link } from "react-router-dom";
 import { TiThMenu } from "react-icons/ti";
@@ -7,14 +8,30 @@ import { AiOutlineClose } from "react-icons/ai";
 import "../../styles/Navbar.css";
 import { IconContext } from "react-icons";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useSelector, useDispatch } from "react-redux";
+import { sign_in } from "../../redux/actions/index";
+import { useSnackbar } from "notistack";
 
 export default function Nav() {
   const [sidebar, setSidebar] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const handleShowSidebar = () => {
     console.log(matches);
     setSidebar(!sidebar);
   };
   const matches = useMediaQuery("(min-width:1224px)");
+
+  const isLogged = useSelector((state) => state.isLogged);
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    dispatch(sign_in());
+    enqueueSnackbar(`Logout successful`, {
+      variant: "success",
+      autoHideDuration: 4000,
+    });
+  };
+
   useEffect(() => {
     console.log(matches);
 
@@ -57,11 +74,30 @@ export default function Nav() {
               {NavItems.map((item) => (
                 <li key={item.id} className={item.cName}>
                   <Link to={item.path}>
-                    {item.icon}
                     <span>{item.title}</span>
                   </Link>
                 </li>
               ))}
+              {isLogged ? null : (
+                <li className="nav-text">
+                  <Link to="/register">
+                    <span>Register</span>
+                  </Link>
+                </li>
+              )}
+              {isLogged ? (
+                <li className="nav-text" onClick={handleLogOut}>
+                  <Link to="/home">
+                    <span>Log out</span>
+                  </Link>
+                </li>
+              ) : (
+                <li className="nav-text">
+                  <Link to="/login">
+                    <span>Log in</span>
+                  </Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

@@ -55,7 +55,13 @@ export default function MainSubjects() {
     return Math.trunc(percent);
   };
   useEffect(() => {
-    openIntroductionModal();
+    const watchedIntroductionVideo = localStorage.getItem(
+      "watchedIntroductionVideo"
+    );
+    if (!watchedIntroductionVideo) {
+      openIntroductionModal();
+    }
+    localStorage.setItem("watchedIntroductionVideo", true);
   }, []);
   return (
     <div>
@@ -70,7 +76,7 @@ export default function MainSubjects() {
       >
         <Zoom timeout={300} in={introductionModal}>
           <div style={{ maxWidth: 560, margin: "auto" }}>
-            <Introduction />
+            <Introduction closeIntroductionModal={closeIntroductionModal} />
           </div>
         </Zoom>
       </Modal>
@@ -186,7 +192,7 @@ export default function MainSubjects() {
                     </Card>
                     <Typography variant="body1" align="center">
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
-                      skills learned
+                      topics learned
                     </Typography>
                   </Grid>
                 );
@@ -290,7 +296,7 @@ export default function MainSubjects() {
                     </Card>
                     <Typography variant="body2" align="center">
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
-                      skills learned
+                      topics learned
                     </Typography>
                   </Grid>
                 );

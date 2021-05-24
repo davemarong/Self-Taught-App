@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -11,6 +11,7 @@ import { get_user_profile_data, sign_in } from "../../redux/actions/index";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSnackbar } from "notistack";
+import Checkbox from "@material-ui/core/Checkbox";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -42,6 +43,10 @@ export default function Login() {
         dispatch(get_user_profile_data(response.data.user));
         dispatch(sign_in(true));
         setLoading(false);
+        enqueueSnackbar(`Login successful`, {
+          variant: "success",
+          autoHideDuration: 4000,
+        });
         history.push("/home");
       })
       .catch((error) => {
@@ -55,7 +60,14 @@ export default function Login() {
           autoHideDuration: 4000,
         });
       });
-    // data[0].messages[0].message
+  };
+  const passwordField = useRef();
+  const togglePassword = () => {
+    if (passwordField.current.type === "text") {
+      passwordField.current.type = "password";
+    } else if (passwordField.current.type === "password") {
+      passwordField.current.type = "text";
+    }
   };
   return (
     <div>
@@ -87,15 +99,20 @@ export default function Login() {
             </Grid>
             <Grid item>
               <TextField
+                inputRef={passwordField}
                 onChange={handlePassword}
                 label="Password"
                 variant="outlined"
                 margin="normal"
                 fullWidth
                 name="password"
+                type="password"
               ></TextField>
             </Grid>
-
+            <Grid container alignItems="center" item>
+              <Typography>Show password</Typography>
+              <Checkbox onChange={togglePassword} />
+            </Grid>
             <Grid item>
               <Button
                 onClick={handleSignIn}

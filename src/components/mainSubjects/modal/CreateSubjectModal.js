@@ -74,7 +74,7 @@ export default function CreateSubjectModal({
                   onKeyPress={clickEnterAddSkill}
                   onChange={handleNewSkill}
                   variant="outlined"
-                  label="Add skill..."
+                  label="Add topic..."
                   value={newSkill}
                 ></TextField>
               </Grid>

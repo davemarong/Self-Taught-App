@@ -6,16 +6,20 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { bindKeyboard } from "react-swipeable-views-utils";
-import introductionData from "./IntroductionData";
+import IntroductionData from "./IntroductionData";
 import mainSubjectVideo from "../../assets/MainSubjects.mp4";
 import sideSubjectVideo from "../../assets/sideSubjects.mp4";
 import topicsVideo from "../../assets/TopicsBig.mp4";
 import createSubjectVideo from "../../assets/CreateMainSubject.mp4";
 import editSubjectVideo from "../../assets/EditSubject.mp4";
+import overview from "../../assets/overview.mp4";
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Introduction() {
+export default function Introduction({ closeIntroductionModal }) {
+  const { introductionData } = IntroductionData();
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -52,26 +57,23 @@ export default function Introduction() {
     setActiveStep(step);
   };
   const restartVideo = () => {
-    videoRefs[activeStep].ref.current.currentTime = 0;
-    videoRefs[activeStep].ref.current.play();
+    introductionData[activeStep].ref.current.currentTime = 0;
+    introductionData[activeStep].ref.current.play();
   };
-  const videoPlay = useRef(null);
-  const videoPlay1 = useRef(null);
-  const videoPlay2 = useRef(null);
-  const videoPlay3 = useRef(null);
-  const videoPlay4 = useRef(null);
-  const videoRefs = [
-    { ref: videoPlay },
-    { ref: videoPlay1 },
-    { ref: videoPlay2 },
-    { ref: videoPlay3 },
-    { ref: videoPlay4 },
-  ];
+
   useEffect(() => {
     restartVideo();
   }, []);
   return (
-    <Grid container style={{ maxHeight: 600, background: "white" }}>
+    <Grid
+      container
+      style={{ maxHeight: 600, background: "white", marginTop: 70 }}
+    >
+      <Grid container justify="flex-end" item style={{ paddingBottom: 0 }}>
+        <IconButton onClick={closeIntroductionModal}>
+          <CloseIcon />
+        </IconButton>
+      </Grid>
       <Grid item xs={12}>
         <Paper square elevation={0} className={classes.header}>
           <Typography variant="h4" align="center">
@@ -87,9 +89,21 @@ export default function Introduction() {
           enableMouseEvents
           onTransitionEnd={restartVideo}
         >
+          {introductionData.map((video, index) => {
+            return (
+              <video ref={video.ref} controls loop className={classes.img}>
+                <source src={video.src} type="video/mp4" />
+              </video>
+            );
+          })}
+
+          {/* <video ref={videoPlay0} controls loop className={classes.img}>
+            <source src={overview} type="video/mp4" />
+          </video>
           <video ref={videoPlay} controls loop className={classes.img}>
             <source src={mainSubjectVideo} type="video/mp4" />
           </video>
+
           <video ref={videoPlay1} controls loop className={classes.img}>
             <source src={sideSubjectVideo} type="video/mp4" />
           </video>
@@ -101,7 +115,7 @@ export default function Introduction() {
           </video>
           <video ref={videoPlay4} controls loop className={classes.img}>
             <source src={editSubjectVideo} type="video/mp4" />
-          </video>
+          </video> */}
         </BindKeyboardSwipeableViews>
       </Grid>
       <Grid item>

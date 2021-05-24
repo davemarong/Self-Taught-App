@@ -1,6 +1,6 @@
 const isLogged = (state = false, action) => {
   if (action.type === "SIGN_IN") {
-    return true;
+    return !state;
   } else {
     return state;
   }
