@@ -3,5 +3,35 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
+  /* font-family: "Varela Round", sans-serif; */
 }
+h1,
+h2,
+h3,
+h4,
+th {
+  font-family: "Varela Round" !important;
+}
+
+p,
+div,
+body,
+span,
+h5,
+h6,
+tc {
+  font-family: "Montserrat" !important;
+}
+button {
+  font-family: "Montserrat" !important;
+}
+/* h: {
+  color: "#2d2a56",
+  fontFamily: ["Varela Round", "Arial", "Sans-Serif"].join(","),
+},
+p: {
+  color: "#2e2f3e",
+  fontFamily: ["Noto Serif", "Times New Roman", "Serif"].join(","),
+},
+button: {
+  fontFamily: ["Montserrat", "sans-serif"].join(","), */
