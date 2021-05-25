@@ -132,7 +132,7 @@ export default function MainSubjectModal({
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell style={{ fontWeight: "bold", fontSize: 18 }}>
+                    <TableCell style={{ fontWeight: "bold", fontSize: 20 }}>
                       Topic
                     </TableCell>
                     <TableCell>
@@ -141,7 +141,7 @@ export default function MainSubjectModal({
                         style={{
                           padding: 0,
                           fontWeight: "bolder",
-                          fontSize: 18,
+                          fontSize: 20,
                         }}
                       >
                         Learned
@@ -153,7 +153,7 @@ export default function MainSubjectModal({
                           align="right"
                           style={{
                             padding: 0,
-                            fontSize: 18,
+                            fontSize: 20,
 
                             fontWeight: "bolder",
                           }}
