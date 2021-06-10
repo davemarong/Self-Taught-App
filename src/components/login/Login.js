@@ -12,11 +12,15 @@ import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSnackbar } from "notistack";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import useAddTopics from "../customHooks/useAddTopics";
+import {
+  change_main_subjects,
+  change_secondary_subjects,
+} from "../../redux/actions/index";
 export default function Login() {
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
+  const { handlePushInfoToRedux } = useAddTopics();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -39,9 +43,14 @@ export default function Login() {
       })
       .then((response) => {
         console.log("Logged in", response.data.user);
+        console.log(response.data.user.mainSubjects);
         localStorage.setItem("jwt", response.data.jwt);
         dispatch(get_user_profile_data(response.data.user));
         dispatch(sign_in(true));
+        dispatch(change_main_subjects(response.data.user.mainSubjects));
+        dispatch(
+          change_secondary_subjects(response.data.user.secondarySubjects)
+        );
         setLoading(false);
         enqueueSnackbar(`Login successful`, {
           variant: "success",
