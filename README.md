@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# SelfTaught, an application to make your learning to code process easier
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application will help you create a clearly defined path to your goals and help you track your progress.
 
-## Available Scripts
+https://selftaught.netlify.app/
 
-In the project directory, you can run:
+## How to use this app?
 
-### `npm start`
+There are 3 keywords that is the base of this application:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Main Subject
+- Secondary Subject
+- Topic
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Main subjects are the programming languages you want to learn. For example: JavaScript, Python or C#.
 
-### `npm test`
+Secondary subjects are the all the other technologies you need to learn. For example: VSCode, GitHub, Google, Web Browser, Hosting, Command line.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Topics are all the small parts of a subject. For example: For the Secondary Subject GitHub, you could have these topics: Push, Pull, Commit, Command line, Branches, Merge.
 
-### `npm run build`
+You can create, edit, delete and track your own Main subjects, Secondary subjects and topics.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies used in this project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Technologies used in this project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React : SelfTaught is a reusable component based application, which makes React the perfect choice.
 
-### `npm run eject`
+- Redux : I wanted to have the opportunity to further develop this app in the future if I want to. With Redux, I get a much more easier codebase to re visit in the future, because Redux is by default more organized and structured than using Context for state management. I do use local state (useState) as well, for states values that are very specific and only will be used once.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Material UI : Is a very fast and easy to implement, especially grid. I also use some CSS for specific tasks.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Framer Motion : Framer Motion is compatible with Material UI, which makes it a powerful combination.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Strapi : Using Strapi for user authentication and storing all user data. It is also easy to implement with Heroku.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Heroku : Hosting service that goes well with Strapi.
 
-## Learn More
+- Netlify : With the continuous and automatic deployment when pushing to GitHub, is makes everything so easy.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Git: I use the command line (and the GitHub CLI tool) for most of the Git work, while using GitKraken if I need to visually interface of my git history.
