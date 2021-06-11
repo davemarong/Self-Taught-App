@@ -1,4 +1,4 @@
-# SelfTaught, an application to make your learning to code process easier
+# SelfTaught, an application to make learning to code easier
 
 This application will help you create a clearly defined path to your goals and help you track your progress.
 
@@ -31,6 +31,8 @@ Technologies used in this project:
 - Material UI : Is a very fast and easy to implement, especially grid. I also use some CSS for specific tasks.
 
 - Framer Motion : Framer Motion is compatible with Material UI, which makes it a powerful combination.
+
+- Swiper : A tool i used for creating swiping animation for the instructions videos.
 
 - Strapi : Using Strapi for user authentication and storing all user data. It is also easy to implement with Heroku.
 
