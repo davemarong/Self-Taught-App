@@ -20,7 +20,7 @@ Topics are all the small parts of a subject. For example: For the Secondary Subj
 
 You can create, edit, delete and track your own Main subjects, Secondary subjects and topics.
 
-### Technologies used in this project
+### Technologies I used in this project
 
 Technologies used in this project:
 
