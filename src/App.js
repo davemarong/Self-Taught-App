@@ -36,7 +36,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(main_subjects);
     dispatch(change_main_subjects(main_subjects));
     dispatch(change_secondary_subjects(secondary_subjects));
   }, []);

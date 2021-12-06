@@ -9,12 +9,14 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@material-ui/icons/Add";
 import {
+  change_main_subjects,
   get_top_level_index,
   change_subject_type,
 } from "../../redux/actions/index";
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
 import CreateSubjectModal from "./modal/CreateSubjectModal";
+import usePushDataToServer from "../customHooks/usePushDataToServer";
 import { motion } from "framer-motion";
 import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
@@ -32,6 +34,9 @@ export default function MainSubjects() {
   const [introductionModal, setIntroductionModal] = useState();
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
   const [subjectsType, setSubjectsType] = useState();
+
+  const { updateMainSubjectsInServer } = usePushDataToServer();
+
   const openMainSubjectModal = () => {
     setMainSubjectModal(true);
   };
@@ -49,6 +54,13 @@ export default function MainSubjects() {
   };
   const closeIntroductionModal = () => {
     setIntroductionModal(false);
+  };
+  console.log(mainSubjects);
+  const deleteSubject = (subjectIndex) => {
+    const updatedMainSubjects = mainSubjects.filter(
+      (subject, id) => id != subjectIndex
+    );
+    return updatedMainSubjects;
   };
   const numberToPercent = (lowNumber, highNumber) => {
     const percent = (lowNumber / highNumber) * 100;
@@ -151,6 +163,7 @@ export default function MainSubjects() {
                       )}
                       %
                     </Typography>
+
                     <div
                       style={{
                         width: 200,
@@ -201,6 +214,15 @@ export default function MainSubjects() {
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
                       topics learned
                     </Typography>
+                    <Button
+                      onClick={() => {
+                        const updatedSubject = deleteSubject(topLevelIndex);
+                        updateMainSubjectsInServer(updatedSubject);
+                        dispatch(change_main_subjects(updatedSubject));
+                      }}
+                    >
+                      Delete subject
+                    </Button>
                   </Grid>
                 );
               })}
