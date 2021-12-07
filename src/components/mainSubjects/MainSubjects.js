@@ -33,7 +33,10 @@ export default function MainSubjects() {
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
-  const [mainSubjectModal, setMainSubjectModal] = useState(false);
+  const [mainSubjectModal, setMainSubjectModal] = useState({
+    boolean: false,
+    index: "",
+  });
   const [createSubjectModal, setCreateSubjectModal] = useState();
   const [deleteSubjectModal, setDeleteSubjectModal] = useState({
     boolean: false,
@@ -46,11 +49,15 @@ export default function MainSubjects() {
   const [deleteOption, setDeleteOption] = useState(false);
   const { updateMainSubjectsInServer } = usePushDataToServer();
 
-  const openMainSubjectModal = () => {
-    setMainSubjectModal(true);
+  const openMainSubjectModal = (subjectIndex, subject) => {
+    setMainSubjectModal({
+      boolean: true,
+      index: subjectIndex,
+      subject: subject,
+    });
   };
   const closeMainSubjectModal = () => {
-    setMainSubjectModal(false);
+    setMainSubjectModal({ boolean: false, index: 0, subject: "" });
   };
   const openCreateSubjectModal = () => {
     setCreateSubjectModal(true);
@@ -143,7 +150,7 @@ export default function MainSubjects() {
         </Zoom>
       </Modal>
       <Modal
-        open={mainSubjectModal}
+        open={mainSubjectModal.boolean}
         onClose={closeMainSubjectModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -151,7 +158,7 @@ export default function MainSubjects() {
           timeout: 500,
         }}
       >
-        <Zoom timeout={300} in={mainSubjectModal}>
+        <Zoom timeout={300} in={mainSubjectModal.boolean}>
           <div
             style={{
               maxWidth: 850,
@@ -163,6 +170,7 @@ export default function MainSubjects() {
             <MainSubjectModal
               closeMainSubjectModal={closeMainSubjectModal}
               setRenderMainSubject={setRenderMainSubject}
+              mainSubjectModal={mainSubjectModal}
             />
           </div>
         </Zoom>
@@ -272,7 +280,7 @@ export default function MainSubjects() {
                       <Button
                         style={{ margin: "10px 0" }}
                         onClick={() => {
-                          openMainSubjectModal();
+                          openMainSubjectModal(topLevelIndex, "mainsubject");
                         }}
                         component={motion.div}
                         whileHover={{
@@ -440,7 +448,10 @@ export default function MainSubjects() {
                       <Button
                         style={{ margin: "10px 0" }}
                         onClick={() => {
-                          openMainSubjectModal();
+                          openMainSubjectModal(
+                            topLevelIndex,
+                            "secondarysubject"
+                          );
                         }}
                         component={motion.div}
                         whileHover={{

@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
+import SortByAlphaRoundedIcon from "@mui/icons-material/SortByAlphaRounded";
 import { useSelector } from "react-redux";
 import Modal from "@material-ui/core/Modal";
 import Card from "@material-ui/core/Card";
@@ -21,6 +22,9 @@ import useRemoveTopics from "../../customHooks/useRemoveTopics";
 import useLearnTopics from "../../customHooks/useLearnTopics";
 import useAddTopics from "../../customHooks/useAddTopics";
 import useUpdateSubjectInfo from "../../customHooks/useUpdateSubjectInfo";
+import usePushDataToServer from "../../customHooks/usePushDataToServer";
+
+import useSortTopics from "../../customHooks/useSortTopics";
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { motion, useCycle } from "framer-motion";
@@ -29,14 +33,22 @@ import Zoom from "@material-ui/core/Zoom";
 export default function MainSubjectModal({
   setRenderMainSubject,
   closeMainSubjectModal,
+  mainSubjectModal,
 }) {
   const { handleFilterRemoveOneItem } = useRemoveTopics();
   const { handleToggleLearnedSkill } = useLearnTopics();
   const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
-
+  const { handleSortTopicsByName } = useSortTopics();
   const { setRender } = useAddTopics();
+  const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
+    usePushDataToServer();
+
+  const { index, subject } = mainSubjectModal;
+
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
+
   const subjectType = useSelector((state) => state.subjectType);
   const [addTopicModal, setAddTopicModal] = useState(false);
   const [showDeleteOption, setShowDeleteOption] = useState(false);
@@ -46,7 +58,6 @@ export default function MainSubjectModal({
   const closeAddTopicModal = () => {
     setAddTopicModal(false);
   };
-
   return (
     <Container maxWidth="md" style={{ marginTop: 70 }}>
       <Modal open={addTopicModal} onClose={closeAddTopicModal}>
@@ -91,6 +102,22 @@ export default function MainSubjectModal({
                 }}
               >
                 <EditIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  const sortedTopicsList = handleSortTopicsByName(
+                    index,
+                    subject
+                  );
+                  if (subject === "mainsubject") {
+                    updateMainSubjectsInServer(mainSubjects);
+                  } else if (subject === "secondarysubject") {
+                    updateSecondarySubjectsInServer(secondarySubjects);
+                  }
+                  setRender("ren");
+                }}
+              >
+                <SortByAlphaRoundedIcon />
               </IconButton>
             </Grid>
             <Grid container item xs={12} spacing={0} style={{ marginTop: 30 }}>
