@@ -59,7 +59,7 @@ export default function MainSubjectModal({
           </div>
         </Zoom>
       </Modal>
-      <Card style={{ maxHeight: 510, overflowY: "auto" }}>
+      <Card style={{ maxHeight: 600, overflowY: "auto" }}>
         <Grid container direction="row">
           <Grid container justify="flex-end" item xs={12}>
             <IconButton onClick={closeMainSubjectModal}>
@@ -75,8 +75,7 @@ export default function MainSubjectModal({
               {subjectType[topLevelIndex][0].title}
             </Typography>
           </Grid>
-
-          <Grid container justify="flex-end" item xs={12} sm={4}>
+          <Grid container justify="flex-end" item xs={12} sm={6}>
             <Grid item xs={12}>
               <IconButton
                 onClick={() => {
@@ -124,8 +123,7 @@ export default function MainSubjectModal({
               </Grid>
             </Grid>
           </Grid>
-
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={6}>
             <TableContainer
               style={{ height: 400, overflowY: "auto", paddingRight: 10 }}
             >
@@ -150,11 +148,10 @@ export default function MainSubjectModal({
                     <TableCell style={{ padding: 0 }}>
                       {showDeleteOption ? (
                         <Typography
-                          align="right"
+                          align="center"
                           style={{
                             padding: 0,
                             fontSize: 20,
-
                             fontWeight: "bolder",
                           }}
                         >

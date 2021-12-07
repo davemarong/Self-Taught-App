@@ -154,7 +154,7 @@ export default function MainSubjects() {
         <Zoom timeout={300} in={mainSubjectModal}>
           <div
             style={{
-              maxWidth: 560,
+              maxWidth: 850,
               margin: "auto",
               padding: 0,
               outline: "none",
