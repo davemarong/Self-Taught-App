@@ -44,7 +44,7 @@ export default function DeleteSubjectModal({
             </Grid>
             <Grid item xs={9}>
               <Typography>
-                Are you sure you want to delete this topic?
+                Are you sure you want to delete this subject?
               </Typography>
               <Grid
                 item

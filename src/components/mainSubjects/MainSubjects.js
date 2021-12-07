@@ -8,6 +8,9 @@ import List from "@material-ui/core/List";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@material-ui/icons/Add";
+import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {
   change_main_subjects,
   get_top_level_index,
@@ -166,11 +169,35 @@ export default function MainSubjects() {
         <CardContent>
           <List>
             <Grid container direction="row" justify="center" spacing={4}>
+              <Grid container justify="flex-end" item xs={12}>
+                <Button
+                  style={deleteOption ? { background: "#9e9e9eb0" } : null}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
+                  }}
+                  variant="outlined"
+                  onClick={handleToggleDeleteOption}
+                  endIcon={<EditRoundedIcon />}
+                >
+                  Edit
+                </Button>
+              </Grid>
               {mainSubjects.map((subject, topLevelIndex) => {
                 return (
                   <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
                     item
-                    style={{ position: "relative" }}
+                    style={{
+                      position: "relative",
+                      borderRadius: "10px",
+                      boxShadow: "0 0 3px",
+                      width: 250,
+                      margin: "50px 20px",
+                    }}
                     component={motion.div}
                     whileHover={{
                       // scale: 1.2,
@@ -181,16 +208,6 @@ export default function MainSubjects() {
                       dispatch(change_subject_type(mainSubjects));
                     }}
                   >
-                    {deleteOption ? (
-                      <Button
-                        style={{ position: "absolute", right: 0, top: "-10px" }}
-                        onClick={() => {
-                          openDeleteSubjectModal(topLevelIndex);
-                        }}
-                      >
-                        Delete subject
-                      </Button>
-                    ) : null}
                     <Typography variant="h3" align="center">
                       {" "}
                       {numberToPercent(
@@ -233,12 +250,8 @@ export default function MainSubjects() {
                         flexWrap: "wrap",
                         justifyContent: "center",
                         alignItems: "center",
-                        cursor: "pointer",
                         background:
                           "linear-gradient(10deg, #ff5e41 10%, #c445fb 60%)",
-                      }}
-                      onClick={() => {
-                        openMainSubjectModal();
                       }}
                     >
                       <CardContent>
@@ -251,6 +264,44 @@ export default function MainSubjects() {
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
                       topics learned
                     </Typography>
+                    <Grid
+                      container
+                      justify="flex-end"
+                      style={{ margin: "10px 0" }}
+                    >
+                      <Button
+                        style={{ margin: "10px 0" }}
+                        onClick={() => {
+                          openMainSubjectModal();
+                        }}
+                        component={motion.div}
+                        whileHover={{
+                          scale: 1.2,
+                          transition: { duration: 0.3 },
+                        }}
+                        variant="outlined"
+                        endIcon={<OpenInNewRoundedIcon />}
+                      >
+                        Open
+                      </Button>
+                      {deleteOption ? (
+                        <Button
+                          style={{ backgroundColor: "#ff2929", color: "white" }}
+                          variant="outlined"
+                          onClick={() => {
+                            openDeleteSubjectModal(topLevelIndex);
+                          }}
+                          component={motion.div}
+                          whileHover={{
+                            scale: 1.2,
+                            transition: { duration: 0.3 },
+                          }}
+                          endIcon={<DeleteForeverRoundedIcon />}
+                        >
+                          Delete subject
+                        </Button>
+                      ) : null}
+                    </Grid>
                   </Grid>
                 );
               })}
@@ -273,19 +324,6 @@ export default function MainSubjects() {
                     }}
                   >
                     Create new
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button
-                    component={motion.div}
-                    whileHover={{
-                      scale: 1.2,
-                      transition: { duration: 0.3 },
-                    }}
-                    variant="outlined"
-                    onClick={handleToggleDeleteOption}
-                  >
-                    Edit
                   </Button>
                 </Grid>
               </Grid>
