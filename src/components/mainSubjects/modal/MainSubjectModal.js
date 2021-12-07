@@ -84,7 +84,6 @@ export default function MainSubjectModal({
               >
                 <AddCircleOutlineIcon />
               </IconButton>
-
               <IconButton
                 style={showDeleteOption ? { background: "#9e9e9eb0" } : null}
                 onClick={() => {
@@ -97,6 +96,18 @@ export default function MainSubjectModal({
             <Grid container item xs={12} spacing={0} style={{ marginTop: 30 }}>
               <Grid
                 container
+                direction="column"
+                style={{ position: "relative", bottom: 30 }}
+              >
+                <Typography variant="h6" align="center">
+                  Total Topics <br />
+                </Typography>
+                <Typography variant="h3" align="center">
+                  {subjectType[topLevelIndex][0].totalSkills}
+                </Typography>
+              </Grid>
+              <Grid
+                container
                 item
                 direction="column"
                 style={{ position: "relative", bottom: 30 }}
@@ -106,19 +117,6 @@ export default function MainSubjectModal({
                 </Typography>
                 <Typography variant="h3" align="center">
                   {subjectType[topLevelIndex][0].learnedSkills}
-                </Typography>
-              </Grid>
-
-              <Grid
-                container
-                direction="column"
-                style={{ position: "relative", bottom: 30 }}
-              >
-                <Typography variant="h6" align="center">
-                  Total Topics <br />
-                </Typography>
-                <Typography variant="h3" align="center">
-                  {subjectType[topLevelIndex][0].totalSkills}
                 </Typography>
               </Grid>
             </Grid>

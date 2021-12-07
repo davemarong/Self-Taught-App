@@ -198,7 +198,7 @@ export default function MainSubjects() {
                       borderRadius: "10px",
                       boxShadow: "0 0 3px",
                       width: 250,
-                      margin: "50px 20px",
+                      margin: "20px",
                     }}
                     component={motion.div}
                     whileHover={{
@@ -256,11 +256,9 @@ export default function MainSubjects() {
                           "linear-gradient(10deg, #ff5e41 10%, #c445fb 60%)",
                       }}
                     >
-                      <CardContent>
-                        <Typography variant="h4" align="center">
-                          {subject[0].title}
-                        </Typography>
-                      </CardContent>
+                      <Typography variant="h4" align="center">
+                        {subject[0].title}
+                      </Typography>
                     </Card>
                     <Typography variant="body1" align="center">
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
@@ -420,16 +418,15 @@ export default function MainSubjects() {
                         flexWrap: "wrap",
                         justifyContent: "center",
                         alignItems: "center",
+                        alignContent: "center",
                         margin: "auto",
                         background:
                           "linear-gradient(10deg, #D6AD3C 10%, #c445fb 60%)",
                       }}
                     >
-                      <CardContent>
-                        <Typography variant="h5" align="center">
-                          {subject[0].title}
-                        </Typography>
-                      </CardContent>
+                      <Typography variant="h5" align="center">
+                        {subject[0].title}
+                      </Typography>
                     </Card>
                     <Typography variant="body2" align="center">
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
