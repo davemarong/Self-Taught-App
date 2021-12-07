@@ -38,6 +38,7 @@ export default function MainSubjects() {
   const [deleteSubjectModal, setDeleteSubjectModal] = useState({
     boolean: false,
     index: 0,
+    subject: "",
   });
   const [introductionModal, setIntroductionModal] = useState();
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
@@ -57,11 +58,11 @@ export default function MainSubjects() {
   const closeCreateSubjectModal = () => {
     setCreateSubjectModal(false);
   };
-  const openDeleteSubjectModal = (index) => {
-    setDeleteSubjectModal({ boolean: true, index: index });
+  const openDeleteSubjectModal = (index, subject) => {
+    setDeleteSubjectModal({ boolean: true, index: index, subject: subject });
   };
   const closeDeleteSubjectModal = () => {
-    setDeleteSubjectModal({ boolean: false, index: 0 });
+    setDeleteSubjectModal({ boolean: false, index: 0, subject: "" });
   };
   const openIntroductionModal = () => {
     setIntroductionModal(true);
@@ -136,6 +137,7 @@ export default function MainSubjects() {
             <DeleteSubjectModal
               modalIndex={deleteSubjectModal}
               closeDeleteSubjectModal={closeDeleteSubjectModal}
+              deleteSubjectModal={deleteSubjectModal}
             />
           </div>
         </Zoom>
@@ -289,7 +291,10 @@ export default function MainSubjects() {
                           style={{ backgroundColor: "#ff2929", color: "white" }}
                           variant="outlined"
                           onClick={() => {
-                            openDeleteSubjectModal(topLevelIndex);
+                            openDeleteSubjectModal(
+                              topLevelIndex,
+                              "mainsubject"
+                            );
                           }}
                           component={motion.div}
                           whileHover={{
@@ -335,20 +340,44 @@ export default function MainSubjects() {
         <CardContent>
           <List>
             <Grid container direction="row" justify="center" spacing={4}>
+              <Grid container justify="flex-end" item xs={12}>
+                <Button
+                  style={deleteOption ? { background: "#9e9e9eb0" } : null}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.3 },
+                  }}
+                  variant="outlined"
+                  onClick={handleToggleDeleteOption}
+                  endIcon={<EditRoundedIcon />}
+                >
+                  Edit
+                </Button>
+              </Grid>
+
               {secondarySubjects.map((subject, topLevelIndex) => {
                 return (
                   <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
                     item
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      position: "relative",
+                      borderRadius: "10px",
+                      boxShadow: "0 0 3px",
+                      width: 250,
+                      margin: "50px 20px",
+                    }}
                     component={motion.div}
                     whileHover={{
-                      scale: 1.2,
+                      // scale: 1.2,
                       transition: { duration: 0.3 },
                     }}
                     onClick={() => {
                       dispatch(get_top_level_index(topLevelIndex));
                       dispatch(change_subject_type(secondarySubjects));
-                      openMainSubjectModal();
                     }}
                   >
                     <Typography variant="h6" align="center">
@@ -392,8 +421,6 @@ export default function MainSubjects() {
                         justifyContent: "center",
                         alignItems: "center",
                         margin: "auto",
-                        // background:
-                        //   "linear-gradient(10deg, #D6AD3C 10%, #D586F7 60%)",
                         background:
                           "linear-gradient(10deg, #D6AD3C 10%, #c445fb 60%)",
                       }}
@@ -408,6 +435,47 @@ export default function MainSubjects() {
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
                       topics learned
                     </Typography>
+                    <Grid
+                      container
+                      justify="flex-end"
+                      style={{ margin: "10px 0" }}
+                    >
+                      <Button
+                        style={{ margin: "10px 0" }}
+                        onClick={() => {
+                          openMainSubjectModal();
+                        }}
+                        component={motion.div}
+                        whileHover={{
+                          scale: 1.2,
+                          transition: { duration: 0.3 },
+                        }}
+                        variant="outlined"
+                        endIcon={<OpenInNewRoundedIcon />}
+                      >
+                        Open
+                      </Button>
+                      {deleteOption ? (
+                        <Button
+                          style={{ backgroundColor: "#ff2929", color: "white" }}
+                          variant="outlined"
+                          onClick={() => {
+                            openDeleteSubjectModal(
+                              topLevelIndex,
+                              "secondarysubject"
+                            );
+                          }}
+                          component={motion.div}
+                          whileHover={{
+                            scale: 1.2,
+                            transition: { duration: 0.3 },
+                          }}
+                          endIcon={<DeleteForeverRoundedIcon />}
+                        >
+                          Delete subject
+                        </Button>
+                      ) : null}
+                    </Grid>
                   </Grid>
                 );
               })}

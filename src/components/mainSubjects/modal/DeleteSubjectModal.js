@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 import { useDispatch, useSelector } from "react-redux";
 import {
   change_main_subjects,
+  change_secondary_subjects,
   get_top_level_index,
   change_subject_type,
 } from "../../../redux/actions/index";
@@ -18,20 +19,29 @@ import usePushDataToServer from "../../customHooks/usePushDataToServer";
 export default function DeleteSubjectModal({
   modalIndex,
   closeDeleteSubjectModal,
+  deleteSubjectModal,
 }) {
   const { index } = modalIndex;
   const dispatch = useDispatch();
   const mainSubjects = useSelector((state) => state.mainSubjects);
+  const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
-  const { updateMainSubjectsInServer } = usePushDataToServer();
+  const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
+    usePushDataToServer();
 
-  const deleteSubject = (subjectIndex) => {
+  const deleteMainSubject = (subjectIndex) => {
     const updatedMainSubjects = mainSubjects.filter(
       (subject, id) => id != subjectIndex
     );
     return updatedMainSubjects;
   };
-
+  const deleteSecondarySubject = (subjectIndex) => {
+    const updatedSecondarySubjects = secondarySubjects.filter(
+      (subject, id) => id != subjectIndex
+    );
+    return updatedSecondarySubjects;
+  };
+  console.log(deleteSubjectModal);
   return (
     <div>
       <Container style={{ marginTop: 200, maxWidth: 400 }}>
@@ -56,9 +66,19 @@ export default function DeleteSubjectModal({
                 <Grid item>
                   <Button
                     onClick={() => {
-                      const updatedSubject = deleteSubject(index);
-                      updateMainSubjectsInServer(updatedSubject);
-                      dispatch(change_main_subjects(updatedSubject));
+                      if (deleteSubjectModal.subject === "mainsubject") {
+                        const updatedSubject = deleteMainSubject(index);
+                        updateMainSubjectsInServer(updatedSubject);
+                        dispatch(change_main_subjects(updatedSubject));
+                        closeDeleteSubjectModal();
+                      } else if (
+                        deleteSubjectModal.subject === "secondarysubject"
+                      ) {
+                        const updatedSubject = deleteSecondarySubject(index);
+                        updateSecondarySubjectsInServer(updatedSubject);
+                        dispatch(change_secondary_subjects(updatedSubject));
+                        closeDeleteSubjectModal();
+                      }
                     }}
                     variant="outlined"
                   >
