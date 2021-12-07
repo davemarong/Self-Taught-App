@@ -39,10 +39,9 @@ export default function MainSubjectModal({
   const { handleToggleLearnedSkill } = useLearnTopics();
   const { update_Title_LearnedSkills_TotalSkills } = useUpdateSubjectInfo();
   const { handleSortTopicsByName } = useSortTopics();
-  const { setRender } = useAddTopics();
+  const { setRender, addTopicSnackbar } = useAddTopics();
   const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
     usePushDataToServer();
-
   const { index, subject } = mainSubjectModal;
 
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
