@@ -16,6 +16,7 @@ import {
 import Modal from "@material-ui/core/Modal";
 import MainSubjectModal from "./modal/MainSubjectModal";
 import CreateSubjectModal from "./modal/CreateSubjectModal";
+import DeleteSubjectModal from "./modal/DeleteSubjectModal";
 import usePushDataToServer from "../customHooks/usePushDataToServer";
 import { motion } from "framer-motion";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -31,10 +32,14 @@ export default function MainSubjects() {
 
   const [mainSubjectModal, setMainSubjectModal] = useState(false);
   const [createSubjectModal, setCreateSubjectModal] = useState();
+  const [deleteSubjectModal, setDeleteSubjectModal] = useState({
+    boolean: false,
+    index: 0,
+  });
   const [introductionModal, setIntroductionModal] = useState();
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
   const [subjectsType, setSubjectsType] = useState();
-
+  const [deleteOption, setDeleteOption] = useState(false);
   const { updateMainSubjectsInServer } = usePushDataToServer();
 
   const openMainSubjectModal = () => {
@@ -49,19 +54,23 @@ export default function MainSubjects() {
   const closeCreateSubjectModal = () => {
     setCreateSubjectModal(false);
   };
+  const openDeleteSubjectModal = (index) => {
+    setDeleteSubjectModal({ boolean: true, index: index });
+  };
+  const closeDeleteSubjectModal = () => {
+    setDeleteSubjectModal({ boolean: false, index: 0 });
+  };
   const openIntroductionModal = () => {
     setIntroductionModal(true);
   };
   const closeIntroductionModal = () => {
     setIntroductionModal(false);
   };
-  console.log(mainSubjects);
-  const deleteSubject = (subjectIndex) => {
-    const updatedMainSubjects = mainSubjects.filter(
-      (subject, id) => id != subjectIndex
-    );
-    return updatedMainSubjects;
+
+  const handleToggleDeleteOption = () => {
+    setDeleteOption(!deleteOption);
   };
+
   const numberToPercent = (lowNumber, highNumber) => {
     const percent = (lowNumber / highNumber) * 100;
     return Math.trunc(percent);
@@ -111,6 +120,24 @@ export default function MainSubjects() {
         </Zoom>
       </Modal>
       <Modal
+        open={deleteSubjectModal.boolean}
+        onClose={closeDeleteSubjectModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Zoom timeout={300} in={deleteSubjectModal.boolean}>
+          <div style={{ maxWidth: 560, margin: "auto", outline: "none" }}>
+            <DeleteSubjectModal
+              modalIndex={deleteSubjectModal}
+              closeDeleteSubjectModal={closeDeleteSubjectModal}
+            />
+          </div>
+        </Zoom>
+      </Modal>
+      <Modal
         open={mainSubjectModal}
         onClose={closeMainSubjectModal}
         closeAfterTransition
@@ -143,18 +170,27 @@ export default function MainSubjects() {
                 return (
                   <Grid
                     item
-                    style={{ cursor: "pointer" }}
+                    style={{ position: "relative" }}
                     component={motion.div}
                     whileHover={{
-                      scale: 1.2,
+                      // scale: 1.2,
                       transition: { duration: 0.3 },
                     }}
                     onClick={() => {
                       dispatch(get_top_level_index(topLevelIndex));
                       dispatch(change_subject_type(mainSubjects));
-                      openMainSubjectModal();
                     }}
                   >
+                    {deleteOption ? (
+                      <Button
+                        style={{ position: "absolute", right: 0, top: "-10px" }}
+                        onClick={() => {
+                          openDeleteSubjectModal(topLevelIndex);
+                        }}
+                      >
+                        Delete subject
+                      </Button>
+                    ) : null}
                     <Typography variant="h3" align="center">
                       {" "}
                       {numberToPercent(
@@ -198,10 +234,11 @@ export default function MainSubjects() {
                         justifyContent: "center",
                         alignItems: "center",
                         cursor: "pointer",
-                        // background:
-                        //   "linear-gradient(10deg, #D6543C 10%, #D586F7 60%)",
                         background:
                           "linear-gradient(10deg, #ff5e41 10%, #c445fb 60%)",
+                      }}
+                      onClick={() => {
+                        openMainSubjectModal();
                       }}
                     >
                       <CardContent>
@@ -214,37 +251,43 @@ export default function MainSubjects() {
                       {subject[0].learnedSkills} of {subject[0].totalSkills}{" "}
                       topics learned
                     </Typography>
-                    <Button
-                      onClick={() => {
-                        const updatedSubject = deleteSubject(topLevelIndex);
-                        updateMainSubjectsInServer(updatedSubject);
-                        dispatch(change_main_subjects(updatedSubject));
-                      }}
-                    >
-                      Delete subject
-                    </Button>
                   </Grid>
                 );
               })}
-              <Grid container justify="flex-end" item xs={12}>
-                <Button
-                  style={{
-                    background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
-                  }}
-                  component={motion.div}
-                  whileHover={{
-                    scale: 1.2,
-                    transition: { duration: 0.3 },
-                  }}
-                  variant="outlined"
-                  endIcon={<AddIcon />}
-                  onClick={() => {
-                    setSubjectsType("mainSubjects");
-                    openCreateSubjectModal();
-                  }}
-                >
-                  Create new
-                </Button>
+              <Grid container justify="flex-end" item xs={12} spacing={5}>
+                <Grid item>
+                  <Button
+                    style={{
+                      background: "linear-gradient(10deg, #50FFA1, #BAFF5D)",
+                    }}
+                    component={motion.div}
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { duration: 0.3 },
+                    }}
+                    variant="outlined"
+                    endIcon={<AddIcon />}
+                    onClick={() => {
+                      setSubjectsType("mainSubjects");
+                      openCreateSubjectModal();
+                    }}
+                  >
+                    Create new
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    component={motion.div}
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { duration: 0.3 },
+                    }}
+                    variant="outlined"
+                    onClick={handleToggleDeleteOption}
+                  >
+                    Edit
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </List>
