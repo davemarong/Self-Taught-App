@@ -47,8 +47,8 @@ export default function MainSubjects() {
   const [renderMainSubject, setRenderMainSubject] = useState("hei");
   const [subjectsType, setSubjectsType] = useState();
   const [deleteOption, setDeleteOption] = useState(false);
-  const { updateMainSubjectsInServer } = usePushDataToServer();
-
+  const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
+    usePushDataToServer();
   const openMainSubjectModal = (subjectIndex, subject) => {
     setMainSubjectModal({
       boolean: true,
@@ -57,6 +57,11 @@ export default function MainSubjects() {
     });
   };
   const closeMainSubjectModal = () => {
+    if (mainSubjectModal.subject === "mainsubject") {
+      updateMainSubjectsInServer(mainSubjects);
+    } else if (mainSubjectModal.subject === "secondarysubject") {
+      updateSecondarySubjectsInServer(secondarySubjects);
+    }
     setMainSubjectModal({ boolean: false, index: 0, subject: "" });
   };
   const openCreateSubjectModal = () => {
@@ -193,6 +198,11 @@ export default function MainSubjects() {
                 >
                   Edit
                 </Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography align="center" variant="h2">
+                  Main subjects
+                </Typography>
               </Grid>
               {mainSubjects.map((subject, topLevelIndex) => {
                 return (
@@ -361,7 +371,11 @@ export default function MainSubjects() {
                   Edit
                 </Button>
               </Grid>
-
+              <Grid item xs={12}>
+                <Typography align="center" variant="h2">
+                  Secondary subjects
+                </Typography>
+              </Grid>
               {secondarySubjects.map((subject, topLevelIndex) => {
                 return (
                   <Grid

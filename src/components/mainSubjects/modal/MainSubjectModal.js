@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import TextField from "@material-ui/core/TextField";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  change_main_subjects,
+  change_secondary_subjects,
+  get_top_level_index,
+  change_subject_type,
+} from "../../../redux/actions/index";
+
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,7 +20,6 @@ import TableRow from "@material-ui/core/TableRow";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import SortByAlphaRoundedIcon from "@mui/icons-material/SortByAlphaRounded";
-import { useSelector } from "react-redux";
 import Modal from "@material-ui/core/Modal";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -44,18 +53,32 @@ export default function MainSubjectModal({
     usePushDataToServer();
   const { index, subject } = mainSubjectModal;
 
+  const dispatch = useDispatch();
+
   const topLevelIndex = useSelector((state) => state.topLevelIndex);
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
 
   const subjectType = useSelector((state) => state.subjectType);
+
   const [addTopicModal, setAddTopicModal] = useState(false);
   const [showDeleteOption, setShowDeleteOption] = useState(false);
+
   const openAddTopicModal = () => {
     setAddTopicModal(true);
   };
   const closeAddTopicModal = () => {
     setAddTopicModal(false);
+  };
+
+  const handleChangeSubjectTitle = (event) => {
+    if (subject === "mainsubject") {
+      mainSubjects[index][0].title = event.target.value;
+      dispatch(change_main_subjects(mainSubjects));
+    } else if (subject === "secondarysubject") {
+      secondarySubjects[index][0].title = event.target.value;
+      dispatch(change_secondary_subjects(secondarySubjects));
+    }
   };
   return (
     <Container maxWidth="md" style={{ marginTop: 70 }}>
@@ -77,13 +100,16 @@ export default function MainSubjectModal({
             </IconButton>
           </Grid>
           <Grid item xs={12}>
-            <Typography
-              align="center"
-              variant="h3"
-              style={{ position: "relative", bottom: 10 }}
-            >
-              {subjectType[topLevelIndex][0].title}
-            </Typography>
+            <input
+              onChange={handleChangeSubjectTitle}
+              defaultValue={subjectType[topLevelIndex][0].title}
+              style={{
+                fontSize: 48,
+                border: 0,
+                textAlign: "center",
+                width: "100%",
+              }}
+            />
           </Grid>
           <Grid container justify="flex-end" item xs={12} sm={6}>
             <Grid item xs={12}>
@@ -208,11 +234,7 @@ export default function MainSubjectModal({
                           setRender(Math.floor(Math.random() * 100));
                         }}
                       >
-                        {item.learned ? (
-                          <Checkbox checked={true} />
-                        ) : (
-                          <Checkbox checked={false} />
-                        )}
+                        <Checkbox checked={item.learned} />
                       </TableCell>
                       <TableCell
                         align="center"
