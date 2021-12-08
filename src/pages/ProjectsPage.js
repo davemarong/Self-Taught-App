@@ -3,7 +3,7 @@ import CreateSubjectModal from "../components/mainSubjects/modal/CreateSubjectMo
 import SecondarySubjects from "../components/secondarySubjects/SecondarySubjects";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Projects from "../components/projects/Projects";
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -13,10 +13,12 @@ const useStyles = makeStyles({
     padding: 20,
   },
 });
-export default function Projects() {
+export default function ProjectsPage() {
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
   return (
-    <div className={matches ? classes.full : classes.mobile}>Projects</div>
+    <div>
+      <Projects />
+    </div>
   );
 }

@@ -4,6 +4,12 @@ export const change_main_subjects = (subject) => {
     payload: subject,
   };
 };
+export const change_projects = (projects) => {
+  return {
+    type: "CHANGE_PROJECTS",
+    payload: projects,
+  };
+};
 export const get_top_level_index = (index) => {
   return {
     type: "GET_TOP_LEVEL_INDEX",

@@ -11,18 +11,18 @@ const NavItems = [
     path: "/topics",
     cName: "nav-text",
   },
-  // {
-  //   title: "Projects",
-  //   id: 3,
-  //   path: "/projects",
-  //   cName: "nav-text",
-  // },
-  // {
-  //   title: "Account",
-  //   id: 4,
-  //   path: "/account",
-  //   cName: "nav-text",
-  // },
+  {
+    title: "Projects",
+    id: 3,
+    path: "/projects",
+    cName: "nav-text",
+  },
+  {
+    title: "Account",
+    id: 4,
+    path: "/account",
+    cName: "nav-text",
+  },
   // {
   //   title: "Register",
   //   id: 5,

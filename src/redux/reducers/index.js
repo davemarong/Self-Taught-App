@@ -5,6 +5,7 @@ import secondarySubjects from "./secondarySubjects";
 import subjectType from "./subjectType";
 import userProfileData from "./userProfileData";
 import isLogged from "./isLogged";
+import projects from "./projects";
 
 const allReducers = combineReducers({
   mainSubjects: mainSubjects,
@@ -13,5 +14,6 @@ const allReducers = combineReducers({
   subjectType: subjectType,
   userProfileData: userProfileData,
   isLogged: isLogged,
+  projects: projects,
 });
 export default allReducers;

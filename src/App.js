@@ -11,7 +11,7 @@ import MainSubjectModal from "./components/mainSubjects/modal/MainSubjectModal";
 import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
-import Projects from "./pages/Projects";
+import ProjectsPage from "./pages/ProjectsPage";
 import Skills from "./pages/Skills";
 import { SnackbarProvider } from "notistack";
 
@@ -35,6 +35,8 @@ import Introduction from "./components/introduction/Introduction";
 function App() {
   const dispatch = useDispatch();
 
+  const [projects, setProjects] = useState();
+
   useEffect(() => {
     dispatch(change_main_subjects(main_subjects));
     dispatch(change_secondary_subjects(secondary_subjects));
@@ -55,7 +57,7 @@ function App() {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/topics" component={Skills} />
-            <Route path="/projects" component={Projects} />
+            <Route path="/projects" component={ProjectsPage} />
             <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />

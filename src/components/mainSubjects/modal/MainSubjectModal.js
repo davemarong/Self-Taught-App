@@ -96,7 +96,7 @@ export default function MainSubjectModal({
         <Grid container direction="row">
           <Grid container justify="flex-end" item xs={12}>
             <IconButton onClick={closeMainSubjectModal}>
-              <CloseIcon />
+              <CloseIcon title="Close window" />
             </IconButton>
           </Grid>
           <Grid item xs={12}>
@@ -114,6 +114,7 @@ export default function MainSubjectModal({
           <Grid container justify="flex-end" item xs={12} sm={6}>
             <Grid item xs={12}>
               <IconButton
+                title="Add topics"
                 onClick={() => {
                   openAddTopicModal();
                 }}
@@ -121,6 +122,7 @@ export default function MainSubjectModal({
                 <AddCircleOutlineIcon />
               </IconButton>
               <IconButton
+                title="Edit"
                 style={showDeleteOption ? { background: "#9e9e9eb0" } : null}
                 onClick={() => {
                   setShowDeleteOption(!showDeleteOption);
@@ -129,6 +131,7 @@ export default function MainSubjectModal({
                 <EditIcon />
               </IconButton>
               <IconButton
+                title="Sort topics alphabetically"
                 onClick={() => {
                   const sortedTopicsList = handleSortTopicsByName(
                     index,
