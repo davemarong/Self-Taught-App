@@ -22,26 +22,7 @@ export default function Projects({ projects }) {
   const [projectData, setProjectData] = useState({
     title: "",
     description: "",
-    topics: [
-      [
-        {
-          subject: "HTML",
-        },
-        [
-          { title: "Elements", learned: false, useInProject: false },
-          { title: "Header", learned: false, useInProject: false },
-        ],
-      ],
-      [
-        {
-          subject: "CSS",
-        },
-        [
-          { title: "Color", learned: false, useInProject: false },
-          { title: "Flex", learned: false, useInProject: false },
-        ],
-      ],
-    ],
+    topics: [],
   });
   const [createProjectModal, setCreateProjectModal] = useState({
     boolean: false,

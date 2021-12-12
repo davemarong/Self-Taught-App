@@ -33,8 +33,6 @@ export default function Nav() {
   };
 
   useEffect(() => {
-    console.log(matches);
-
     if (matches) {
       setSidebar(true);
     } else if (!matches) {
