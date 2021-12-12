@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
   return (
-    <div>
+    <div className={matches ? classes.full : classes.mobile}>
       <Projects />
     </div>
   );

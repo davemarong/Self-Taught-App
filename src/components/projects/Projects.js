@@ -19,6 +19,30 @@ import CompletedProjects from "./CompletedProjects";
 
 export default function Projects({ projects }) {
   // State
+  const [projectData, setProjectData] = useState({
+    title: "",
+    description: "",
+    topics: [
+      [
+        {
+          subject: "HTML",
+        },
+        [
+          { title: "Elements", learned: false, useInProject: false },
+          { title: "Header", learned: false, useInProject: false },
+        ],
+      ],
+      [
+        {
+          subject: "CSS",
+        },
+        [
+          { title: "Color", learned: false, useInProject: false },
+          { title: "Flex", learned: false, useInProject: false },
+        ],
+      ],
+    ],
+  });
   const [createProjectModal, setCreateProjectModal] = useState({
     boolean: false,
   });
@@ -29,7 +53,6 @@ export default function Projects({ projects }) {
   const closeCreateProjectModal = () => {
     setCreateProjectModal({ boolean: false });
   };
-  console.log(projects);
   return (
     <div>
       <Modal
@@ -42,7 +65,7 @@ export default function Projects({ projects }) {
         }}
       >
         <Zoom timeout={300} in={createProjectModal.boolean}>
-          <CreateProject>hei</CreateProject>
+          <CreateProject />
         </Zoom>
       </Modal>
       <Typography>Completed projects</Typography>
@@ -50,6 +73,11 @@ export default function Projects({ projects }) {
       <Button onClick={openCreateProjectModal} variant="contained">
         Create new project
       </Button>
+
+      <CreateProject
+        projectData={projectData}
+        setProjectData={setProjectData}
+      />
       <Typography>Future projects</Typography>
     </div>
   );
