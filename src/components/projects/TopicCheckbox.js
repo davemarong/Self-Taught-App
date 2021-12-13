@@ -1,13 +1,10 @@
 // IMPORTS
 
 // React
-import React, { useState } from "react";
+import React from "react";
 
 // Material UI
 import Checkbox from "@mui/material/Checkbox";
-
-// Components
-// Redux
 
 export default function TopicCheckbox({
   subject,
@@ -15,9 +12,6 @@ export default function TopicCheckbox({
   setProjectData,
   topic,
 }) {
-  // UseState
-  const [isChecked, setIsChecked] = useState(false);
-
   // Functions
 
   const getIndexOfSubject = (subject) => {
@@ -55,7 +49,6 @@ export default function TopicCheckbox({
       [{ title: topic, learned: false, useInProject: false }],
     ];
     updatedProjectData.topics.push(newTopicAndSubject);
-    // USE SPREAD OPERATOR !!!!!!!!!!!!!
     setProjectData(updatedProjectData);
   };
 
