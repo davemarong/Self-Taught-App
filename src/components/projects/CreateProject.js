@@ -40,10 +40,10 @@ export default function CreateProject({ projectData, setProjectData }) {
 
   // Redux
   const dispatch = useDispatch();
-
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
   const projects = useSelector((state) => state.projects);
+
   // UseMemo
   const TopicsTableMainSubjectsMemo = React.useMemo(
     () =>
@@ -72,14 +72,6 @@ export default function CreateProject({ projectData, setProjectData }) {
     [secondarySubjects, projectTopics]
   );
 
-  //   if (deleteSubjectModal.subject === "mainsubject") {
-  //     const updatedSubject = deleteSubject(
-  //       index,
-  //       mainSubjects
-  //     );
-  //     updateMainSubjectsInServer(updatedSubject);
-  //     dispatch(change_main_subjects(updatedSubject));
-  //   }
   // Functions
   const saveProject = () => {
     let updatedProjects = projects;
@@ -90,6 +82,7 @@ export default function CreateProject({ projectData, setProjectData }) {
     };
     updatedProjects.futureProjects.push(newProject);
     dispatch(change_projects(updatedProjects));
+    updateProjectsInServer(updatedProjects);
   };
   return (
     <Container>
