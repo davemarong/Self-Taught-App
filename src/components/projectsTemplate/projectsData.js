@@ -88,3 +88,8 @@ export const completedProjectsData = [
   ],
 ];
 export const futureProjects = [];
+
+export const projects = {
+  completedProjects: [],
+  futureProjects: [],
+};

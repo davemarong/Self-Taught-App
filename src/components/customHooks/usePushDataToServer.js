@@ -39,5 +39,25 @@ export default function usePushDataToServer() {
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
-  return { updateMainSubjectsInServer, updateSecondarySubjectsInServer };
+  const updateProjectsInServer = async (projects) => {
+    await axios
+      .put(
+        `http://localhost:1337/users/${id}`,
+        {
+          projects: projects,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      )
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+  return {
+    updateMainSubjectsInServer,
+    updateSecondarySubjectsInServer,
+    updateProjectsInServer,
+  };
 }

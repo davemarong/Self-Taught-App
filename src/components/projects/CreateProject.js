@@ -18,23 +18,32 @@ import { motion } from "framer-motion";
 // Components
 import TopicsTable from "./TopicsTable";
 import GreenButton from "../button/GreenButton";
-// Redux
-import { useSelector } from "react-redux";
 import InputFields from "./InputFields";
 
+// Custom hooks
+import usePushDataToServer from "../customHooks/usePushDataToServer";
+
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { change_projects } from "../../redux/actions";
 export default function CreateProject({ projectData, setProjectData }) {
+  console.log("createproject");
+
+  // Custom hooks
+  const { updateProjectsInServer } = usePushDataToServer();
+
   // UseState
   const [isOpen, setIsOpen] = useState(false);
   const [projectName, setProjectName] = useState();
   const [projectDescription, setProjectDescription] = useState();
-  const [projectTopics, setProjectTopics] = useState();
-  //       [
-  //     { subject: "HTML" },
-  //     [{ title: "color" }, { title: "tag" }],
-  //   ]
+  const [projectTopics, setProjectTopics] = useState([]);
+
   // Redux
+  const dispatch = useDispatch();
+
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
+  const projects = useSelector((state) => state.projects);
   // UseMemo
   const TopicsTableMainSubjectsMemo = React.useMemo(
     () =>
@@ -47,7 +56,7 @@ export default function CreateProject({ projectData, setProjectData }) {
           />
         );
       }),
-    [mainSubjects, projectTopics, setProjectTopics]
+    [mainSubjects, projectTopics]
   );
   const TopicsTableSecondarySubjectsMemo = React.useMemo(
     () =>
@@ -60,15 +69,27 @@ export default function CreateProject({ projectData, setProjectData }) {
           />
         );
       }),
-    [projectTopics, secondarySubjects, setProjectTopics]
+    [secondarySubjects, projectTopics]
   );
+
+  //   if (deleteSubjectModal.subject === "mainsubject") {
+  //     const updatedSubject = deleteSubject(
+  //       index,
+  //       mainSubjects
+  //     );
+  //     updateMainSubjectsInServer(updatedSubject);
+  //     dispatch(change_main_subjects(updatedSubject));
+  //   }
   // Functions
   const saveProject = () => {
+    let updatedProjects = projects;
     const newProject = {
       title: projectName,
       description: projectDescription,
       topics: projectTopics,
     };
+    updatedProjects.futureProjects.push(newProject);
+    dispatch(change_projects(updatedProjects));
   };
   return (
     <Container>
@@ -82,7 +103,7 @@ export default function CreateProject({ projectData, setProjectData }) {
         </Typography>
         {TopicsTableMainSubjectsMemo}
         {TopicsTableSecondarySubjectsMemo}
-        <GreenButton onClick={saveProject} text="Save project" />
+        <GreenButton func={saveProject} text="Save project" />
       </Card>
     </Container>
   );
