@@ -54,7 +54,6 @@ export default function Projects({ projects }) {
       <Button onClick={openCreateProjectModal} variant="contained">
         Create new project
       </Button>
-
       <CreateProject
         projectData={projectData}
         setProjectData={setProjectData}

@@ -18,7 +18,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 // Components
 import TopicCheckbox from "./TopicCheckbox";
 
-export default function TopicsTable({ subject, projectData, setProjectData }) {
+export default function TopicsTable({
+  subject,
+  projectTopics,
+  setProjectTopics,
+}) {
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -103,8 +107,8 @@ export default function TopicsTable({ subject, projectData, setProjectData }) {
                     >
                       <TopicCheckbox
                         subject={subject}
-                        projectData={projectData}
-                        setProjectData={setProjectData}
+                        projectTopics={projectTopics}
+                        setProjectTopics={setProjectTopics}
                         topic={topic}
                       />
                     </TableCell>

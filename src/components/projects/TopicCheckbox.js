@@ -1,5 +1,5 @@
 // IMPORTS
-
+// FIX ALL PROJECT NAME STUFF
 // React
 import React from "react";
 
@@ -8,25 +8,26 @@ import Checkbox from "@mui/material/Checkbox";
 
 export default function TopicCheckbox({
   subject,
-  projectData,
-  setProjectData,
+  projectTopics,
+  setProjectTopics,
   topic,
 }) {
   // Functions
-
   const getIndexOfSubject = (subject) => {
     let indexOfSubject = false;
-    projectData.topics.map((item, id) => {
-      if (item[0].subject === subject) {
-        indexOfSubject = id;
-      }
-    });
+    if (projectTopics) {
+      projectTopics.map((item, id) => {
+        if (item[0].subject === subject) {
+          indexOfSubject = id;
+        }
+      });
+    }
     return indexOfSubject;
   };
   const getIndexOfTopic = (indexOfSubject, topic) => {
     let indexOfTopic = false;
-    for (let i = 0; i < projectData.topics[indexOfSubject][1].length; i++) {
-      if (projectData.topics[indexOfSubject][1][i].title === topic) {
+    for (let i = 0; i < projectTopics[indexOfSubject][1].length; i++) {
+      if (projectTopics[indexOfSubject][1][i].title === topic) {
         indexOfTopic = i;
         break;
       }
@@ -34,25 +35,26 @@ export default function TopicCheckbox({
     return indexOfTopic;
   };
   const removeTopicFromProject = (indexOfSubject, indexOfTopic) => {
-    projectData.topics[indexOfSubject][1].splice(indexOfTopic, 1);
+    projectTopics[indexOfSubject][1].splice(indexOfTopic, 1);
   };
   const addTopicToProject = (topic, indexOfSubject) => {
-    let updatedProjectData = projectData;
+    let updatedprojectTopics = projectTopics;
     const newTopic = { title: topic, learned: false, useInProject: false };
-    updatedProjectData.topics[indexOfSubject][1].push(newTopic);
-    setProjectData(updatedProjectData);
+    updatedprojectTopics[indexOfSubject][1].push(newTopic);
+    setProjectTopics(updatedprojectTopics);
   };
   const addTopicAndSubjectToProject = (subject, topic) => {
-    let updatedProjectData = projectData;
+    let updatedprojectTopics = projectTopics;
     const newTopicAndSubject = [
       { subject: subject },
       [{ title: topic, learned: false, useInProject: false }],
     ];
-    updatedProjectData.topics.push(newTopicAndSubject);
-    setProjectData(updatedProjectData);
+    updatedprojectTopics = [{ ...projectTopics, newTopicAndSubject }];
+    // updatedprojectTopics.push(newTopicAndSubject);
+    setProjectTopics(updatedprojectTopics);
   };
 
-  const updateProjectData = (topic, subject) => {
+  const updateprojectTopics = (topic, subject) => {
     const indexOfSubject = getIndexOfSubject(subject);
     if (typeof indexOfSubject != "number") {
       addTopicAndSubjectToProject(subject, topic);
@@ -66,9 +68,9 @@ export default function TopicCheckbox({
   return (
     <Checkbox
       onChange={(event) => {
-        console.log(projectData.topics);
+        console.log(projectTopics);
         if (event.target.checked) {
-          updateProjectData(topic.title, subject[0].title);
+          updateprojectTopics(topic.title, subject[0].title);
         } else {
           const indexOfSubject = getIndexOfSubject(subject[0].title);
           const indexOfTopic = getIndexOfTopic(indexOfSubject, topic.title);
