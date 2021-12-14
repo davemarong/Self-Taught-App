@@ -49,8 +49,7 @@ export default function TopicCheckbox({
       { subject: subject },
       [{ title: topic, learned: false, useInProject: false }],
     ];
-    updatedprojectTopics = [{ ...projectTopics, newTopicAndSubject }];
-    // updatedprojectTopics.push(newTopicAndSubject);
+    updatedprojectTopics.push(newTopicAndSubject);
     setProjectTopics(updatedprojectTopics);
   };
 
@@ -68,7 +67,6 @@ export default function TopicCheckbox({
   return (
     <Checkbox
       onChange={(event) => {
-        console.log(projectTopics);
         if (event.target.checked) {
           updateprojectTopics(topic.title, subject[0].title);
         } else {
