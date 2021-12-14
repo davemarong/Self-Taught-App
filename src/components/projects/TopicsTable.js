@@ -23,6 +23,7 @@ export default function TopicsTable({
   projectTopics,
   setProjectTopics,
 }) {
+  console.log("topicstable");
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>

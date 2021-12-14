@@ -18,6 +18,7 @@ import CompletedProjects from "./CompletedProjects";
 // Utils
 
 export default function Projects({ projects }) {
+  console.log("project");
   // State
   const [projectData, setProjectData] = useState({
     title: "",
