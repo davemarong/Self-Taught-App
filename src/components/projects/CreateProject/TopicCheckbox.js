@@ -1,5 +1,4 @@
 // IMPORTS
-// FIX ALL PROJECT NAME STUFF
 // React
 import React from "react";
 
@@ -38,22 +37,22 @@ export default function TopicCheckbox({
     projectTopics[indexOfSubject][1].splice(indexOfTopic, 1);
   };
   const addTopicToProject = (topic, indexOfSubject) => {
-    let updatedprojectTopics = projectTopics;
+    let updatedProjectTopics = projectTopics;
     const newTopic = { title: topic, learned: false, useInProject: false };
-    updatedprojectTopics[indexOfSubject][1].push(newTopic);
-    setProjectTopics(updatedprojectTopics);
+    updatedProjectTopics[indexOfSubject][1].push(newTopic);
+    setProjectTopics(updatedProjectTopics);
   };
   const addTopicAndSubjectToProject = (subject, topic) => {
-    let updatedprojectTopics = projectTopics;
+    let updatedProjectTopics = projectTopics;
     const newTopicAndSubject = [
       { subject: subject },
       [{ title: topic, learned: false, useInProject: false }],
     ];
-    updatedprojectTopics.push(newTopicAndSubject);
-    setProjectTopics(updatedprojectTopics);
+    updatedProjectTopics.push(newTopicAndSubject);
+    setProjectTopics(updatedProjectTopics);
   };
 
-  const updateprojectTopics = (topic, subject) => {
+  const updateProjectTopics = (topic, subject) => {
     const indexOfSubject = getIndexOfSubject(subject);
     if (typeof indexOfSubject != "number") {
       addTopicAndSubjectToProject(subject, topic);
@@ -63,12 +62,13 @@ export default function TopicCheckbox({
     if (indexOfTopic) return;
     addTopicToProject(topic, indexOfSubject);
   };
+
   // Return
   return (
     <Checkbox
       onChange={(event) => {
         if (event.target.checked) {
-          updateprojectTopics(topic.title, subject[0].title);
+          updateProjectTopics(topic.title, subject[0].title);
         } else {
           const indexOfSubject = getIndexOfSubject(subject[0].title);
           const indexOfTopic = getIndexOfTopic(indexOfSubject, topic.title);

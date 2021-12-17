@@ -4,23 +4,24 @@ export const completedProjectsData = [
     {
       title: "Pokemon app",
       description: "An app that creates a pokedex for you",
+      summary: "",
       topicsUsed: [
         [
           { title: "HTML" },
           [
-            { title: "img", learned: true },
-            { title: "p", learned: true },
-            { title: "h1", learned: true },
-            { title: "class", learned: true },
+            { title: "Images", learned: true, usedInProject: true },
+            { title: "Paragraphs", learned: true, usedInProject: true },
+            { title: "Comments", learned: true, usedInProject: true },
+            { title: "Classes", learned: true, usedInProject: true },
           ],
         ],
         [
           { title: "CSS" },
           [
-            { title: "class", learned: true },
-            { title: "selector", learned: true },
-            { title: "color", learned: true },
-            { title: "flex", learned: true },
+            { title: "class", learned: true, usedInProject: true },
+            { title: "selector", learned: true, usedInProject: true },
+            { title: "color", learned: true, usedInProject: true },
+            { title: "flex", learned: true, usedInProject: true },
           ],
         ],
       ],
@@ -36,19 +37,19 @@ export const completedProjectsData = [
         [
           { title: "React" },
           [
-            { title: "img", learned: true },
-            { title: "p", learned: true },
-            { title: "h1", learned: true },
-            { title: "class", learned: true },
+            { title: "img", learned: true, usedInProject: true },
+            { title: "p", learned: true, usedInProject: true },
+            { title: "h1", learned: true, usedInProject: true },
+            { title: "class", learned: true, usedInProject: true },
           ],
         ],
         [
           { title: "Next" },
           [
-            { title: "class", learned: true },
-            { title: "selector", learned: true },
-            { title: "color", learned: true },
-            { title: "flex", learned: true },
+            { title: "class", learned: true, usedInProject: true },
+            { title: "selector", learned: true, usedInProject: true },
+            { title: "color", learned: true, usedInProject: true },
+            { title: "flex", learned: true, usedInProject: true },
           ],
         ],
       ],
@@ -64,19 +65,19 @@ export const completedProjectsData = [
         [
           { title: "node" },
           [
-            { title: "img", learned: true },
-            { title: "p", learned: true },
-            { title: "h1", learned: true },
-            { title: "class", learned: true },
+            { title: "img", learned: true, usedInProject: true },
+            { title: "p", learned: true, usedInProject: true },
+            { title: "h1", learned: true, usedInProject: true },
+            { title: "class", learned: true, usedInProject: true },
           ],
         ],
         [
           { title: "php" },
           [
-            { title: "class", learned: true },
-            { title: "selector", learned: true },
-            { title: "color", learned: true },
-            { title: "flex", learned: true },
+            { title: "class", learned: true, usedInProject: true },
+            { title: "selector", learned: true, usedInProject: true },
+            { title: "color", learned: true, usedInProject: true },
+            { title: "flex", learned: true, usedInProject: true },
           ],
         ],
       ],

@@ -12,11 +12,31 @@ import ListItem from "@mui/material/ListItem";
 
 export default function CompletedProjects() {
   return (
-    <Grid container>
-      {completedProjectsData[1].map((project, id) => {
-        return (
-          <Card>
-            <Grid container direction="column" style={{ margin: "20px" }}>
+    <Card>
+      <Grid container direction="row" justify="space-evenly">
+        <Grid item xs={12}>
+          <Typography align="center" variant="h3">
+            Completed projects
+          </Typography>
+        </Grid>
+        {completedProjectsData[1].map((project, id) => {
+          return (
+            <Grid
+              item
+              xs={8}
+              sm={6}
+              md={3}
+              container
+              direction="column"
+              style={{
+                position: "relative",
+                borderRadius: "10px",
+                boxShadow: "0 0 3px",
+                width: 250,
+                padding: 20,
+                margin: "20px",
+              }}
+            >
               <Grid item>
                 <Typography variant="h4">{project.title}</Typography>
               </Grid>
@@ -28,8 +48,10 @@ export default function CompletedProjects() {
                   return (
                     <Grid item xs={4}>
                       <Card style={{ margin: 10 }}>
-                        <Typography>{subject[0].title}</Typography>
-                        <List>
+                        <Typography align="center">
+                          {subject[0].title}
+                        </Typography>
+                        {/* <List>
                           {subject[1].map((topic, id) => {
                             return (
                               <>
@@ -37,7 +59,7 @@ export default function CompletedProjects() {
                               </>
                             );
                           })}
-                        </List>
+                        </List> */}
                       </Card>
                     </Grid>
                   );
@@ -56,9 +78,9 @@ export default function CompletedProjects() {
                 <Typography>{project.img}</Typography>
               </Grid>
             </Grid>
-          </Card>
-        );
-      })}
-    </Grid>
+          );
+        })}
+      </Grid>
+    </Card>
   );
 }

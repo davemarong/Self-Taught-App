@@ -38,7 +38,6 @@ export default function TopicsTable({
                   style={{
                     fontWeight: "bolder",
                     padding: "16px 5px 16px 10px",
-                    // border: "1px solid rgb(163 163 163)",
                   }}
                 >
                   Topic
@@ -47,16 +46,6 @@ export default function TopicsTable({
                   style={{
                     fontWeight: "bolder",
                     padding: "16px 5px 16px 10px",
-                    // border: "1px solid rgb(163 163 163)",
-                  }}
-                >
-                  Subject
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontWeight: "bolder",
-                    padding: "16px 5px 16px 10px",
-                    // border: "1px solid rgb(163 163 163)",
                   }}
                 >
                   Learned
@@ -65,7 +54,6 @@ export default function TopicsTable({
                   style={{
                     fontWeight: "bolder",
                     padding: "16px 5px 16px 10px",
-                    // border: "1px solid rgb(163 163 163)",
                   }}
                 >
                   Add
@@ -79,7 +67,7 @@ export default function TopicsTable({
                     <TableCell
                       style={{
                         padding: "0 5px 0 10px",
-                        border: "1px solid rgba(224, 224, 224, 1)",
+                        borderLeft: "1px solid rgba(224, 224, 224, 1)",
                       }}
                     >
                       {topic.title}
@@ -87,15 +75,7 @@ export default function TopicsTable({
                     <TableCell
                       style={{
                         padding: "0 5px 0 10px",
-                        border: "1px solid rgba(224, 224, 224, 1)",
-                      }}
-                    >
-                      {subject[0].title}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        padding: "0 5px 0 10px",
-                        border: "1px solid rgba(224, 224, 224, 1)",
+                        // border: "1px solid rgba(224, 224, 224, 1)",
                       }}
                     >
                       {topic.learned ? "Yes" : "No"}
@@ -103,7 +83,7 @@ export default function TopicsTable({
                     <TableCell
                       style={{
                         padding: "0 5px 0 10px",
-                        border: "1px solid rgba(224, 224, 224, 1)",
+                        borderRight: "1px solid rgba(224, 224, 224, 1)",
                       }}
                     >
                       <TopicCheckbox

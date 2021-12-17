@@ -16,14 +16,14 @@ export default function InputFields({ setProjectName, setProjectDescription }) {
   };
   return (
     <Grid container direction="column" spacing={4}>
-      <Grid item xs={12}>
+      <Grid item md={4} sm={5} xs={7}>
         <TextField
           onChange={handleProjectNameUserInput}
           fullWidth
           label="Project name"
         />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item md={8} sm={10} xs={12}>
         <TextField
           onChange={handleProjectDescriptionUserInput}
           fullWidth
