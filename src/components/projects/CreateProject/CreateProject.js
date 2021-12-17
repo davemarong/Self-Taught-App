@@ -23,6 +23,9 @@ import InputFields from "./InputFields";
 // Custom hooks
 import usePushDataToServer from "../../customHooks/usePushDataToServer";
 
+// Utils
+import { createEditableListOfTopics } from "../Utils/EditProjectUtils";
+import { createSubjectsMemo } from "../Utils/MemoUtils";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
@@ -35,7 +38,6 @@ export default function CreateProject({ setBackdrop, project }) {
   const { updateProjectsInServer } = usePushDataToServer();
 
   // UseState
-  const [isOpen, setIsOpen] = useState(false);
   const [projectName, setProjectName] = useState();
   const [projectDescription, setProjectDescription] = useState();
   const [projectTopics, setProjectTopics] = useState([]);
@@ -47,32 +49,14 @@ export default function CreateProject({ setBackdrop, project }) {
   const projects = useSelector((state) => state.projects);
 
   // UseMemo
-  const TopicsTableMainSubjectsMemo = useMemo(
-    () =>
-      mainSubjects.map((subject, id) => {
-        return (
-          <TopicsTable
-            subject={subject}
-            projectTopics={projectTopics}
-            setProjectTopics={setProjectTopics}
-          />
-        );
-      }),
-    [mainSubjects, projectTopics]
-  );
-  const TopicsTableSecondarySubjectsMemo = useMemo(
-    () =>
-      secondarySubjects.map((subject, id) => {
-        return (
-          <TopicsTable
-            subject={subject}
-            projectTopics={projectTopics}
-            setProjectTopics={setProjectTopics}
-          />
-        );
-      }),
-    [secondarySubjects, projectTopics]
-  );
+  const [TopicsTableMainSubjectsMemo, TopicsTableSecondarySubjectsMemo] =
+    createSubjectsMemo(
+      useMemo,
+      mainSubjects,
+      secondarySubjects,
+      projectTopics,
+      setProjectTopics
+    );
 
   // Functions
   const saveProject = () => {
@@ -87,78 +71,15 @@ export default function CreateProject({ setBackdrop, project }) {
     updateProjectsInServer(updatedProjects);
   };
 
-  const createListOfAllTopics = () => {
-    // Create array of all topics without some properties
-    const mainSubjectTopics = mainSubjects.map((subject, id) => {
-      return [
-        { title: subject[0].title },
-        subject[1].map((topic, id) => ({
-          title: topic.title,
-          learned: topic.learned,
-          usedInProject: false,
-        })),
-      ];
-    });
-    const secondarySubjectTopics = secondarySubjects.map((subject, id) => {
-      return [
-        { title: subject[0].title },
-        subject[1].map((topic, id) => ({
-          title: topic.title,
-          learned: topic.learned,
-          usedInProject: false,
-        })),
-      ];
-    });
-    return [...mainSubjectTopics, ...secondarySubjectTopics];
-  };
-  const createListOfProjectTopics = () => {
-    return createListOfAllTopics();
-  };
-  const concatAllTopicsAndProjectTopics = (allTopics, projectTopics) => {
-    return allTopics.map((subject, id) => {
-      let subjectAndTopics = subject;
-      for (let i = 0; i < projectTopics.length; i++) {
-        if (subject[0].title === projectTopics[i][0].title) {
-          subjectAndTopics = [
-            subject[0],
-            [...projectTopics[i][1], ...subject[1]],
-          ];
-          break;
-        }
-      }
-      return subjectAndTopics;
-    });
-  };
-  const removeDuplicatesFromAllTopics = (topicsConcated) => {
-    const updatedTopicsAndSubject = topicsConcated.map((subject, id) => {
-      return [
-        topicsConcated[0],
-        subject[1].filter((topic, id) => {
-          const indexOfTopic = subject[1].findIndex(
-            (item) => topic.title === item.title
-          );
-          console.log(indexOfTopic);
-          return indexOfTopic === id;
-        }),
-      ];
-    });
-    console.log(updatedTopicsAndSubject);
-  };
-
   // useEffect
   useEffect(() => {
     if (setBackdrop) {
       setBackdrop(false);
     }
-    const allTopics = createListOfProjectTopics();
-    const topicsConcated = concatAllTopicsAndProjectTopics(
-      allTopics,
-      project.topicsUsed
-    );
-    console.log(topicsConcated);
-    removeDuplicatesFromAllTopics(topicsConcated);
+    if (project) {
+      createEditableListOfTopics(mainSubjects, secondarySubjects, project);
+    }
   }, []);
-
   console.log(project);
   return (
     <>
@@ -169,7 +90,6 @@ export default function CreateProject({ setBackdrop, project }) {
             setProjectName={setProjectName}
             setProjectDescription={setProjectDescription}
           />
-
           <Typography style={{ padding: "70px 0 20px 0" }}>
             Choose which subject and topics you want to use in your project
           </Typography>

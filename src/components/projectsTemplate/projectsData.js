@@ -18,10 +18,11 @@ export const completedProjectsData = [
         [
           { title: "CSS" },
           [
-            { title: "class", learned: true, usedInProject: true },
-            { title: "selector", learned: true, usedInProject: true },
-            { title: "color", learned: true, usedInProject: true },
-            { title: "flex", learned: true, usedInProject: true },
+            { title: "Class", learned: true, usedInProject: true },
+            { title: "Selector", learned: true, usedInProject: true },
+            { title: "Color", learned: true, usedInProject: true },
+            { title: "Flex", learned: true, usedInProject: true },
+            { title: "Grid", learned: true, usedInProject: true },
           ],
         ],
       ],
