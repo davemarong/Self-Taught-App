@@ -22,6 +22,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { motion } from "framer-motion";
 
 export default function ProjectsCard({ projectData, openCreateProjectModal }) {
+  console.log("projectcontainer");
   return (
     <>
       <Card>

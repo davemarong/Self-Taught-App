@@ -9,6 +9,7 @@ export const createSubjectsMemo = (
   projectTopics,
   setProjectTopics
 ) => {
+  console.log("main/second");
   const mainSubjectMemo = memo(
     () =>
       mainSubject.map((subject, id) => {
@@ -37,18 +38,27 @@ export const createSubjectsMemo = (
   );
   return [mainSubjectMemo, secondarySubjectMemo];
 };
-const createEditSubjectsMemo = () => {};
+export const createEditableSubjectsMemo = (
+  memo,
+  editableSubjects,
+  projectTopics,
+  setProjectTopics
+) => {
+  console.log("editable");
 
-// const TopicsTableSecondarySubjectsMemo = useMemo(
-//   () =>
-//     secondarySubjects.map((subject, id) => {
-//       return (
-//         <TopicsTable
-//           subject={subject}
-//           projectTopics={projectTopics}
-//           setProjectTopics={setProjectTopics}
-//         />
-//       );
-//     }),
-//   [secondarySubjects, projectTopics]
-// );
+  const editableTopicsMemo = memo(
+    () =>
+      editableSubjects.map((subject, id) => {
+        return (
+          <TopicsTable
+            subject={subject}
+            projectTopics={projectTopics}
+            setProjectTopics={setProjectTopics}
+            editableSubjects={editableSubjects}
+          />
+        );
+      }),
+    [projectTopics]
+  );
+  return editableTopicsMemo;
+};

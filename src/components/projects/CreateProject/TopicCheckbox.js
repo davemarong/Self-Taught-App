@@ -1,6 +1,6 @@
 // IMPORTS
 // React
-import React from "react";
+import React, { useEffect } from "react";
 
 // Material UI
 import Checkbox from "@mui/material/Checkbox";
@@ -10,13 +10,16 @@ export default function TopicCheckbox({
   projectTopics,
   setProjectTopics,
   topic,
+  editableSubjects,
 }) {
+  console.log("topic checkbox");
+
   // Functions
   const getIndexOfSubject = (subject) => {
     let indexOfSubject = false;
     if (projectTopics) {
       projectTopics.map((item, id) => {
-        if (item[0].subject === subject) {
+        if (item[0].title === subject) {
           indexOfSubject = id;
         }
       });
@@ -38,15 +41,15 @@ export default function TopicCheckbox({
   };
   const addTopicToProject = (topic, indexOfSubject) => {
     let updatedProjectTopics = projectTopics;
-    const newTopic = { title: topic, learned: false, useInProject: false };
+    const newTopic = { title: topic, learned: false, useInProject: true };
     updatedProjectTopics[indexOfSubject][1].push(newTopic);
     setProjectTopics(updatedProjectTopics);
   };
   const addTopicAndSubjectToProject = (subject, topic) => {
     let updatedProjectTopics = projectTopics;
     const newTopicAndSubject = [
-      { subject: subject },
-      [{ title: topic, learned: false, useInProject: false }],
+      { title: subject },
+      [{ title: topic, learned: false, useInProject: true }],
     ];
     updatedProjectTopics.push(newTopicAndSubject);
     setProjectTopics(updatedProjectTopics);
@@ -62,11 +65,18 @@ export default function TopicCheckbox({
     if (indexOfTopic) return;
     addTopicToProject(topic, indexOfSubject);
   };
+  const updateEditableProjectTopics = () => {
+    setProjectTopics(editableSubjects);
+  };
 
+  const updateCheckboxValue = () => {};
+  // CREATE A FUNCTION HERE THAT UPDATE AN ARRAY OF ALL TOPICS, EVERYTIME YOU CLICK ON THE CHECHBOX
   // Return
   return (
     <Checkbox
+      defaultChecked={topic.usedInProject}
       onChange={(event) => {
+        console.log(projectTopics);
         if (event.target.checked) {
           updateProjectTopics(topic.title, subject[0].title);
         } else {

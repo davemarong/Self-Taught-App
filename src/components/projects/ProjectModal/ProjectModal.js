@@ -38,7 +38,7 @@ export default function ProjectModal({ project }) {
     setCreateProjectModal(!createProjectModal);
   };
   const editProject = () => {};
-  console.log(project);
+  console.log("projectmodal");
   return (
     <>
       <MaterialUI_Modal

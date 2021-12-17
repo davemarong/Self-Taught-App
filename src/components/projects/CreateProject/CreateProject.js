@@ -25,7 +25,10 @@ import usePushDataToServer from "../../customHooks/usePushDataToServer";
 
 // Utils
 import { createEditableListOfTopics } from "../Utils/EditProjectUtils";
-import { createSubjectsMemo } from "../Utils/MemoUtils";
+import {
+  createSubjectsMemo,
+  createEditableSubjectsMemo,
+} from "../Utils/MemoUtils";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
@@ -41,22 +44,51 @@ export default function CreateProject({ setBackdrop, project }) {
   const [projectName, setProjectName] = useState();
   const [projectDescription, setProjectDescription] = useState();
   const [projectTopics, setProjectTopics] = useState([]);
-  const [allProjectTopics, setAllProjectTopics] = useState();
   // Redux
   const dispatch = useDispatch();
   const mainSubjects = useSelector((state) => state.mainSubjects);
   const secondarySubjects = useSelector((state) => state.secondarySubjects);
   const projects = useSelector((state) => state.projects);
 
+  let editableTopics;
+  let editableTopicsMemo;
+  let TopicsTableMainSubjectsMemo;
+  let TopicsTableSecondarySubjectsMemo;
+  // useEffect
+  useEffect(() => {
+    if (setBackdrop) {
+      setBackdrop(false);
+    }
+    if (editableTopics) {
+      setProjectTopics(project.topicsUsed);
+    }
+  }, []);
+
   // UseMemo
-  const [TopicsTableMainSubjectsMemo, TopicsTableSecondarySubjectsMemo] =
-    createSubjectsMemo(
-      useMemo,
+
+  if (project) {
+    editableTopics = createEditableListOfTopics(
       mainSubjects,
       secondarySubjects,
+      project,
+      setProjectTopics
+    );
+    editableTopicsMemo = createEditableSubjectsMemo(
+      useMemo,
+      editableTopics,
       projectTopics,
       setProjectTopics
     );
+  } else {
+    [TopicsTableMainSubjectsMemo, TopicsTableSecondarySubjectsMemo] =
+      createSubjectsMemo(
+        useMemo,
+        mainSubjects,
+        secondarySubjects,
+        projectTopics,
+        setProjectTopics
+      );
+  }
 
   // Functions
   const saveProject = () => {
@@ -70,16 +102,6 @@ export default function CreateProject({ setBackdrop, project }) {
     dispatch(change_projects(updatedProjects));
     updateProjectsInServer(updatedProjects);
   };
-
-  // useEffect
-  useEffect(() => {
-    if (setBackdrop) {
-      setBackdrop(false);
-    }
-    if (project) {
-      createEditableListOfTopics(mainSubjects, secondarySubjects, project);
-    }
-  }, []);
   console.log(project);
   return (
     <>
@@ -93,8 +115,15 @@ export default function CreateProject({ setBackdrop, project }) {
           <Typography style={{ padding: "70px 0 20px 0" }}>
             Choose which subject and topics you want to use in your project
           </Typography>
-          {TopicsTableMainSubjectsMemo}
-          {TopicsTableSecondarySubjectsMemo}
+          {editableTopicsMemo ? (
+            editableTopicsMemo
+          ) : (
+            <div>
+              {TopicsTableMainSubjectsMemo}
+              {TopicsTableSecondarySubjectsMemo}
+            </div>
+          )}
+
           <GreenButton func={saveProject} text="Save project" />
         </Card>
       </Container>

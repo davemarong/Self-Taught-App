@@ -22,6 +22,7 @@ export default function TopicsTable({
   subject,
   projectTopics,
   setProjectTopics,
+  editableSubjects,
 }) {
   console.log("topicstable");
   return (
@@ -91,6 +92,7 @@ export default function TopicsTable({
                         projectTopics={projectTopics}
                         setProjectTopics={setProjectTopics}
                         topic={topic}
+                        editableSubjects={editableSubjects}
                       />
                     </TableCell>
                   </TableRow>

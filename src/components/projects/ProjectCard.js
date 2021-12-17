@@ -2,7 +2,7 @@
 
 // React
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 // Material UI
 import Typography from "@material-ui/core/Typography";
@@ -22,25 +22,21 @@ import ProjectModal from "./ProjectModal/ProjectModal";
 import MaterialUI_modal from "../modal/MaterialUI_modal";
 import TransparentButton from "../button/TransparentButton";
 
-export default function ProjectCard({ project, openCreateProjectModal }) {
+export default function ProjectCard({ project }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
   };
+  console.log("projectcard");
 
   return (
     <>
       <MaterialUI_modal
         stateValue={projectModal}
         modalFunction={toggleProjectModal}
-        component={
-          <ProjectModal
-            openCreateProjectModal={openCreateProjectModal}
-            project={project}
-          />
-        }
+        component={<ProjectModal project={project} />}
       />
       <Grid
         item
@@ -73,7 +69,7 @@ export default function ProjectCard({ project, openCreateProjectModal }) {
         <Grid container direction="row" item spacing={2}>
           {project.topicsUsed.map((subject, id) => {
             return (
-              <Grid item xs={4}>
+              <Grid key={id} item xs={4}>
                 <Card>
                   <Typography align="center">{subject[0].title}</Typography>
                 </Card>
