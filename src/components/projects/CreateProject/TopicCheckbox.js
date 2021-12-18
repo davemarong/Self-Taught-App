@@ -74,7 +74,7 @@ export default function TopicCheckbox({
   // Return
   return (
     <Checkbox
-      defaultChecked={topic.usedInProject}
+      defaultChecked={topic.useInProject}
       onChange={(event) => {
         console.log(projectTopics);
         if (event.target.checked) {

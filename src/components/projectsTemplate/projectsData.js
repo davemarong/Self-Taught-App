@@ -5,7 +5,7 @@ export const completedProjectsData = [
       title: "Pokemon app",
       description: "An app that creates a pokedex for you",
       summary: "",
-      topicsUsed: [
+      topics: [
         [
           { title: "HTML" },
           [
@@ -34,7 +34,7 @@ export const completedProjectsData = [
     {
       title: "digimon app",
       description: "An app that creates a digimon for you",
-      topicsUsed: [
+      topics: [
         [
           { title: "React" },
           [
@@ -62,7 +62,7 @@ export const completedProjectsData = [
     {
       title: "yu gi oh app",
       description: "An app that creates a jaden yuki for you",
-      topicsUsed: [
+      topics: [
         [
           { title: "node" },
           [

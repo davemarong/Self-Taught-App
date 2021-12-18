@@ -8,11 +8,13 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { get_user_profile_data, sign_in } from "../../redux/actions/index";
+import { change_projects } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSnackbar } from "notistack";
 import Checkbox from "@material-ui/core/Checkbox";
 import useAddTopics from "../customHooks/useAddTopics";
+import { completedProjectsData } from "../projectsTemplate/projectsData";
 import {
   main_subjects,
   secondary_subjects,
@@ -62,6 +64,11 @@ export default function Login() {
           dispatch(
             change_secondary_subjects(response.data.user.secondarySubjects)
           );
+        }
+        if (response.data.user.projects[0] === null) {
+          dispatch(change_projects(completedProjectsData));
+        } else {
+          dispatch(change_projects(response.data.user.projects));
         }
         dispatch(get_user_profile_data(response.data.user));
         dispatch(sign_in(true));

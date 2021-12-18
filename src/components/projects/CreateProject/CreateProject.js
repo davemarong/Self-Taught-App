@@ -41,9 +41,11 @@ export default function CreateProject({ setBackdrop, project }) {
   const { updateProjectsInServer } = usePushDataToServer();
 
   // UseState
-  const [projectName, setProjectName] = useState();
-  const [projectDescription, setProjectDescription] = useState();
+  const [projectName, setProjectName] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+  const [projectSummary, setProjectSummary] = useState("");
   const [projectTopics, setProjectTopics] = useState([]);
+
   // Redux
   const dispatch = useDispatch();
   const mainSubjects = useSelector((state) => state.mainSubjects);
@@ -60,7 +62,7 @@ export default function CreateProject({ setBackdrop, project }) {
       setBackdrop(false);
     }
     if (editableTopics) {
-      setProjectTopics(project.topicsUsed);
+      setProjectTopics(project.topics);
     }
   }, []);
 
@@ -95,6 +97,7 @@ export default function CreateProject({ setBackdrop, project }) {
     let updatedProjects = projects;
     const newProject = {
       title: projectName,
+      summary: projectSummary,
       description: projectDescription,
       topics: projectTopics,
     };
@@ -109,7 +112,12 @@ export default function CreateProject({ setBackdrop, project }) {
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
           <Typography variant="h4">Create a new project</Typography>
           <InputFields
+            project={project}
+            projectSummary={projectSummary}
+            setProjectSummary={setProjectSummary}
+            projectName={projectName}
             setProjectName={setProjectName}
+            projectDescription={projectDescription}
             setProjectDescription={setProjectDescription}
           />
           <Typography style={{ padding: "70px 0 20px 0" }}>

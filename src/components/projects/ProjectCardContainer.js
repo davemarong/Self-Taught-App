@@ -21,10 +21,32 @@ import Zoom from "@material-ui/core/Zoom";
 // Framer motion
 import { motion } from "framer-motion";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+
 export default function ProjectsCard({ projectData, openCreateProjectModal }) {
-  console.log("projectcontainer");
+  // Redux
+  const projects = useSelector((state) => state.projects);
+  console.log(projects.futureProjects);
   return (
     <>
+      <Card>
+        <Grid container direction="row" justify="space-evenly">
+          <Grid item xs={12}>
+            <Typography align="center" variant="h3">
+              Future projects
+            </Typography>
+          </Grid>
+          {projects.futureProjects.map((project, id) => {
+            return (
+              <ProjectCard
+                project={project}
+                openCreateProjectModal={openCreateProjectModal}
+              />
+            );
+          })}
+        </Grid>
+      </Card>
       <Card>
         <Grid container direction="row" justify="space-evenly">
           <Grid item xs={12}>
@@ -32,7 +54,7 @@ export default function ProjectsCard({ projectData, openCreateProjectModal }) {
               Completed projects
             </Typography>
           </Grid>
-          {projectData[1].map((project, id) => {
+          {projects.completedProjects.map((project, id) => {
             return (
               <ProjectCard
                 project={project}

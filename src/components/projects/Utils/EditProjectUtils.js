@@ -6,7 +6,7 @@ export const createEditableListOfTopics = (
   const allTopics = createListOfAllTopics(mainSubjects, secondarySubjects);
   const topicsConcated = concatAllTopicsAndProjectTopics(
     allTopics,
-    project.topicsUsed
+    project.topics
   );
   return removeDuplicatesFromAllTopics(topicsConcated);
 };

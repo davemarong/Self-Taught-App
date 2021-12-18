@@ -25,6 +25,7 @@ import TransparentButton from "../button/TransparentButton";
 export default function ProjectCard({ project }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
+
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
@@ -67,7 +68,7 @@ export default function ProjectCard({ project }) {
           <Typography>{project.description}</Typography>
         </Grid>
         <Grid container direction="row" item spacing={2}>
-          {project.topicsUsed.map((subject, id) => {
+          {project.topics.map((subject, id) => {
             return (
               <Grid key={id} item xs={4}>
                 <Card>

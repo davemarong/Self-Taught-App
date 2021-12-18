@@ -87,7 +87,7 @@ export default function ProjectModal({ project }) {
               </Table>
             </Grid>
             <Grid item container direction="row" spacing={2}>
-              {project.topicsUsed.map((subject, id) => {
+              {project.topics.map((subject, id) => {
                 return (
                   <Grid item md={4} xs={9}>
                     <TopicsTable subject={subject} />
