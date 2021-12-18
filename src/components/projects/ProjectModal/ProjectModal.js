@@ -26,19 +26,38 @@ import TopicsTable from "./TopicsTable";
 import CreateProject from "../CreateProject/CreateProject";
 import MaterialUI_Modal from "../../modal/MaterialUI_modal";
 // Custom hooks
+import usePushDataToServer from "../../customHooks/usePushDataToServer";
+
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { change_projects } from "../../../redux/actions";
 
 // Redux
 
 export default function ProjectModal({ project }) {
   // useState
   const [createProjectModal, setCreateProjectModal] = useState(false);
-
+  // Redux
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects);
+  // Custom hooks
+  const { updateProjectsInServer } = usePushDataToServer();
   // Functions
   const toggleCreateProjectModal = () => {
     setCreateProjectModal(!createProjectModal);
   };
-  const editProject = () => {};
-  console.log("projectmodal");
+  const markProjectAsCompleted = (indexOfProject) => {
+    const spliceProject = projects.futureProjects.splice(indexOfProject, 1);
+    projects.completedProjects.push(spliceProject);
+    dispatch(change_projects(projects));
+    updateProjectsInServer(projects);
+  };
+  const findIndexOfProject = (project) => {
+    return projects.futureProjects.findIndex(
+      (item) => item.title === project.title
+    );
+  };
+
   return (
     <>
       <MaterialUI_Modal
@@ -103,6 +122,17 @@ export default function ProjectModal({ project }) {
                 variant="contained"
               >
                 Edit mode
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={() => {
+                  const index = findIndexOfProject(project);
+                  markProjectAsCompleted(index);
+                }}
+                variant="contained"
+              >
+                Complete project
               </Button>
             </Grid>
           </Grid>
