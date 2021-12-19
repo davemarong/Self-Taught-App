@@ -53,10 +53,8 @@ export default function Login() {
         localStorage.setItem("jwt", response.data.jwt);
         if (response.data.user.mainSubjects === null) {
           dispatch(change_main_subjects(main_subjects));
-          console.log("if");
         } else {
           dispatch(change_main_subjects(response.data.user.mainSubjects));
-          console.log("else");
         }
         if (response.data.user.secondarySubjects === null) {
           dispatch(change_secondary_subjects(secondary_subjects));
@@ -65,8 +63,8 @@ export default function Login() {
             change_secondary_subjects(response.data.user.secondarySubjects)
           );
         }
-        if (response.data.user.projects[0] === null) {
-          dispatch(change_projects(completedProjectsData));
+        if (response.data.user.projects === null) {
+          // dispatch(change_projects(completedProjectsData));
         } else {
           dispatch(change_projects(response.data.user.projects));
         }

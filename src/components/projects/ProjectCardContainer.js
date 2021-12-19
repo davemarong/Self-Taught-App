@@ -24,10 +24,14 @@ import { motion } from "framer-motion";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 
-export default function ProjectsCard({ projectData, openCreateProjectModal }) {
+export default function ProjectsCard({
+  projectData,
+  openCreateProjectModal,
+  closeCreateProjectModal,
+}) {
   // Redux
   const projects = useSelector((state) => state.projects);
-  console.log(projects.futureProjects);
+  console.log(projects);
   return (
     <>
       <Card>
@@ -42,6 +46,7 @@ export default function ProjectsCard({ projectData, openCreateProjectModal }) {
               <ProjectCard
                 project={project}
                 openCreateProjectModal={openCreateProjectModal}
+                closeCreateProjectModal={closeCreateProjectModal}
               />
             );
           })}
@@ -57,6 +62,7 @@ export default function ProjectsCard({ projectData, openCreateProjectModal }) {
           {projects.completedProjects.map((project, id) => {
             return (
               <ProjectCard
+                closeCreateProjectModal={closeCreateProjectModal}
                 project={project}
                 openCreateProjectModal={openCreateProjectModal}
               />

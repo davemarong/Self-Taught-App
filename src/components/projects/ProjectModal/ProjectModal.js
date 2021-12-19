@@ -18,6 +18,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 // Icon
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+
 // Framer motion
 import { motion } from "framer-motion";
 import TopicsTable from "./TopicsTable";
@@ -25,6 +28,9 @@ import TopicsTable from "./TopicsTable";
 // Components
 import CreateProject from "../CreateProject/CreateProject";
 import MaterialUI_Modal from "../../modal/MaterialUI_modal";
+import TransparentButton from "../../button/TransparentButton";
+import ProjectModalButtons from "./ProjectModalButtons";
+
 // Custom hooks
 import usePushDataToServer from "../../customHooks/usePushDataToServer";
 
@@ -34,28 +40,19 @@ import { change_projects } from "../../../redux/actions";
 
 // Redux
 
-export default function ProjectModal({ project }) {
+export default function ProjectModal({
+  project,
+  toggleProjectModal,
+  closeCreateProjectModal,
+}) {
   // useState
   const [createProjectModal, setCreateProjectModal] = useState(false);
   // Redux
-  const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
   // Custom hooks
-  const { updateProjectsInServer } = usePushDataToServer();
   // Functions
   const toggleCreateProjectModal = () => {
     setCreateProjectModal(!createProjectModal);
-  };
-  const markProjectAsCompleted = (indexOfProject) => {
-    const spliceProject = projects.futureProjects.splice(indexOfProject, 1);
-    projects.completedProjects.push(spliceProject);
-    dispatch(change_projects(projects));
-    updateProjectsInServer(projects);
-  };
-  const findIndexOfProject = (project) => {
-    return projects.futureProjects.findIndex(
-      (item) => item.title === project.title
-    );
   };
 
   return (
@@ -63,11 +60,21 @@ export default function ProjectModal({ project }) {
       <MaterialUI_Modal
         stateValue={createProjectModal}
         modalFunction={toggleCreateProjectModal}
-        component={<CreateProject project={project} />}
+        component={
+          <CreateProject
+            project={project}
+            closeCreateProjectModal={toggleCreateProjectModal}
+          />
+        }
       />
       <Container maxWidth="md" style={{ marginTop: 70 }}>
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
           <Grid container direction="column" alignItems="center">
+            <Grid container justify="flex-end" item>
+              <IconButton onClick={toggleProjectModal}>
+                <CloseIcon />
+              </IconButton>
+            </Grid>
             <Grid item>
               <Typography variant="h3">{project.title}</Typography>
             </Grid>
@@ -114,27 +121,12 @@ export default function ProjectModal({ project }) {
                 );
               })}
             </Grid>
-            <Grid item>
-              <Button
-                onClick={() => {
-                  toggleCreateProjectModal();
-                }}
-                variant="contained"
-              >
-                Edit mode
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                onClick={() => {
-                  const index = findIndexOfProject(project);
-                  markProjectAsCompleted(index);
-                }}
-                variant="contained"
-              >
-                Complete project
-              </Button>
-            </Grid>
+            <ProjectModalButtons
+              project={project}
+              projects={projects}
+              toggleCreateProjectModal={toggleCreateProjectModal}
+              toggleProjectModal={toggleProjectModal}
+            />
           </Grid>
         </Card>
       </Container>

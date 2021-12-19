@@ -22,7 +22,7 @@ import ProjectModal from "./ProjectModal/ProjectModal";
 import MaterialUI_modal from "../modal/MaterialUI_modal";
 import TransparentButton from "../button/TransparentButton";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, closeCreateProjectModal }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
 
@@ -37,7 +37,13 @@ export default function ProjectCard({ project }) {
       <MaterialUI_modal
         stateValue={projectModal}
         modalFunction={toggleProjectModal}
-        component={<ProjectModal project={project} />}
+        component={
+          <ProjectModal
+            project={project}
+            toggleProjectModal={toggleProjectModal}
+            closeCreateProjectModal={closeCreateProjectModal}
+          />
+        }
       />
       <Grid
         item

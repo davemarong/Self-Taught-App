@@ -58,7 +58,10 @@ export default function Projects() {
         }}
       >
         <Zoom timeout={300} in={createProjectModal}>
-          <CreateProject setBackdrop={setBackdrop} />
+          <CreateProject
+            setBackdrop={setBackdrop}
+            closeCreateProjectModal={closeCreateProjectModal}
+          />
         </Zoom>
       </Modal>
       <Backdrop
@@ -71,6 +74,7 @@ export default function Projects() {
       <ProjectCardContainer
         openCreateProjectModal={openCreateProjectModal}
         projectData={completedProjectsData}
+        closeCreateProjectModal={closeCreateProjectModal}
       />
       <Button
         onClick={() => {

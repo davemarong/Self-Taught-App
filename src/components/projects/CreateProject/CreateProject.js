@@ -12,6 +12,9 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 // Icon
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+
 // Framer motion
 import { motion } from "framer-motion";
 
@@ -34,7 +37,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
 import { CircularProgress } from "@material-ui/core";
 import { getFormLabelUtilityClasses } from "@mui/material";
-export default function CreateProject({ setBackdrop, project }) {
+export default function CreateProject({
+  setBackdrop,
+  project,
+  closeCreateProjectModal,
+  toggleCreateProjectModal,
+}) {
   console.log("createproject");
 
   // Custom hooks
@@ -99,17 +107,26 @@ export default function CreateProject({ setBackdrop, project }) {
       title: projectName,
       summary: projectSummary,
       description: projectDescription,
+      completed: false,
       topics: projectTopics,
+      img: "",
+      timeSpent: "",
+      timeDone: "",
+      url: "",
     };
     updatedProjects.futureProjects.push(newProject);
     dispatch(change_projects(updatedProjects));
     updateProjectsInServer(updatedProjects);
+    closeCreateProjectModal();
   };
   console.log(project);
   return (
     <>
       <Container maxWidth="md" style={{ marginTop: 70 }}>
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
+          <IconButton onClick={closeCreateProjectModal}>
+            <CloseIcon />
+          </IconButton>
           <Typography variant="h4">Create a new project</Typography>
           <InputFields
             project={project}
