@@ -1,3 +1,4 @@
+// Parent function which creates a copy of current project and merge it with all topics to create a editable project
 export const createEditableListOfTopics = (
   mainSubjects,
   secondarySubjects,
@@ -10,8 +11,9 @@ export const createEditableListOfTopics = (
   );
   return removeDuplicatesFromAllTopics(topicsConcated);
 };
+
+// Create array of all topics without some properties
 const createListOfAllTopics = (mainSubjects, secondarySubjects) => {
-  // Create array of all topics without some properties
   const mainSubjectTopics = mainSubjects.map((subject, id) => {
     return [
       { title: subject[0].title },
@@ -34,6 +36,7 @@ const createListOfAllTopics = (mainSubjects, secondarySubjects) => {
   });
   return [...mainSubjectTopics, ...secondarySubjectTopics];
 };
+// Concating all topics and project topics together and creates a new array
 const concatAllTopicsAndProjectTopics = (allTopics, projectTopics) => {
   return allTopics.map((subject, id) => {
     let subjectAndTopics = subject;
@@ -49,6 +52,7 @@ const concatAllTopicsAndProjectTopics = (allTopics, projectTopics) => {
     return subjectAndTopics;
   });
 };
+// Removing duplicates from array from function "concatAllTopicsAndProjectTopics"
 const removeDuplicatesFromAllTopics = (topicsConcated) => {
   return topicsConcated.map((subject, id) => {
     return [

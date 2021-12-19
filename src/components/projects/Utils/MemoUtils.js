@@ -2,6 +2,8 @@
 import TopicsTable from "../CreateProject/TopicsTable";
 
 // UseMemo
+// Creating memos of "TopicTable" components because of performance (to many re-renders)
+// mainsubject and secondary subject topics
 export const createSubjectsMemo = (
   memo,
   mainSubject,
@@ -38,6 +40,7 @@ export const createSubjectsMemo = (
   );
   return [mainSubjectMemo, secondarySubjectMemo];
 };
+// Editable subject topics
 export const createEditableSubjectsMemo = (
   memo,
   editableSubjects,

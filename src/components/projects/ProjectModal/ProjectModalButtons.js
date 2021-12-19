@@ -26,6 +26,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
 // Custom hooks
 import usePushDataToServer from "../../customHooks/usePushDataToServer";
+// Utils
+import { findIndexOfProject } from "../Utils/UniversalUtils";
 
 export default function ProjectModalButtons({
   project,
@@ -36,30 +38,23 @@ export default function ProjectModalButtons({
   const [isProjectCompleted, setIsProjectCompleted] = useState(
     project.completed
   );
+
   // Redux
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
+
   // Custom hooks
   const { updateProjectsInServer } = usePushDataToServer();
+
   // Functions
-  const markProjectAsCompleted = (
-    indexOfProject,
-    exportFromProject,
-    insertProjectTo
-  ) => {
+  // Move project to either "future projects" or "completed projects"
+  const moveProject = (indexOfProject, exportFromProject, insertProjectTo) => {
     let spliceProject = exportFromProject.splice(indexOfProject, 1);
-    console.log(spliceProject);
     spliceProject[0].completed = !spliceProject[0].completed;
-    console.log(spliceProject[0]);
     insertProjectTo.push(spliceProject[0]);
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
     toggleProjectModal();
-  };
-
-  const findIndexOfProject = (project, projectType) => {
-    console.log(projectType, project);
-    return projectType.findIndex((item) => item.title === project.title);
   };
 
   return (
@@ -83,7 +78,7 @@ export default function ProjectModalButtons({
                 projects.completedProjects
               );
               console.log(index, "complete");
-              markProjectAsCompleted(
+              moveProject(
                 index,
                 projects.completedProjects,
                 projects.futureProjects
@@ -102,7 +97,7 @@ export default function ProjectModalButtons({
               );
               console.log(index, "future");
 
-              markProjectAsCompleted(
+              moveProject(
                 index,
                 projects.futureProjects,
                 projects.completedProjects

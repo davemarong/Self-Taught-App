@@ -16,6 +16,7 @@ export default function InputFields({
   setProjectDescription,
   project,
 }) {
+  // Use effect
   useEffect(() => {
     if (project) {
       setProjectDescription(project.description);
@@ -23,6 +24,8 @@ export default function InputFields({
       setProjectSummary(project.summary);
     }
   }, []);
+  // Functions
+  // handle user input
   const handleProjectNameUserInput = (event) => {
     setProjectName(event.target.value);
   };

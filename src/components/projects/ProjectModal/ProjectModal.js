@@ -49,7 +49,6 @@ export default function ProjectModal({
   const [createProjectModal, setCreateProjectModal] = useState(false);
   // Redux
   const projects = useSelector((state) => state.projects);
-  // Custom hooks
   // Functions
   const toggleCreateProjectModal = () => {
     setCreateProjectModal(!createProjectModal);

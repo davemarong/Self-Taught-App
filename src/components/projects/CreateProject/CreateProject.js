@@ -14,6 +14,8 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import { CircularProgress } from "@material-ui/core";
+import { getFormLabelUtilityClasses } from "@mui/material";
 
 // Framer motion
 import { motion } from "framer-motion";
@@ -32,11 +34,11 @@ import {
   createSubjectsMemo,
   createEditableSubjectsMemo,
 } from "../Utils/MemoUtils";
+import { findIndexOfProject } from "../Utils/UniversalUtils";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
-import { CircularProgress } from "@material-ui/core";
-import { getFormLabelUtilityClasses } from "@mui/material";
+
 export default function CreateProject({
   setBackdrop,
   project,
@@ -75,7 +77,7 @@ export default function CreateProject({
   }, []);
 
   // UseMemo
-
+  // If "project" is true, then createProject is editing a current project
   if (project) {
     editableTopics = createEditableListOfTopics(
       mainSubjects,
@@ -90,6 +92,7 @@ export default function CreateProject({
       setProjectTopics
     );
   } else {
+    // if "project" is false, then a new project is being created
     [TopicsTableMainSubjectsMemo, TopicsTableSecondarySubjectsMemo] =
       createSubjectsMemo(
         useMemo,
@@ -101,8 +104,8 @@ export default function CreateProject({
   }
 
   // Functions
+  // Saving a project
   const saveProject = () => {
-    let updatedProjects = projects;
     const newProject = {
       title: projectName,
       summary: projectSummary,
@@ -114,9 +117,19 @@ export default function CreateProject({
       timeDone: "",
       url: "",
     };
-    updatedProjects.futureProjects.push(newProject);
-    dispatch(change_projects(updatedProjects));
-    updateProjectsInServer(updatedProjects);
+    // Replace updated project with old project
+    if (project) {
+      const indexOfProject = findIndexOfProject(
+        project,
+        projects.futureProjects
+      );
+      projects.futureProjects.splice(indexOfProject, 1, newProject);
+      // Add new project
+    } else {
+      projects.futureProjects.push(newProject);
+    }
+    dispatch(change_projects(projects));
+    updateProjectsInServer(projects);
     closeCreateProjectModal();
   };
   console.log(project);

@@ -15,6 +15,7 @@ export default function TopicCheckbox({
   console.log("topic checkbox");
 
   // Functions
+  // Find out if subject exists in project, and find index
   const getIndexOfSubject = (subject) => {
     let indexOfSubject = false;
     if (projectTopics) {
@@ -26,6 +27,7 @@ export default function TopicCheckbox({
     }
     return indexOfSubject;
   };
+  // Find out if topic exists in project, and find index
   const getIndexOfTopic = (indexOfSubject, topic) => {
     let indexOfTopic = false;
     for (let i = 0; i < projectTopics[indexOfSubject][1].length; i++) {
@@ -54,7 +56,7 @@ export default function TopicCheckbox({
     updatedProjectTopics.push(newTopicAndSubject);
     setProjectTopics(updatedProjectTopics);
   };
-
+  // parent function which add/removes topic/subjects from project
   const updateProjectTopics = (topic, subject) => {
     const indexOfSubject = getIndexOfSubject(subject);
     if (typeof indexOfSubject != "number") {
@@ -65,12 +67,7 @@ export default function TopicCheckbox({
     if (indexOfTopic) return;
     addTopicToProject(topic, indexOfSubject);
   };
-  const updateEditableProjectTopics = () => {
-    setProjectTopics(editableSubjects);
-  };
 
-  const updateCheckboxValue = () => {};
-  // CREATE A FUNCTION HERE THAT UPDATE AN ARRAY OF ALL TOPICS, EVERYTIME YOU CLICK ON THE CHECHBOX
   // Return
   return (
     <Checkbox
