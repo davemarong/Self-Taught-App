@@ -16,6 +16,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import CircularProgress from "@mui/material/CircularProgress";
+
 // Icon
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
@@ -33,6 +35,9 @@ export default function ProjectModalButtons({
   project,
   toggleCreateProjectModal,
   toggleProjectModal,
+  backdropSpinner,
+  setBackdrop,
+  backdrop,
 }) {
   // UseState
   const [isProjectCompleted, setIsProjectCompleted] = useState(
@@ -56,13 +61,17 @@ export default function ProjectModalButtons({
     updateProjectsInServer(projects);
     toggleProjectModal();
   };
-
+  console.log("render");
   return (
     <>
+      {backdrop ? <CircularProgress color="secondary" /> : null}
       <Grid item>
         <Button
           onClick={() => {
-            toggleCreateProjectModal();
+            setBackdrop(true);
+            console.log("should be true");
+            setTimeout(toggleCreateProjectModal, 500);
+            console.log("done");
           }}
           variant="contained"
         >

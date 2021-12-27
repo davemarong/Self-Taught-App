@@ -8,13 +8,9 @@ import React, { useState, useMemo, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@mui/material/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
+import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-
-// Icons
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 
 // Components
 import CreateProject from "./CreateProject/CreateProject";
@@ -30,11 +26,10 @@ import { useSelector, useDispatch } from "react-redux";
 // Utils
 
 export default function Projects() {
-  console.log("project");
   // State
   const [createProjectModal, setCreateProjectModal] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
-  // Redux
+
   // Functions
   const openCreateProjectModal = () => {
     setCreateProjectModal(true);
@@ -45,9 +40,7 @@ export default function Projects() {
   const backdropSpinner = () => {
     setBackdrop(!backdrop);
   };
-  const close = () => {
-    setBackdrop(false);
-  };
+
   return (
     <div>
       <MaterialUI_modal
@@ -63,7 +56,7 @@ export default function Projects() {
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 3 }}
         open={backdrop}
-        onClick={close}
+        onClick={backdropSpinner}
       >
         <CircularProgress color="secondary" />
       </Backdrop>

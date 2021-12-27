@@ -47,13 +47,17 @@ export default function ProjectModal({
 }) {
   // useState
   const [createProjectModal, setCreateProjectModal] = useState(false);
+  const [backdrop, setBackdrop] = useState(false);
+
   // Redux
   const projects = useSelector((state) => state.projects);
   // Functions
   const toggleCreateProjectModal = () => {
     setCreateProjectModal(!createProjectModal);
   };
-
+  const backdropSpinner = () => {
+    setBackdrop(!backdrop);
+  };
   return (
     <>
       <MaterialUI_Modal
@@ -63,6 +67,7 @@ export default function ProjectModal({
           <CreateProject
             project={project}
             closeCreateProjectModal={toggleCreateProjectModal}
+            setBackdrop={setBackdrop}
           />
         }
       />
@@ -80,6 +85,7 @@ export default function ProjectModal({
             <Grid item>
               <Typography variant="h6">{project.description}</Typography>
             </Grid>
+            {/* {backdrop ? <CircularProgress color="secondary" /> : null} */}
             <Grid
               container
               justify="flex-end"
@@ -125,6 +131,9 @@ export default function ProjectModal({
               projects={projects}
               toggleCreateProjectModal={toggleCreateProjectModal}
               toggleProjectModal={toggleProjectModal}
+              backdropSpinner={backdropSpinner}
+              setBackdrop={setBackdrop}
+              backdrop={backdrop}
             />
           </Grid>
         </Card>

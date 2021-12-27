@@ -11,8 +11,9 @@ import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // Icon
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -35,6 +36,7 @@ export default function ProjectCard({
   // UseState
   const [projectModal, setProjectModal] = useState(false);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
+
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
@@ -42,6 +44,7 @@ export default function ProjectCard({
   const toggleDeleteProjectModal = () => {
     setDeleteProjectModal(!deleteProjectModal);
   };
+
   console.log("projectcard");
   return (
     <>
@@ -66,6 +69,7 @@ export default function ProjectCard({
           />
         }
       />
+
       <Grid
         item
         xs={8}
