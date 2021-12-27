@@ -17,7 +17,12 @@ import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
-
+// Icon
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+// Components
+import TransparentButton from "../button/TransparentButton";
 // Framer motion
 import { motion } from "framer-motion";
 
@@ -29,13 +34,26 @@ export default function ProjectsCard({
   openCreateProjectModal,
   closeCreateProjectModal,
 }) {
+  // UseState
+  const [showDeleteOption, setShowDeleteOption] = useState(false);
+  // Functions
+  const toggleDeleteOption = () => {
+    setShowDeleteOption(!showDeleteOption);
+  };
+
   // Redux
   const projects = useSelector((state) => state.projects);
-  console.log(projects);
   return (
     <>
-      <Card>
+      <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
         <Grid container direction="row" justify="space-evenly">
+          <Grid style={{ margin: 16 }} container justify="flex-end" item>
+            <TransparentButton
+              func={toggleDeleteOption}
+              icon={<EditIcon />}
+              text="Edit"
+            />
+          </Grid>
           <Grid item xs={12}>
             <Typography align="center" variant="h3">
               Future projects
@@ -47,13 +65,21 @@ export default function ProjectsCard({
                 project={project}
                 openCreateProjectModal={openCreateProjectModal}
                 closeCreateProjectModal={closeCreateProjectModal}
+                showDeleteOption={showDeleteOption}
               />
             );
           })}
         </Grid>
       </Card>
-      <Card>
+      <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
         <Grid container direction="row" justify="space-evenly">
+          <Grid style={{ margin: 16 }} container justify="flex-end" item>
+            <TransparentButton
+              func={toggleDeleteOption}
+              icon={<EditIcon />}
+              text="Edit"
+            />
+          </Grid>
           <Grid item xs={12}>
             <Typography align="center" variant="h3">
               Completed projects

@@ -14,6 +14,9 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Zoom from "@material-ui/core/Zoom";
 
+// Icon
+import DeleteIcon from "@material-ui/icons/Delete";
+
 // Framer motion
 import { motion } from "framer-motion";
 
@@ -21,17 +24,25 @@ import { motion } from "framer-motion";
 import ProjectModal from "./ProjectModal/ProjectModal";
 import MaterialUI_modal from "../modal/MaterialUI_modal";
 import TransparentButton from "../button/TransparentButton";
+import RedButton from "../button/RedButton";
+import DeleteProject from "./DeleteProject/DeleteProject";
 
-export default function ProjectCard({ project, closeCreateProjectModal }) {
+export default function ProjectCard({
+  project,
+  closeCreateProjectModal,
+  showDeleteOption,
+}) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
-
+  const [deleteProjectModal, setDeleteProjectModal] = useState(false);
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
   };
+  const toggleDeleteProjectModal = () => {
+    setDeleteProjectModal(!deleteProjectModal);
+  };
   console.log("projectcard");
-
   return (
     <>
       <MaterialUI_modal
@@ -42,6 +53,16 @@ export default function ProjectCard({ project, closeCreateProjectModal }) {
             project={project}
             toggleProjectModal={toggleProjectModal}
             closeCreateProjectModal={closeCreateProjectModal}
+          />
+        }
+      />
+      <MaterialUI_modal
+        stateValue={deleteProjectModal}
+        modalFunction={toggleDeleteProjectModal}
+        component={
+          <DeleteProject
+            project={project}
+            toggleDeleteProjectModal={toggleDeleteProjectModal}
           />
         }
       />
@@ -84,12 +105,23 @@ export default function ProjectCard({ project, closeCreateProjectModal }) {
             );
           })}
         </Grid>
-        <Grid container justify="flex-end" item>
-          <TransparentButton
-            func={toggleProjectModal}
-            icon={<OpenInNewRoundedIcon />}
-            text="Open"
-          />
+        <Grid container direction="column" alignItems="flex-end" item>
+          <Grid item>
+            <TransparentButton
+              func={toggleProjectModal}
+              icon={<OpenInNewRoundedIcon />}
+              text="Open"
+            />
+          </Grid>
+          <Grid item>
+            {showDeleteOption ? (
+              <RedButton
+                func={toggleDeleteProjectModal}
+                icon={<DeleteIcon />}
+                text="Delete"
+              />
+            ) : null}
+          </Grid>
         </Grid>
       </Grid>
     </>

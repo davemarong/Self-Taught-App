@@ -13,6 +13,8 @@ import Zoom from "@material-ui/core/Zoom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 // Icons
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 
 // Components
 import CreateProject from "./CreateProject/CreateProject";
