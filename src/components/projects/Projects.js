@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 // IMPORTS
 
 // React
@@ -46,13 +47,12 @@ export default function Projects() {
       <MaterialUI_modal
         stateValue={createProjectModal}
         modalFunction={closeCreateProjectModal}
-        component={
-          <CreateProject
-            setBackdrop={setBackdrop}
-            closeCreateProjectModal={closeCreateProjectModal}
-          />
-        }
-      />
+      >
+        <CreateProject
+          setBackdrop={setBackdrop}
+          closeCreateProjectModal={closeCreateProjectModal}
+        />
+      </MaterialUI_modal>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 3 }}
         open={backdrop}

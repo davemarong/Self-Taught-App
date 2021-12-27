@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 // IMPORTS
 
 // React
@@ -50,28 +51,32 @@ export default function ProjectModal({
   const [createProjectModal, setCreateProjectModal] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
 
-  // Redux
-  const projects = useSelector((state) => state.projects);
   // Functions
   const toggleCreateProjectModal = () => {
     setCreateProjectModal(!createProjectModal);
   };
-  const backdropSpinner = () => {
-    setBackdrop(!backdrop);
+  // Props Object
+  const projectModalButtonsProps = {
+    project: project,
+    toggleCreateProjectModal: toggleCreateProjectModal,
+    toggleProjectModal: toggleProjectModal,
+    setBackdrop: setBackdrop,
+    backdrop: backdrop,
+    setUpdate: setUpdate,
+    update: update,
   };
   return (
     <>
       <MaterialUI_Modal
         stateValue={createProjectModal}
         modalFunction={toggleCreateProjectModal}
-        component={
-          <CreateProject
-            project={project}
-            closeCreateProjectModal={toggleCreateProjectModal}
-            setBackdrop={setBackdrop}
-          />
-        }
-      />
+      >
+        <CreateProject
+          project={project}
+          closeCreateProjectModal={toggleCreateProjectModal}
+          setBackdrop={setBackdrop}
+        />
+      </MaterialUI_Modal>
       <Container maxWidth="md" style={{ marginTop: 70 }}>
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
           <Grid container direction="column" alignItems="center">
@@ -86,7 +91,6 @@ export default function ProjectModal({
             <Grid item>
               <Typography variant="h6">{project.description}</Typography>
             </Grid>
-            {/* {backdrop ? <CircularProgress color="secondary" /> : null} */}
             <Grid
               container
               justify="flex-end"
@@ -127,17 +131,7 @@ export default function ProjectModal({
                 );
               })}
             </Grid>
-            <ProjectModalButtons
-              project={project}
-              projects={projects}
-              toggleCreateProjectModal={toggleCreateProjectModal}
-              toggleProjectModal={toggleProjectModal}
-              backdropSpinner={backdropSpinner}
-              setBackdrop={setBackdrop}
-              backdrop={backdrop}
-              setUpdate={setUpdate}
-              update={update}
-            />
+            <ProjectModalButtons {...projectModalButtonsProps} />
           </Grid>
         </Card>
       </Container>

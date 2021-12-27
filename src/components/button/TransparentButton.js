@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 // Framer motion
 import { motion } from "framer-motion";
 
-export default function TransparentButton({ func, icon, text }) {
+export default function TransparentButton({ func, icon, children }) {
   return (
     <Button
       onClick={func}
@@ -22,7 +22,7 @@ export default function TransparentButton({ func, icon, text }) {
       variant="outlined"
       endIcon={icon}
     >
-      {text}
+      {children}
     </Button>
   );
 }

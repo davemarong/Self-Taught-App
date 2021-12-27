@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 // Framer motion
 import { motion } from "framer-motion";
 
-export default function GreenButton({ text, icon, func }) {
+export default function GreenButton({ children, icon, func }) {
   return (
     <Button
       style={{
@@ -23,7 +23,7 @@ export default function GreenButton({ text, icon, func }) {
       variant="outlined"
       endIcon={icon}
     >
-      {text}
+      {children}
     </Button>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 // IMPORTS
 
 // React
@@ -38,7 +39,7 @@ export default function ProjectCard({
   // UseState
   const [projectModal, setProjectModal] = useState(false);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
-  // const [update, setUpdate] = useState();
+
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
@@ -46,33 +47,32 @@ export default function ProjectCard({
   const toggleDeleteProjectModal = () => {
     setDeleteProjectModal(!deleteProjectModal);
   };
-
+  // Props object
+  const projectModalProps = {
+    project: project,
+    closeCreateProjectModal: closeCreateProjectModal,
+    showDeleteOption: showDeleteOption,
+    setUpdate: setUpdate,
+    update: update,
+  };
   console.log("projectcard");
   return (
     <>
       <MaterialUI_modal
         stateValue={projectModal}
         modalFunction={toggleProjectModal}
-        component={
-          <ProjectModal
-            project={project}
-            toggleProjectModal={toggleProjectModal}
-            closeCreateProjectModal={closeCreateProjectModal}
-            setUpdate={setUpdate}
-            update={update}
-          />
-        }
-      />
+      >
+        <ProjectModal {...projectModalProps} />
+      </MaterialUI_modal>
       <MaterialUI_modal
         stateValue={deleteProjectModal}
         modalFunction={toggleDeleteProjectModal}
-        component={
-          <DeleteProject
-            project={project}
-            toggleDeleteProjectModal={toggleDeleteProjectModal}
-          />
-        }
-      />
+      >
+        <DeleteProject
+          project={project}
+          toggleDeleteProjectModal={toggleDeleteProjectModal}
+        />
+      </MaterialUI_modal>
       <Grid
         item
         xs={8}
@@ -117,16 +117,15 @@ export default function ProjectCard({
             <TransparentButton
               func={toggleProjectModal}
               icon={<OpenInNewRoundedIcon />}
-              text="Open"
-            />
+            >
+              Open
+            </TransparentButton>
           </Grid>
           <Grid item>
             {showDeleteOption ? (
-              <RedButton
-                func={toggleDeleteProjectModal}
-                icon={<DeleteIcon />}
-                text="Delete"
-              />
+              <RedButton func={toggleDeleteProjectModal} icon={<DeleteIcon />}>
+                Delete
+              </RedButton>
             ) : null}
           </Grid>
         </Grid>

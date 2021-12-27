@@ -12,7 +12,7 @@ import Zoom from "@material-ui/core/Zoom";
 export default function MaterialUI_modal({
   stateValue,
   modalFunction,
-  component,
+  children,
 }) {
   return (
     <Modal
@@ -31,7 +31,7 @@ export default function MaterialUI_modal({
             margin: "auto",
           }}
         >
-          {component}
+          {children}
         </div>
       </Zoom>
     </Modal>

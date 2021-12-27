@@ -42,18 +42,25 @@ export default function ProjectsCard({
     setShowDeleteOption(!showDeleteOption);
   };
 
+  // Props object
+  const projectCardProps = {
+    openCreateProjectModal: openCreateProjectModal,
+    closeCreateProjectModal: closeCreateProjectModal,
+    showDeleteOption: showDeleteOption,
+    setUpdate: setUpdate,
+    update: update,
+  };
   // Redux
   const projects = useSelector((state) => state.projects);
+
   return (
     <>
       <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
         <Grid container direction="row" justify="space-evenly">
           <Grid style={{ margin: 16 }} container justify="flex-end" item>
-            <TransparentButton
-              func={toggleDeleteOption}
-              icon={<EditIcon />}
-              text="Edit"
-            />
+            <TransparentButton func={toggleDeleteOption} icon={<EditIcon />}>
+              Edit
+            </TransparentButton>
           </Grid>
           <Grid item xs={12}>
             <Typography align="center" variant="h3">
@@ -61,27 +68,16 @@ export default function ProjectsCard({
             </Typography>
           </Grid>
           {projects.futureProjects.map((project, id) => {
-            return (
-              <ProjectCard
-                project={project}
-                openCreateProjectModal={openCreateProjectModal}
-                closeCreateProjectModal={closeCreateProjectModal}
-                showDeleteOption={showDeleteOption}
-                setUpdate={setUpdate}
-                update={update}
-              />
-            );
+            return <ProjectCard project={project} {...projectCardProps} />;
           })}
         </Grid>
       </Card>
       <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
         <Grid container direction="row" justify="space-evenly">
           <Grid style={{ margin: 16 }} container justify="flex-end" item>
-            <TransparentButton
-              func={toggleDeleteOption}
-              icon={<EditIcon />}
-              text="Edit"
-            />
+            <TransparentButton func={toggleDeleteOption} icon={<EditIcon />}>
+              Edit
+            </TransparentButton>
           </Grid>
           <Grid item xs={12}>
             <Typography align="center" variant="h3">
@@ -89,16 +85,7 @@ export default function ProjectsCard({
             </Typography>
           </Grid>
           {projects.completedProjects.map((project, id) => {
-            return (
-              <ProjectCard
-                closeCreateProjectModal={closeCreateProjectModal}
-                project={project}
-                openCreateProjectModal={openCreateProjectModal}
-                showDeleteOption={showDeleteOption}
-                setUpdate={setUpdate}
-                update={update}
-              />
-            );
+            return <ProjectCard project={project} {...projectCardProps} />;
           })}
         </Grid>
       </Card>

@@ -70,9 +70,7 @@ export default function ProjectModalButtons({
         <Button
           onClick={() => {
             setBackdrop(true);
-            console.log("should be true");
             setTimeout(toggleCreateProjectModal, 500);
-            console.log("done");
           }}
           variant="contained"
         >

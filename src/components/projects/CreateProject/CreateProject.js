@@ -163,7 +163,7 @@ export default function CreateProject({
             </div>
           )}
 
-          <GreenButton func={saveProject} text="Save project" />
+          <GreenButton func={saveProject}> Save project</GreenButton>
         </Card>
       </Container>
     </>

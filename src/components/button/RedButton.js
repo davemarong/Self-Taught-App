@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 // Framer motion
 import { motion } from "framer-motion";
 
-export default function RedButton({ text, icon, func }) {
+export default function RedButton({ children, icon, func }) {
   return (
     <Button
       style={{ backgroundColor: "#ff2929", color: "white" }}
@@ -21,7 +21,7 @@ export default function RedButton({ text, icon, func }) {
       variant="outlined"
       endIcon={icon}
     >
-      {text}
+      {children}
     </Button>
   );
 }
