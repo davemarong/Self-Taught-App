@@ -43,7 +43,8 @@ import { change_projects } from "../../../redux/actions";
 export default function ProjectModal({
   project,
   toggleProjectModal,
-  closeCreateProjectModal,
+  setUpdate,
+  update,
 }) {
   // useState
   const [createProjectModal, setCreateProjectModal] = useState(false);
@@ -134,6 +135,8 @@ export default function ProjectModal({
               backdropSpinner={backdropSpinner}
               setBackdrop={setBackdrop}
               backdrop={backdrop}
+              setUpdate={setUpdate}
+              update={update}
             />
           </Grid>
         </Card>

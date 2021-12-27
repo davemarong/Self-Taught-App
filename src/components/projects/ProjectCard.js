@@ -32,11 +32,13 @@ export default function ProjectCard({
   project,
   closeCreateProjectModal,
   showDeleteOption,
+  setUpdate,
+  update,
 }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
-
+  // const [update, setUpdate] = useState();
   //   Functions
   const toggleProjectModal = () => {
     setProjectModal(!projectModal);
@@ -56,6 +58,8 @@ export default function ProjectCard({
             project={project}
             toggleProjectModal={toggleProjectModal}
             closeCreateProjectModal={closeCreateProjectModal}
+            setUpdate={setUpdate}
+            update={update}
           />
         }
       />
@@ -69,7 +73,6 @@ export default function ProjectCard({
           />
         }
       />
-
       <Grid
         item
         xs={8}

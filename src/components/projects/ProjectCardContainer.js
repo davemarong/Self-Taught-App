@@ -35,6 +35,8 @@ export default function ProjectsCard({
 }) {
   // UseState
   const [showDeleteOption, setShowDeleteOption] = useState(false);
+  const [update, setUpdate] = useState(0);
+
   // Functions
   const toggleDeleteOption = () => {
     setShowDeleteOption(!showDeleteOption);
@@ -65,6 +67,8 @@ export default function ProjectsCard({
                 openCreateProjectModal={openCreateProjectModal}
                 closeCreateProjectModal={closeCreateProjectModal}
                 showDeleteOption={showDeleteOption}
+                setUpdate={setUpdate}
+                update={update}
               />
             );
           })}
@@ -91,6 +95,8 @@ export default function ProjectsCard({
                 project={project}
                 openCreateProjectModal={openCreateProjectModal}
                 showDeleteOption={showDeleteOption}
+                setUpdate={setUpdate}
+                update={update}
               />
             );
           })}

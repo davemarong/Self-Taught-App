@@ -35,9 +35,10 @@ export default function ProjectModalButtons({
   project,
   toggleCreateProjectModal,
   toggleProjectModal,
-  backdropSpinner,
   setBackdrop,
   backdrop,
+  setUpdate,
+  update,
 }) {
   // UseState
   const [isProjectCompleted, setIsProjectCompleted] = useState(
@@ -52,7 +53,7 @@ export default function ProjectModalButtons({
   const { updateProjectsInServer } = usePushDataToServer();
 
   // Functions
-  // Move project to either "future projects" or "completed projects"
+  // Move project to either "future projects" or "completed projects" and reRender comp with setUpdate
   const moveProject = (indexOfProject, exportFromProject, insertProjectTo) => {
     let spliceProject = exportFromProject.splice(indexOfProject, 1);
     spliceProject[0].completed = !spliceProject[0].completed;
@@ -60,8 +61,8 @@ export default function ProjectModalButtons({
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
     toggleProjectModal();
+    setUpdate(update + 1);
   };
-  console.log("render");
   return (
     <>
       {backdrop ? <CircularProgress color="secondary" /> : null}
@@ -86,7 +87,6 @@ export default function ProjectModalButtons({
                 project,
                 projects.completedProjects
               );
-              console.log(index, "complete");
               moveProject(
                 index,
                 projects.completedProjects,
@@ -104,8 +104,6 @@ export default function ProjectModalButtons({
                 project,
                 projects.futureProjects
               );
-              console.log(index, "future");
-
               moveProject(
                 index,
                 projects.futureProjects,
