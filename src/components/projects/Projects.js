@@ -50,22 +50,16 @@ export default function Projects() {
   };
   return (
     <div>
-      <Modal
-        open={createProjectModal}
-        onClose={closeCreateProjectModal}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Zoom timeout={300} in={createProjectModal}>
+      <MaterialUI_modal
+        stateValue={createProjectModal}
+        modalFunction={closeCreateProjectModal}
+        component={
           <CreateProject
             setBackdrop={setBackdrop}
             closeCreateProjectModal={closeCreateProjectModal}
           />
-        </Zoom>
-      </Modal>
+        }
+      />
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 3 }}
         open={backdrop}

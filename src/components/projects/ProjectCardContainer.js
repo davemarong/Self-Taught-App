@@ -1,7 +1,6 @@
 // IMPORTS
 
 // React
-
 import React, { useState } from "react";
 // Components
 import { completedProjectsData } from "../projectsTemplate/projectsData";
@@ -91,6 +90,7 @@ export default function ProjectsCard({
                 closeCreateProjectModal={closeCreateProjectModal}
                 project={project}
                 openCreateProjectModal={openCreateProjectModal}
+                showDeleteOption={showDeleteOption}
               />
             );
           })}

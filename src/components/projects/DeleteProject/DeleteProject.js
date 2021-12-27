@@ -33,6 +33,7 @@ export default function DeleteProject({ toggleDeleteProjectModal, project }) {
   const { updateProjectsInServer } = usePushDataToServer();
 
   // Functions
+  // Find out if the project selected is completed or not
   const findProjectType = () => {
     if (project.completed) {
       return projects.completedProjects;
