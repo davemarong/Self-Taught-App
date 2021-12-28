@@ -4,32 +4,15 @@
 import React, { useState, useEffect } from "react";
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+
 import CircularProgress from "@mui/material/CircularProgress";
-
+import Menu from "@mui/material/Menu";
 // Icon
-import AddIcon from "@material-ui/icons/Add";
-import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
-// Redux
-import { useSelector, useDispatch } from "react-redux";
-import { change_projects } from "../../../redux/actions";
-// Custom hooks
-import usePushDataToServer from "../../customHooks/usePushDataToServer";
-// Utils
-import { findIndexOfProject } from "../Utils/UniversalUtils";
+// Components
+import MenuItems from "./MenuItems";
 
 export default function ProjectModalButtons({
   project,
@@ -41,79 +24,50 @@ export default function ProjectModalButtons({
   update,
 }) {
   // UseState
-  const [isProjectCompleted, setIsProjectCompleted] = useState(
-    project.completed
-  );
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  // Redux
-  const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects);
-
-  // Custom hooks
-  const { updateProjectsInServer } = usePushDataToServer();
+  // Variable
+  const open = Boolean(anchorEl);
 
   // Functions
-  // Move project to either "future projects" or "completed projects" and reRender comp with setUpdate
-  const moveProject = (indexOfProject, exportFromProject, insertProjectTo) => {
-    let spliceProject = exportFromProject.splice(indexOfProject, 1);
-    spliceProject[0].completed = !spliceProject[0].completed;
-    insertProjectTo.push(spliceProject[0]);
-    dispatch(change_projects(projects));
-    updateProjectsInServer(projects);
-    toggleProjectModal();
-    setUpdate(update + 1);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  console.log(open);
   return (
     <>
       {backdrop ? <CircularProgress color="secondary" /> : null}
-      <Grid item>
-        <Button
-          onClick={() => {
-            setBackdrop(true);
-            setTimeout(toggleCreateProjectModal, 500);
-          }}
-          variant="contained"
-        >
-          Edit mode
-        </Button>
-      </Grid>
-      <Grid item>
-        {isProjectCompleted ? (
-          <Button
-            onClick={() => {
-              const index = findIndexOfProject(
-                project,
-                projects.completedProjects
-              );
-              moveProject(
-                index,
-                projects.completedProjects,
-                projects.futureProjects
-              );
-            }}
-            variant="contained"
-          >
-            Un-complete project
-          </Button>
-        ) : (
-          <Button
-            onClick={() => {
-              const index = findIndexOfProject(
-                project,
-                projects.futureProjects
-              );
-              moveProject(
-                index,
-                projects.futureProjects,
-                projects.completedProjects
-              );
-            }}
-            variant="contained"
-          >
-            Complete project
-          </Button>
-        )}
-      </Grid>
+      <IconButton
+        id="basic-button"
+        // aria-controls={open ? "basic-menu" : undefined}
+        // aria-haspopup="true"
+        // aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        <MenuRoundedIcon />
+      </IconButton>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItems
+          handleClose={handleClose}
+          setBackdrop={setBackdrop}
+          toggleCreateProjectModal={toggleCreateProjectModal}
+          project={project}
+          toggleProjectModal={toggleProjectModal}
+          update={update}
+          setUpdate={setUpdate}
+        />
+      </Menu>
     </>
   );
 }

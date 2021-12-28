@@ -31,7 +31,8 @@ import CreateProject from "../CreateProject/CreateProject";
 import MaterialUI_Modal from "../../modal/MaterialUI_modal";
 import TransparentButton from "../../button/TransparentButton";
 import ProjectModalButtons from "./ProjectModalButtons";
-
+import Menu from "./Menu";
+import MenuItems from "./MenuItems";
 // Custom hooks
 import usePushDataToServer from "../../customHooks/usePushDataToServer";
 
@@ -93,6 +94,9 @@ export default function ProjectModal({
             <Grid item>
               <Typography variant="h5">{project.summary}</Typography>
             </Grid>
+            <Grid container justify="flex-start" item>
+              <ProjectModalButtons {...projectModalButtonsProps} />
+            </Grid>
             <Grid
               container
               justify="flex-end"
@@ -103,7 +107,7 @@ export default function ProjectModal({
               sm={6}
               xs={9}
             >
-              <Table>
+              {/* <Table>
                 <TableBody
                   style={{
                     border: "1px solid rgba(224, 224, 224, 1)",
@@ -122,7 +126,7 @@ export default function ProjectModal({
                     <TableCell>{project.url}</TableCell>
                   </TableRow>
                 </TableBody>
-              </Table>
+              </Table> */}
             </Grid>
             <Grid item>
               <Typography variant="h7" align="center">
@@ -138,7 +142,6 @@ export default function ProjectModal({
                 );
               })}
             </Grid>
-            <ProjectModalButtons {...projectModalButtonsProps} />
           </Grid>
         </Card>
       </Container>
