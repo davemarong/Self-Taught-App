@@ -63,7 +63,7 @@ export default function TopicsTable({
             </TableHead>
             {subject[1].map((topic, id) => {
               return (
-                <TableBody>
+                <TableBody key={id}>
                   <TableRow>
                     <TableCell
                       style={{

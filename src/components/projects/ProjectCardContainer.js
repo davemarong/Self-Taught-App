@@ -68,7 +68,15 @@ export default function ProjectsCard({
             </Typography>
           </Grid>
           {projects.futureProjects.map((project, id) => {
-            return <ProjectCard project={project} {...projectCardProps} />;
+            return (
+              <React.Fragment key={id}>
+                <ProjectCard
+                  project={project}
+                  {...projectCardProps}
+                  color="#ff9c36"
+                />
+              </React.Fragment>
+            );
           })}
         </Grid>
       </Card>
@@ -85,7 +93,15 @@ export default function ProjectsCard({
             </Typography>
           </Grid>
           {projects.completedProjects.map((project, id) => {
-            return <ProjectCard project={project} {...projectCardProps} />;
+            return (
+              <React.Fragment key={id}>
+                <ProjectCard
+                  project={project}
+                  {...projectCardProps}
+                  color="#41dcff"
+                />
+              </React.Fragment>
+            );
           })}
         </Grid>
       </Card>

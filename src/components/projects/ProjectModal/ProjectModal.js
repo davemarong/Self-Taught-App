@@ -46,6 +46,7 @@ export default function ProjectModal({
   toggleProjectModal,
   setUpdate,
   update,
+  projectModalProps,
 }) {
   // useState
   const [createProjectModal, setCreateProjectModal] = useState(false);
@@ -65,6 +66,7 @@ export default function ProjectModal({
     setUpdate: setUpdate,
     update: update,
   };
+  console.log(projectModalProps);
   return (
     <>
       <MaterialUI_Modal
@@ -79,7 +81,7 @@ export default function ProjectModal({
       </MaterialUI_Modal>
       <Container maxWidth="md" style={{ marginTop: 70 }}>
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
-          <Grid container direction="column" alignItems="center">
+          <Grid container direction="column" alignItems="center" spacing={2}>
             <Grid container justify="flex-end" item>
               <IconButton onClick={toggleProjectModal}>
                 <CloseIcon />
@@ -89,7 +91,7 @@ export default function ProjectModal({
               <Typography variant="h3">{project.title}</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="h6">{project.description}</Typography>
+              <Typography variant="h5">{project.summary}</Typography>
             </Grid>
             <Grid
               container
@@ -122,10 +124,15 @@ export default function ProjectModal({
                 </TableBody>
               </Table>
             </Grid>
+            <Grid item>
+              <Typography variant="h7" align="center">
+                {project.description}
+              </Typography>
+            </Grid>
             <Grid item container direction="row" spacing={2}>
               {project.topics.map((subject, id) => {
                 return (
-                  <Grid item md={4} xs={9}>
+                  <Grid key={id} item md={6} xs={9}>
                     <TopicsTable subject={subject} />
                   </Grid>
                 );

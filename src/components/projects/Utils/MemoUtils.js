@@ -1,4 +1,6 @@
+import React from "react";
 // Components
+
 import TopicsTable from "../CreateProject/TopicsTable";
 
 // UseMemo
@@ -16,11 +18,13 @@ export const createSubjectsMemo = (
     () =>
       mainSubject.map((subject, id) => {
         return (
-          <TopicsTable
-            subject={subject}
-            projectTopics={projectTopics}
-            setProjectTopics={setProjectTopics}
-          />
+          <React.Fragment key={id}>
+            <TopicsTable
+              subject={subject}
+              projectTopics={projectTopics}
+              setProjectTopics={setProjectTopics}
+            />
+          </React.Fragment>
         );
       }),
     [mainSubject, projectTopics]
@@ -29,11 +33,13 @@ export const createSubjectsMemo = (
     () =>
       secondarySubject.map((subject, id) => {
         return (
-          <TopicsTable
-            subject={subject}
-            projectTopics={projectTopics}
-            setProjectTopics={setProjectTopics}
-          />
+          <React.Fragment key={id}>
+            <TopicsTable
+              subject={subject}
+              projectTopics={projectTopics}
+              setProjectTopics={setProjectTopics}
+            />
+          </React.Fragment>
         );
       }),
     [secondarySubject, projectTopics]
@@ -53,12 +59,14 @@ export const createEditableSubjectsMemo = (
     () =>
       editableSubjects.map((subject, id) => {
         return (
-          <TopicsTable
-            subject={subject}
-            projectTopics={projectTopics}
-            setProjectTopics={setProjectTopics}
-            editableSubjects={editableSubjects}
-          />
+          <React.Fragment key={id}>
+            <TopicsTable
+              subject={subject}
+              projectTopics={projectTopics}
+              setProjectTopics={setProjectTopics}
+              editableSubjects={editableSubjects}
+            />
+          </React.Fragment>
         );
       }),
     [projectTopics]

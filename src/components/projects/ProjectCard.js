@@ -19,9 +19,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 // Icon
 import DeleteIcon from "@material-ui/icons/Delete";
 
-// Framer motion
-import { motion } from "framer-motion";
-
 // Components
 import ProjectModal from "./ProjectModal/ProjectModal";
 import MaterialUI_modal from "../modal/MaterialUI_modal";
@@ -35,6 +32,7 @@ export default function ProjectCard({
   showDeleteOption,
   setUpdate,
   update,
+  color,
 }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
@@ -54,6 +52,7 @@ export default function ProjectCard({
     showDeleteOption: showDeleteOption,
     setUpdate: setUpdate,
     update: update,
+    toggleProjectModal: toggleProjectModal,
   };
   console.log("projectcard");
   return (
@@ -77,7 +76,7 @@ export default function ProjectCard({
         item
         xs={8}
         sm={6}
-        md={3}
+        md={4}
         container
         direction="column"
         style={{
@@ -87,8 +86,9 @@ export default function ProjectCard({
           width: 250,
           padding: 20,
           margin: "20px",
+          background: `linear-gradient(10deg, ${color} 10%, #c445fb 60%)`,
         }}
-        spacing={1}
+        spacing={3}
       >
         <Grid item>
           <Typography align="left" variant="subtitle2">
@@ -98,13 +98,15 @@ export default function ProjectCard({
         <Grid item>
           <Typography variant="h4">{project.title}</Typography>
         </Grid>
+
         <Grid item>
-          <Typography>{project.description}</Typography>
+          <Typography>{project.summary}</Typography>
         </Grid>
+
         <Grid container direction="row" item spacing={2}>
           {project.topics.map((subject, id) => {
             return (
-              <Grid key={id} item xs={4}>
+              <Grid key={id} item xs={12}>
                 <Card>
                   <Typography align="center">{subject[0].title}</Typography>
                 </Card>
@@ -113,21 +115,17 @@ export default function ProjectCard({
           })}
         </Grid>
         <Grid container direction="column" alignItems="flex-end" item>
-          <Grid item>
-            <TransparentButton
-              func={toggleProjectModal}
-              icon={<OpenInNewRoundedIcon />}
-            >
-              Open
-            </TransparentButton>
-          </Grid>
-          <Grid item>
-            {showDeleteOption ? (
-              <RedButton func={toggleDeleteProjectModal} icon={<DeleteIcon />}>
-                Delete
-              </RedButton>
-            ) : null}
-          </Grid>
+          <TransparentButton
+            func={toggleProjectModal}
+            icon={<OpenInNewRoundedIcon />}
+          >
+            Open
+          </TransparentButton>
+          {showDeleteOption ? (
+            <RedButton func={toggleDeleteProjectModal} icon={<DeleteIcon />}>
+              Delete
+            </RedButton>
+          ) : null}
         </Grid>
       </Grid>
     </>

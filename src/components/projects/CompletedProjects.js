@@ -22,6 +22,7 @@ export default function CompletedProjects() {
         {completedProjectsData[1].map((project, id) => {
           return (
             <Grid
+              key={id}
               item
               xs={8}
               sm={6}
@@ -46,20 +47,11 @@ export default function CompletedProjects() {
               <Grid container direction="row" item>
                 {project.topicsUsed.map((subject, id) => {
                   return (
-                    <Grid item xs={4}>
+                    <Grid key={id} item xs={4}>
                       <Card style={{ margin: 10 }}>
                         <Typography align="center">
                           {subject[0].title}
                         </Typography>
-                        {/* <List>
-                          {subject[1].map((topic, id) => {
-                            return (
-                              <>
-                                <ListItem>{topic.title}</ListItem>
-                              </>
-                            );
-                          })}
-                        </List> */}
                       </Card>
                     </Grid>
                   );
