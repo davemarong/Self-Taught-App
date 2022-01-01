@@ -1,11 +1,14 @@
 // IMPORTS
 
 // React
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Material UI
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
+import DateAdapter from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
 
 export default function InputFields({
   projectSummary,
@@ -15,13 +18,21 @@ export default function InputFields({
   setProjectName,
   setProjectDescription,
   project,
+  projectFinalDate,
+  setProjectFinalDate,
+  projectFinishedDate,
+  setProjectFinishedDate,
 }) {
+  // UseState
+  // const []
   // Use effect
   useEffect(() => {
     if (project) {
       setProjectDescription(project.description);
       setProjectName(project.title);
       setProjectSummary(project.summary);
+      setProjectFinalDate(project.finalDate);
+      setProjectFinishedDate(project.finishedDate);
     }
   }, []);
   // Functions
@@ -35,6 +46,11 @@ export default function InputFields({
   const handleProjectSummaryUserInput = (event) => {
     setProjectSummary(event.target.value);
   };
+  const handleProjectFinalDateUserInput = (date) => {
+    setProjectFinalDate(date.toDateString().slice(4));
+  };
+
+  console.log(projectFinalDate);
   return (
     <Grid container direction="column" spacing={4}>
       <Grid item md={4} sm={5} xs={7}>
@@ -66,6 +82,17 @@ export default function InputFields({
           label="Project description"
           rows={10}
         />
+      </Grid>
+      <Grid item>
+        <LocalizationProvider dateAdapter={DateAdapter}>
+          <DatePicker
+            label="Project due date"
+            inputFormat="MM/dd/yyyy"
+            value={projectFinalDate}
+            onChange={handleProjectFinalDateUserInput}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
       </Grid>
     </Grid>
   );
