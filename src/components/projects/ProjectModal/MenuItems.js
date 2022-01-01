@@ -40,11 +40,22 @@ export default function MenuItems({
   const moveProject = (indexOfProject, exportFromProject, insertProjectTo) => {
     let spliceProject = exportFromProject.splice(indexOfProject, 1);
     spliceProject[0].completed = !spliceProject[0].completed;
+    console.log(spliceProject);
+
+    saveProjectCompleteDate(spliceProject);
+    console.log(spliceProject);
+
     insertProjectTo.push(spliceProject[0]);
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
     toggleProjectModal();
     setUpdate(update + 1);
+  };
+
+  const saveProjectCompleteDate = (project) => {
+    if (project[0].completed) {
+      project[0].finishedDate = new Date().toISOString().slice(0, 10);
+    }
   };
   return (
     <div>
@@ -56,7 +67,7 @@ export default function MenuItems({
             handleClose();
           }}
         >
-          Edit mode
+          Edit project
         </MenuItem>
       </Tooltip>
       {isProjectCompleted ? (

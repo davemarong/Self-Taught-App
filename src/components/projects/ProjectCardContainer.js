@@ -58,7 +58,11 @@ export default function ProjectsCard({
       <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
         <Grid container direction="row" justify="space-evenly">
           <Grid style={{ margin: 16 }} container justify="flex-end" item>
-            <TransparentButton func={toggleDeleteOption} icon={<EditIcon />}>
+            <TransparentButton
+              color={showDeleteOption ? "#9e9e9eb0" : null}
+              func={toggleDeleteOption}
+              icon={<EditIcon />}
+            >
               Edit
             </TransparentButton>
           </Grid>

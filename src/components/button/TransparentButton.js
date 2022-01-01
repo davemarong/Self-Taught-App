@@ -9,11 +9,11 @@ import Button from "@material-ui/core/Button";
 // Framer motion
 import { motion } from "framer-motion";
 
-export default function TransparentButton({ func, icon, children }) {
+export default function TransparentButton({ func, icon, children, color }) {
   return (
     <Button
       onClick={func}
-      style={{ margin: "10px 0" }}
+      style={{ margin: "10px 0", backgroundColor: color }}
       component={motion.div}
       whileHover={{
         scale: 1.2,

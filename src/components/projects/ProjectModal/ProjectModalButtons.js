@@ -4,8 +4,6 @@
 import React, { useState, useEffect } from "react";
 
 // Material UI
-
-import CircularProgress from "@mui/material/CircularProgress";
 import Menu from "@mui/material/Menu";
 // Icon
 import IconButton from "@material-ui/core/IconButton";
@@ -19,7 +17,6 @@ export default function ProjectModalButtons({
   toggleCreateProjectModal,
   toggleProjectModal,
   setBackdrop,
-  backdrop,
   setUpdate,
   update,
 }) {
@@ -39,7 +36,6 @@ export default function ProjectModalButtons({
   console.log(open);
   return (
     <>
-      {backdrop ? <CircularProgress color="secondary" /> : null}
       <IconButton
         id="basic-button"
         // aria-controls={open ? "basic-menu" : undefined}

@@ -17,6 +17,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import CircularProgress from "@mui/material/CircularProgress";
+
 // Icon
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
@@ -67,7 +69,8 @@ export default function ProjectModal({
     setUpdate: setUpdate,
     update: update,
   };
-  console.log(projectModalProps);
+  // console.log(projectModalProps);
+  console.log(project);
   return (
     <>
       <MaterialUI_Modal
@@ -89,11 +92,17 @@ export default function ProjectModal({
               </IconButton>
             </Grid>
             <Grid item>
+              <Typography>
+                {project.finalDate ? project.finalDate.slice(0, 10) : null}
+              </Typography>
+            </Grid>
+            <Grid item>
               <Typography variant="h3">{project.title}</Typography>
             </Grid>
             <Grid item>
               <Typography variant="h5">{project.summary}</Typography>
             </Grid>
+            {backdrop ? <CircularProgress color="secondary" /> : null}
             <Grid container justify="flex-start" item>
               <ProjectModalButtons {...projectModalButtonsProps} />
             </Grid>
