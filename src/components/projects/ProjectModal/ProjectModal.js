@@ -18,6 +18,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tooltip from "@mui/material/Tooltip";
 
 // Icon
 import AddIcon from "@material-ui/icons/Add";
@@ -91,11 +92,20 @@ export default function ProjectModal({
                 <CloseIcon />
               </IconButton>
             </Grid>
-            <Grid item>
-              <Typography>
-                {project.finalDate ? project.finalDate.slice(0, 10) : null}
-              </Typography>
-            </Grid>
+            {project.completed ? (
+              <Grid container justify="flex-end" alignItems="center" item>
+                <Tooltip title="Date of project completed" placement="left-end">
+                  <Typography variant="h6">{project.finishedDate}</Typography>
+                </Tooltip>
+              </Grid>
+            ) : (
+              <Grid container justify="flex-end" alignItems="center" item>
+                <Tooltip title="Projects final date" placement="left-end">
+                  <Typography variant="h6">{project.finalDate}</Typography>
+                </Tooltip>
+              </Grid>
+            )}
+
             <Grid item>
               <Typography variant="h3">{project.title}</Typography>
             </Grid>
@@ -105,37 +115,6 @@ export default function ProjectModal({
             {backdrop ? <CircularProgress color="secondary" /> : null}
             <Grid container justify="flex-start" item>
               <ProjectModalButtons {...projectModalButtonsProps} />
-            </Grid>
-            <Grid
-              container
-              justify="flex-end"
-              alignItems="flex-end"
-              alignContent="flex-end"
-              item
-              md={4}
-              sm={6}
-              xs={9}
-            >
-              {/* <Table>
-                <TableBody
-                  style={{
-                    border: "1px solid rgba(224, 224, 224, 1)",
-                  }}
-                >
-                  <TableRow>
-                    <TableCell>Time spent</TableCell>
-                    <TableCell>{project.timeSpent}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Time done</TableCell>
-                    <TableCell>{project.timeDone}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Url</TableCell>
-                    <TableCell>{project.url}</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table> */}
             </Grid>
             <Grid item>
               <Typography variant="h7" align="center">

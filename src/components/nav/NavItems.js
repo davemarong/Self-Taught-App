@@ -6,9 +6,9 @@ const NavItems = [
     cName: "nav-text",
   },
   {
-    title: "Topics",
+    title: "Stats",
     id: 2,
-    path: "/topics",
+    path: "/stats",
     cName: "nav-text",
   },
   {

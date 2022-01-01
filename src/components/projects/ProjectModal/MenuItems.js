@@ -40,11 +40,7 @@ export default function MenuItems({
   const moveProject = (indexOfProject, exportFromProject, insertProjectTo) => {
     let spliceProject = exportFromProject.splice(indexOfProject, 1);
     spliceProject[0].completed = !spliceProject[0].completed;
-    console.log(spliceProject);
-
     saveProjectCompleteDate(spliceProject);
-    console.log(spliceProject);
-
     insertProjectTo.push(spliceProject[0]);
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);

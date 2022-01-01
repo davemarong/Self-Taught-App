@@ -13,6 +13,7 @@ import Account from "./pages/Account";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
 import Skills from "./pages/Skills";
+import Stats from "./pages/Stats";
 import { SnackbarProvider } from "notistack";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -56,7 +57,7 @@ function App() {
           <Nav />
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/topics" component={Skills} />
+            <Route path="/stats" component={Stats} />
             <Route path="/projects" component={ProjectsPage} />
             <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />
