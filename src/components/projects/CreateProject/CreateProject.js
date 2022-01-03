@@ -107,7 +107,7 @@ export default function CreateProject({
           )}
           <GreenButton
             func={() => {
-              saveProject(project);
+              saveProject(project, projectTopics);
               closeCreateProjectModal();
             }}
           >

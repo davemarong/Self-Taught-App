@@ -24,7 +24,6 @@ export default function CreateProjectLogic() {
   const [projectSummary, setProjectSummary] = useState("");
   const [projectFinalDate, setProjectFinalDate] = useState("");
   const [projectFinishedDate, setProjectFinishedDate] = useState("");
-  const [projectTopics, setProjectTopics] = useState([]);
 
   // Redux
   const dispatch = useDispatch();
@@ -51,7 +50,7 @@ export default function CreateProjectLogic() {
 
   // Functions
   // Saving a project
-  const saveProject = (project) => {
+  const saveProject = (project, projectTopics) => {
     const newProject = {
       title: projectName,
       summary: projectSummary,
@@ -74,6 +73,7 @@ export default function CreateProjectLogic() {
     } else {
       projects.futureProjects.push(newProject);
     }
+
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
   };
