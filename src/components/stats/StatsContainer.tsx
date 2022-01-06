@@ -5,10 +5,5 @@ interface Props {
 }
 
 export const StatsContainer = ({ children }: Props) => {
-  return (
-    <div>
-      StatsContainer
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 };

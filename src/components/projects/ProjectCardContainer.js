@@ -67,7 +67,7 @@ export default function ProjectsCard({
             </TransparentButton>
           </Grid>
           <Grid item xs={12}>
-            <Typography align="center" variant="h3">
+            <Typography align="center" variant="h2">
               Future projects
             </Typography>
           </Grid>
@@ -92,7 +92,7 @@ export default function ProjectsCard({
             </TransparentButton>
           </Grid>
           <Grid item xs={12}>
-            <Typography align="center" variant="h3">
+            <Typography align="center" variant="h2">
               Completed projects
             </Typography>
           </Grid>

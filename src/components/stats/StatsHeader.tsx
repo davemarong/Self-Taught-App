@@ -3,7 +3,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 export const StatsHeader = () => {
   return (
-    <Typography align="center" variant="h3">
+    <Typography style={{ margin: 30 }} align="center" variant="h2">
       Statistics
     </Typography>
   );

@@ -4,13 +4,13 @@ import { makeStyles } from "@material-ui/core/styles";
 // Components
 import { StatsContainer } from "../components/stats/StatsContainer";
 import { StatsHeader } from "../components/stats/StatsHeader";
-import { AllTopics } from "../components/stats/AllTopics";
+import { AllTopics } from "../components/stats/StatsCategories/AllTopics";
 import { StatsCard } from "../components/stats/StatsCard";
-import { AllCompletedProjects } from "../components/stats/AllCompletedProjects";
-import { AllFutureProjects } from "../components/stats/AllFutureProjects";
-import { AllMainSubjects } from "../components/stats/AllMainSubjects";
-import { AllSecondarySubjects } from "../components/stats/AllSecondarySubjects";
-import { AllTopicsLearned } from "../components/stats/AllTopicsLearned";
+import { AllCompletedProjects } from "../components/stats/StatsCategories/AllCompletedProjects";
+import { AllFutureProjects } from "../components/stats/StatsCategories/AllFutureProjects";
+import { AllMainSubjects } from "../components/stats/StatsCategories/AllMainSubjects";
+import { AllSecondarySubjects } from "../components/stats/StatsCategories/AllSecondarySubjects";
+import { AllTopicsLearned } from "../components/stats/StatsCategories/AllTopicsLearned";
 
 const useStyles = makeStyles({
   full: {
