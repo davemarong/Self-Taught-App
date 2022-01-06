@@ -12,8 +12,8 @@ import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
-import Skills from "./pages/Skills";
-import Stats from "./pages/Stats";
+import { Skills } from "./pages/Skills";
+import { Stats } from "./pages/Stats";
 import { SnackbarProvider } from "notistack";
 
 import { useDispatch, useSelector } from "react-redux";

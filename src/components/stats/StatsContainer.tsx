@@ -1,5 +1,14 @@
 import React from "react";
 
-export default function StatsContainer() {
-  return <div>StatsContainer</div>;
+interface Props {
+  children: React.ReactNode;
 }
+
+export const StatsContainer = ({ children }: Props) => {
+  return (
+    <div>
+      StatsContainer
+      {children}
+    </div>
+  );
+};

@@ -1,6 +1,6 @@
 export const main_subjects = [
   [
-    { title: "HTML", totalSkills: 17, learnedSkills: 0 },
+    { title: "HTML", totalSkills: 18, learnedSkills: 0 },
     [
       { title: "Elements", learned: false },
       { title: "Paragraphs", learned: false },
