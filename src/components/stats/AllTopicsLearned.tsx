@@ -103,7 +103,7 @@ export const AllTopicsLearned = () => {
           </Typography>
         </Grid>
         <Grid container>
-          {subjectsCombined.map((item: any) => {
+          {subjectsCombined.map((project: any) => {
             return (
               <Grid
                 container
@@ -111,9 +111,9 @@ export const AllTopicsLearned = () => {
                 alignItems="center"
                 sm={6}
               >
-                <Typography>{item[0].title}: </Typography>
+                <Typography>{project[0].title}: </Typography>
                 <Typography style={{ paddingRight: 30 }} variant="h5">
-                  {item[0].learnedSkills}{" "}
+                  {project[0].learnedSkills} of {project[0].totalSkills}
                 </Typography>
               </Grid>
             );
