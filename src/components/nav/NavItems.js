@@ -6,9 +6,9 @@ const NavItems = [
     cName: "nav-text",
   },
   {
-    title: "Stats",
+    title: "Subjects",
     id: 2,
-    path: "/stats",
+    path: "/subjects",
     cName: "nav-text",
   },
   {
@@ -18,8 +18,14 @@ const NavItems = [
     cName: "nav-text",
   },
   {
-    title: "Account",
+    title: "Stats",
     id: 4,
+    path: "/stats",
+    cName: "nav-text",
+  },
+  {
+    title: "Account",
+    id: 5,
     path: "/account",
     cName: "nav-text",
   },

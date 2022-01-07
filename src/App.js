@@ -12,7 +12,7 @@ import Nav from "./components/nav/Nav";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
-import { Skills } from "./pages/Skills";
+import Subjects from "./pages/Subjects";
 import { Stats } from "./pages/Stats";
 import { SnackbarProvider } from "notistack";
 
@@ -58,6 +58,7 @@ function App() {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/stats" component={Stats} />
+            <Route path="/subjects" component={Subjects} />
             <Route path="/projects" component={ProjectsPage} />
             <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />
