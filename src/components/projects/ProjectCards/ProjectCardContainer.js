@@ -3,9 +3,10 @@
 // React
 import React, { useState } from "react";
 // Components
-import { completedProjectsData } from "../projectsTemplate/projectsData";
-import ProjectCard from "./ProjectCard";
-import ProjectModal from "./ProjectModal/ProjectModal";
+import { completedProjectsData } from "../../projectsTemplate/projectsData";
+import ProjectCardLogic from "./ProjectCardLogic";
+import ProjectCardUi from "./ProjectCardUi";
+import ProjectModal from "../ProjectModal/ProjectModal";
 
 // Material UI
 import Typography from "@material-ui/core/Typography";
@@ -21,7 +22,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 // Components
-import TransparentButton from "../button/TransparentButton";
+import TransparentButton from "../../button/TransparentButton";
 // Framer motion
 import { motion } from "framer-motion";
 
@@ -74,7 +75,7 @@ export default function ProjectsCard({
           {projects.futureProjects.map((project, id) => {
             return (
               <React.Fragment key={id}>
-                <ProjectCard
+                <ProjectCardLogic
                   project={project}
                   {...projectCardProps}
                   color="#ff9c36"
@@ -99,7 +100,7 @@ export default function ProjectsCard({
           {projects.completedProjects.map((project, id) => {
             return (
               <React.Fragment key={id}>
-                <ProjectCard
+                <ProjectCardLogic
                   project={project}
                   {...projectCardProps}
                   color="#41dcff"

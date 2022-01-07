@@ -16,7 +16,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 // Components
 import CreateProject from "./CreateProject/CreateProject";
 import CompletedProjects from "./CompletedProjects";
-import ProjectCardContainer from "./ProjectCardContainer";
+import ProjectCardContainer from "./ProjectCards/ProjectCardContainer";
 import { completedProjectsData } from "../projectsTemplate/projectsData";
 import ProjectModal from "./ProjectModal/ProjectModal";
 import TopicsTable from "./CreateProject/TopicsTable";

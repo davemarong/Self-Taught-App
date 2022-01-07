@@ -14,7 +14,6 @@ import Grid from "@material-ui/core/Grid";
 import ModeEditRoundedIcon from "@mui/icons-material/ModeEditRounded";
 // Redux
 import { useSelector } from "react-redux";
-import ProjectCard from "../projects/ProjectCard";
 
 export const UpdateYourProject = () => {
   // Redux
