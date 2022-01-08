@@ -11,7 +11,13 @@ import Grid from "@material-ui/core/Grid";
 
 export const HomeContainer = ({ children }: any) => {
   return (
-    <Grid container direction="row" justify="space-evenly" wrap="wrap">
+    <Grid
+      container
+      direction="row"
+      justify="space-evenly"
+      wrap="wrap"
+      spacing={4}
+    >
       {children}
     </Grid>
   );

@@ -1,21 +1,12 @@
 // IMPORTS
 
 // React
-
-import React, { useState, useMemo } from "react";
+import React from "react";
 
 // Material UI
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-
-// Components
-import TransparentButton from "../../button/TransparentButton";
-import RedButton from "../../button/RedButton";
-
-// Icon
-import DeleteIcon from "@material-ui/icons/Delete";
-import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 
 export default function ProjectCardUi({ project, color, children }) {
   return (
@@ -30,7 +21,7 @@ export default function ProjectCardUi({ project, color, children }) {
         position: "relative",
         borderRadius: "10px",
         boxShadow: "0 0 3px",
-        width: 250,
+        // width: 250,
         padding: 20,
         margin: "20px",
         background: `linear-gradient(10deg, ${color} 10%, #c445fb 60%)`,

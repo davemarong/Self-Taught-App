@@ -5,6 +5,7 @@ import { CreateNewProject } from "../components/home/CreateNewProject";
 import { UpdateYourProject } from "../components/home/UpdateYourProject";
 import { HomeContainer } from "../components/home/HomeContainer";
 import { UpdateYourSubject } from "../components/home/UpdateYourSubject";
+import { Header } from "../components/home/Header";
 
 const useStyles = makeStyles({
   full: {
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <div className={matches ? classes.full : classes.mobile}>
       <HomeContainer>
+        <Header />
         <CreateNewProject />
         <UpdateYourSubject />
         <UpdateYourProject />

@@ -5,6 +5,9 @@
 import React, { useState, useMemo, useEffect } from "react";
 // Redux
 
+// React Router
+import { useHistory, useLocation } from "react-router-dom";
+
 // Material UI
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -15,7 +18,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 // Components
 import CreateProject from "./CreateProject/CreateProject";
-import CompletedProjects from "./CompletedProjects";
 import ProjectCardContainer from "./ProjectCards/ProjectCardContainer";
 import { completedProjectsData } from "../projectsTemplate/projectsData";
 import ProjectModal from "./ProjectModal/ProjectModal";
@@ -24,12 +26,22 @@ import MaterialUI_modal from "../modal/MaterialUI_modal";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 
-// Utils
+// Custom Hooks
+import useOpenCreateProject from "../customHooks/useOpenCreateProject";
 
 export default function Projects() {
   // State
   const [createProjectModal, setCreateProjectModal] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
+
+  // React router
+  let location = useLocation();
+  useEffect(() => {
+    if (location.search === "?createProject") {
+      backdropSpinner();
+      setTimeout(openCreateProjectModal, 500);
+    }
+  }, []);
 
   // Functions
   const openCreateProjectModal = () => {
@@ -60,11 +72,6 @@ export default function Projects() {
       >
         <CircularProgress color="secondary" />
       </Backdrop>
-      <ProjectCardContainer
-        openCreateProjectModal={openCreateProjectModal}
-        projectData={completedProjectsData}
-        closeCreateProjectModal={closeCreateProjectModal}
-      />
       <Button
         onClick={() => {
           backdropSpinner();
@@ -74,7 +81,11 @@ export default function Projects() {
       >
         Create new project
       </Button>
-      <Typography>Future projects</Typography>
+      <ProjectCardContainer
+        openCreateProjectModal={openCreateProjectModal}
+        projectData={completedProjectsData}
+        closeCreateProjectModal={closeCreateProjectModal}
+      />
     </div>
   );
 }

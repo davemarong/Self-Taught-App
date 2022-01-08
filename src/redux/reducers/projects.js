@@ -1,5 +1,8 @@
 const projects = (
-  state = { completedProjects: [], futureProjects: [] },
+  state = {
+    completedProjects: [],
+    futureProjects: [],
+  },
   action
 ) => {
   if (action.type === "CHANGE_PROJECTS") {
