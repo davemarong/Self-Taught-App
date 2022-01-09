@@ -2,6 +2,7 @@ import React from "react";
 import Login from "../components/login/Login";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
+import useScrollToTop from "../components/customHooks/useScrollToTop";
 
 const useStyles = makeStyles({
   full: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles({
   },
 });
 export default function LoginPage() {
+  // Custom hook
+  useScrollToTop();
+
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
   return (

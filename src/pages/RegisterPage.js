@@ -2,6 +2,7 @@ import React from "react";
 import Register from "../components/register/Register";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
+import useScrollToTop from "../components/customHooks/useScrollToTop";
 
 const useStyles = makeStyles({
   full: {
@@ -14,6 +15,9 @@ const useStyles = makeStyles({
 });
 
 export default function RegisterPage() {
+  // Custom hook
+  useScrollToTop();
+
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
   return (

@@ -26,9 +26,6 @@ import MaterialUI_modal from "../modal/MaterialUI_modal";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 
-// Custom Hooks
-import useOpenCreateProject from "../customHooks/useOpenCreateProject";
-
 export default function Projects() {
   // State
   const [createProjectModal, setCreateProjectModal] = useState(false);

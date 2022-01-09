@@ -11,6 +11,7 @@ import { AllFutureProjects } from "../components/stats/StatsCategories/AllFuture
 import { AllMainSubjects } from "../components/stats/StatsCategories/AllMainSubjects";
 import { AllSecondarySubjects } from "../components/stats/StatsCategories/AllSecondarySubjects";
 import { AllTopicsLearned } from "../components/stats/StatsCategories/AllTopicsLearned";
+import useScrollToTop from "../components/customHooks/useScrollToTop";
 
 const useStyles = makeStyles({
   full: {
@@ -37,6 +38,9 @@ interface TopicInfo {
 }
 
 export const Stats = () => {
+  // Custom hook
+  useScrollToTop();
+
   // UseState
   const [stats, setStats] = useState({});
 

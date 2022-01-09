@@ -6,6 +6,7 @@ import { UpdateYourProject } from "../components/home/UpdateYourProject";
 import { HomeContainer } from "../components/home/HomeContainer";
 import { UpdateYourSubject } from "../components/home/UpdateYourSubject";
 import { Header } from "../components/home/Header";
+import useScrollToTop from "../components/customHooks/useScrollToTop";
 
 const useStyles = makeStyles({
   full: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
+  // Custom hook
+  useScrollToTop();
+
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
   return (
