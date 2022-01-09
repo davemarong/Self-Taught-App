@@ -24,11 +24,17 @@ const NavItems = [
     cName: "nav-text",
   },
   {
-    title: "Account",
+    title: "Templates",
     id: 5,
-    path: "/account",
+    path: "/templates",
     cName: "nav-text",
   },
+  // {
+  //   title: "Account",
+  //   id: 5,
+  //   path: "/account",
+  //   cName: "nav-text",
+  // },
   // {
   //   title: "Register",
   //   id: 5,

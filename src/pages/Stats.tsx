@@ -1,6 +1,12 @@
+// Imports
+
+// React
 import React, { useState } from "react";
+
+// Material UI
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
+
 // Components
 import { StatsContainer } from "../components/stats/StatsContainer";
 import { StatsHeader } from "../components/stats/StatsHeader";
@@ -40,9 +46,6 @@ interface TopicInfo {
 export const Stats = () => {
   // Custom hook
   useScrollToTop();
-
-  // UseState
-  const [stats, setStats] = useState({});
 
   // Styles
   const matches = useMediaQuery("(min-width:1224px)");

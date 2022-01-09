@@ -13,6 +13,7 @@ import Account from "./pages/Account";
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
 import Subjects from "./pages/Subjects";
+import { Templates } from "./pages/Templates";
 import { Stats } from "./pages/Stats";
 import { SnackbarProvider } from "notistack";
 
@@ -60,6 +61,7 @@ function App() {
             <Route path="/stats" component={Stats} />
             <Route path="/subjects" component={Subjects} />
             <Route path="/projects" component={ProjectsPage} />
+            <Route path="/templates" component={Templates} />
             <Route path="/account" component={Introduction} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
