@@ -9,8 +9,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // Components
 import { TemplatesContainer } from "../components/templates/TemplatesContainer";
-import { ProjectTemplatesCard } from "../components/templates/projectTemplates/ProjectTemplatesCard";
-import { SubjectsTemplatesCard } from "../components/templates/subjectsTemplates/SubjectsTemplatesCard";
 import { TemplatesCard } from "../components/templates/TemplatesCard";
 import useScrollToTop from "../components/customHooks/useScrollToTop";
 import TransparentButton from "../components/button/TransparentButton";
@@ -19,7 +17,7 @@ import TransparentButton from "../components/button/TransparentButton";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 
 // Data
-import { TemplatesData } from "../components/templates/TemplatesData";
+import { TemplatesData } from "../components/templates/data/TemplatesData";
 
 const useStyles = makeStyles({
   full: {
@@ -52,11 +50,7 @@ export const Templates = () => {
     <div className={matches ? classes.full : classes.mobile}>
       <TemplatesContainer>
         {TemplatesData.map((item) => (
-          <TemplatesCard
-            name={item.name}
-            description={item.description}
-            icon={item.icon}
-          >
+          <TemplatesCard templateData={item}>
             <TransparentButton func={null} icon={<OpenInNewRoundedIcon />}>
               Open
             </TransparentButton>

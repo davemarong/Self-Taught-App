@@ -27,7 +27,7 @@ export default function MaterialUI_modal({
       <Zoom timeout={300} in={stateValue}>
         <div
           style={{
-            maxWidth: 900,
+            maxWidth: 1100,
             margin: "auto",
           }}
         >
