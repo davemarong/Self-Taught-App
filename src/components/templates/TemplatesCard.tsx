@@ -12,9 +12,10 @@ import Button from "@material-ui/core/Button";
 
 // Components
 import MaterialUI_modal from "../modal/MaterialUI_modal";
-import { TemplateCardContainer } from "./TemplateModal/TemplateCardContainer";
-import { TemplateCard } from "./TemplateModal/TemplateCard";
-import { TemplateHeader } from "./TemplateModal/TemplateHeader";
+import { TemplateCardContainer } from "./TemplateContainerModal/TemplateCardContainer";
+import { TemplateCard } from "./TemplateContainerModal/TemplateCard";
+import { TemplateHeader } from "./TemplateContainerModal/TemplateHeader";
+import TransparentButton from "../button/TransparentButton";
 
 // TYPES
 type Props = {
@@ -26,23 +27,33 @@ type Props = {
     templates: {
       title: string;
       level: string;
+      icon: any;
       summary: string;
       description: string;
-      subjectsAndTopics: never[];
+      subjectsAndTopics: (
+        | string
+        | (
+            | {
+                title: string;
+                totalSkills: number;
+                learnedSkills: number;
+              }
+            | {
+                title: string;
+                learned: boolean;
+              }[]
+          )[][]
+      )[][];
     }[];
   };
 };
 export const TemplatesCard = ({ children, templateData }: Props) => {
   // State
   const [modal, setModal] = useState(false);
-  const [containerModal, setContainerModal] = useState(false);
 
   // Functions
   const toggleModal = () => {
     setModal(!modal);
-  };
-  const toggleContainerModal = () => {
-    setContainerModal(!containerModal);
   };
 
   return (
@@ -63,34 +74,19 @@ export const TemplatesCard = ({ children, templateData }: Props) => {
             <Typography align="center">{templateData.description}</Typography>
             <Grid item container justify="flex-end">
               {React.cloneElement(children as React.ReactElement<any>, {
-                func: toggleContainerModal,
+                func: toggleModal,
               })}
             </Grid>
           </Grid>
         </Card>
       </Grid>
-
-      <MaterialUI_modal
-        stateValue={containerModal}
-        modalFunction={toggleContainerModal}
-      >
+      <MaterialUI_modal stateValue={modal} modalFunction={toggleModal}>
         <TemplateCardContainer>
           <TemplateHeader>{templateData.name} templates</TemplateHeader>
           {templateData.templates.map((template) => {
-            return (
-              <TemplateCard {...template}>
-                {React.cloneElement(children as React.ReactElement<any>, {
-                  func: toggleModal,
-                })}
-              </TemplateCard>
-            );
+            return <TemplateCard {...template} />;
           })}
         </TemplateCardContainer>
-      </MaterialUI_modal>
-      <MaterialUI_modal stateValue={modal} modalFunction={toggleModal}>
-        <div>hei</div>
-        <div>hei</div>
-        <div>hei</div>
       </MaterialUI_modal>
     </>
   );

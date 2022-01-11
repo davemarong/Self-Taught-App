@@ -44,7 +44,6 @@ export const Templates = () => {
   // Styles
   const matches = useMediaQuery("(min-width:1224px)");
   const classes = useStyles();
-
   // Return
   return (
     <div className={matches ? classes.full : classes.mobile}>
