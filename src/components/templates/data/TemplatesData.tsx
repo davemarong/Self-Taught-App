@@ -17,7 +17,7 @@ export const TemplatesData = [
         summary:
           "A perfect package for people with little/no experience. Focused on HTML and CSS.",
         description:
-          "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all subjects and topics that will take you from a complete beginner to being able to create websites with whatever design you like.",
+          "This package focuses on HTML and CSS, creating simple websites and designing them. Here you have all subjects and topics that will take you from a complete beginner to being able to create websites with whatever design you like.",
         subjectsAndTopics: [
           [
             "Main subjects",
@@ -910,7 +910,7 @@ export const TemplatesData = [
             ],
           ],
           [
-            "Seconday subjects",
+            "Secondary subjects",
             [
               [
                 {
@@ -1190,7 +1190,7 @@ export const TemplatesData = [
   //       summary:
   //         "A perfect package for people with little/no experience. Focused on HTML and CSS.",
   //       description:
-  //         "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all the projects that will take you from a complete beginner to being able to create websites with whatever design you like.",
+  //         "This package focuses on HTML and CSS, creating simple websites and designing them. Here you have all the projects that will take you from a complete beginner to being able to create websites with whatever design you like.",
   //       subjectsAndTopics: [],
   //     },
   //     {
@@ -1219,7 +1219,7 @@ export const TemplatesData = [
         summary:
           "A perfect package for people with little/no experience. Focused on HTML and CSS.",
         description:
-          "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all the subjects that will take you from a complete beginner to being able to create websites with whatever design you like.",
+          "This package focuses on HTML and CSS, creating simple websites and designing them. Here you have all the subjects that will take you from a complete beginner to being able to create websites with whatever design you like.",
         subjectsAndTopics: [
           [
             "Main subjects",
@@ -2051,7 +2051,7 @@ export const TemplatesData = [
         summary:
           "A perfect package for people with little/no experience. Focused on HTML and CSS.",
         description:
-          "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all the subjects that will take you from a complete beginner to being able to create websites with whatever design you like.",
+          "This package focuses on HTML and CSS, creating simple websites and designing them. Here you have all the subjects that will take you from a complete beginner to being able to create websites with whatever design you like.",
         subjectsAndTopics: [
           [
             "Secondary subjects",

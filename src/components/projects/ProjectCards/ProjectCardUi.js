@@ -21,7 +21,6 @@ export default function ProjectCardUi({ project, color, children }) {
         position: "relative",
         borderRadius: "10px",
         boxShadow: "0 0 3px",
-        // width: 250,
         padding: 20,
         margin: "20px",
         background: `linear-gradient(10deg, ${color} 10%, #c445fb 60%)`,

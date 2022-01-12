@@ -2,17 +2,13 @@
 // IMPORTS
 
 // React
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // Redux
 
 // React Router
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Modal from "@material-ui/core/Modal";
-import Zoom from "@material-ui/core/Zoom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -20,11 +16,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import CreateProject from "./CreateProject/CreateProject";
 import ProjectCardContainer from "./ProjectCards/ProjectCardContainer";
 import { completedProjectsData } from "../projectsTemplate/projectsData";
-import ProjectModal from "./ProjectModal/ProjectModal";
-import TopicsTable from "./CreateProject/TopicsTable";
 import MaterialUI_modal from "../modal/MaterialUI_modal";
-// Redux
-import { useSelector, useDispatch } from "react-redux";
 
 export default function Projects() {
   // State
@@ -69,19 +61,12 @@ export default function Projects() {
       >
         <CircularProgress color="secondary" />
       </Backdrop>
-      <Button
-        onClick={() => {
-          backdropSpinner();
-          setTimeout(openCreateProjectModal, 500);
-        }}
-        variant="contained"
-      >
-        Create new project
-      </Button>
+
       <ProjectCardContainer
         openCreateProjectModal={openCreateProjectModal}
         projectData={completedProjectsData}
         closeCreateProjectModal={closeCreateProjectModal}
+        backdropSpinner={backdropSpinner}
       />
     </div>
   );

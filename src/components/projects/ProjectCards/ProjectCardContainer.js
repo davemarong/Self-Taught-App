@@ -2,41 +2,32 @@
 
 // React
 import React, { useState } from "react";
-// Components
-import { completedProjectsData } from "../../projectsTemplate/projectsData";
-import ProjectCardLogic from "./ProjectCardLogic";
-import ProjectCardUi from "./ProjectCardUi";
-import ProjectModal from "../ProjectModal/ProjectModal";
 
 // Material UI
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Zoom from "@material-ui/core/Zoom";
+
 // Icon
-import CloseIcon from "@material-ui/icons/Close";
-import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+
 // Components
+import ProjectCardLogic from "./ProjectCardLogic";
 import TransparentButton from "../../button/TransparentButton";
-// Framer motion
-import { motion } from "framer-motion";
 
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import GreenButton from "../../button/GreenButton";
 
 export default function ProjectsCard({
-  projectData,
   openCreateProjectModal,
   closeCreateProjectModal,
+  backdropSpinner,
 }) {
   // UseState
   const [showDeleteOption, setShowDeleteOption] = useState(false);
-  const [update, setUpdate] = useState(0);
+  const [update, setUpdate] = useState();
 
   // Functions
   const toggleDeleteOption = () => {
@@ -48,6 +39,7 @@ export default function ProjectsCard({
     openCreateProjectModal: openCreateProjectModal,
     closeCreateProjectModal: closeCreateProjectModal,
     showDeleteOption: showDeleteOption,
+    setShowDeleteOption: setShowDeleteOption,
     setUpdate: setUpdate,
     update: update,
   };
@@ -83,6 +75,17 @@ export default function ProjectsCard({
               </React.Fragment>
             );
           })}
+          <Grid container justify="flex-end" style={{ marginTop: 30 }}>
+            <GreenButton
+              func={() => {
+                backdropSpinner();
+                setTimeout(openCreateProjectModal, 500);
+              }}
+              icon={<AddRoundedIcon />}
+            >
+              Create new project
+            </GreenButton>
+          </Grid>
         </Grid>
       </Card>
       <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
@@ -108,6 +111,17 @@ export default function ProjectsCard({
               </React.Fragment>
             );
           })}
+          <Grid container justify="flex-end" style={{ marginTop: 30 }}>
+            <GreenButton
+              func={() => {
+                backdropSpinner();
+                setTimeout(openCreateProjectModal, 500);
+              }}
+              icon={<AddRoundedIcon />}
+            >
+              Create new project
+            </GreenButton>
+          </Grid>
         </Grid>
       </Card>
     </>

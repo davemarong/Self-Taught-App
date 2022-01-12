@@ -8,14 +8,12 @@ import React, { useState, ReactNode } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
 
 // Components
 import MaterialUI_modal from "../modal/MaterialUI_modal";
 import { TemplateCardContainer } from "./TemplateContainerModal/TemplateCardContainer";
 import { TemplateCard } from "./TemplateContainerModal/TemplateCard";
 import { TemplateHeader } from "./TemplateContainerModal/TemplateHeader";
-import TransparentButton from "../button/TransparentButton";
 
 // TYPES
 type Props = {

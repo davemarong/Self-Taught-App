@@ -1,7 +1,7 @@
 // IMPORTS
 
 // React
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Material UI
 import Menu from "@mui/material/Menu";
@@ -17,12 +17,12 @@ export default function ProjectModalButtons({
   toggleCreateProjectModal,
   toggleProjectModal,
   setBackdrop,
+  setShowDeleteOption,
   setUpdate,
   update,
 }) {
   // UseState
   const [anchorEl, setAnchorEl] = useState(null);
-
   // Variable
   const open = Boolean(anchorEl);
 
@@ -33,14 +33,14 @@ export default function ProjectModalButtons({
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(open);
+
   return (
     <>
       <IconButton
         id="basic-button"
-        // aria-controls={open ? "basic-menu" : undefined}
-        // aria-haspopup="true"
-        // aria-expanded={open ? "true" : undefined}
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
         <MenuRoundedIcon />
@@ -62,6 +62,7 @@ export default function ProjectModalButtons({
           toggleProjectModal={toggleProjectModal}
           update={update}
           setUpdate={setUpdate}
+          setShowDeleteOption={setShowDeleteOption}
         />
       </Menu>
     </>

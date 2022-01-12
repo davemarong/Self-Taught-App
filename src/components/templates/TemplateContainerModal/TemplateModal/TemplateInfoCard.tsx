@@ -24,7 +24,7 @@ import {
 
 // Custom hooks
 import usePushDataToServer from "../../../customHooks/usePushDataToServer";
-import useAddTopics from "../../../customHooks/useAddTopics";
+import { useAddSnackbar } from "../../../customHooks/useAddSnackbar";
 // TYPE
 type Props = {
   children: ReactNode;
@@ -61,7 +61,7 @@ export const TemplateInfoCard = (props: Props) => {
   // Custom hooks
   const { updateMainSubjectsInServer, updateSecondarySubjectsInServer } =
     usePushDataToServer();
-  const { addTopicSnackbar } = useAddTopics();
+  const { addSnackbar } = useAddSnackbar();
   // Functions
   const activateTemplate = (templates: Props["subjectsAndTopics"]) => {
     templates.map((template: any) => {
@@ -74,6 +74,7 @@ export const TemplateInfoCard = (props: Props) => {
       }
     });
     toggleModal();
+    addSnackbar("Template added to subjects");
   };
 
   return (

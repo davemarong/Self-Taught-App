@@ -2,7 +2,7 @@
 // IMPORTS
 
 // React
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
 // Components
 import ProjectModal from "../ProjectModal/ProjectModal";
@@ -18,6 +18,7 @@ export default function ProjectCard({
   setUpdate,
   update,
   color,
+  setShowDeleteOption,
 }) {
   // UseState
   const [projectModal, setProjectModal] = useState(false);
@@ -38,12 +39,14 @@ export default function ProjectCard({
     showDeleteOption: showDeleteOption,
     setUpdate: setUpdate,
     update: update,
+    setShowDeleteOption: setShowDeleteOption,
   };
 
   const projectCardButtons = {
     toggleProjectModal: toggleProjectModal,
     showDeleteOption: showDeleteOption,
     toggleDeleteProjectModal: toggleDeleteProjectModal,
+    setShowDeleteOption: setShowDeleteOption,
   };
   return (
     <>

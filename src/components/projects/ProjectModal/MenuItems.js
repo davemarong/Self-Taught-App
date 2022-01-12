@@ -24,6 +24,7 @@ export default function MenuItems({
   toggleProjectModal,
   update,
   setUpdate,
+  setShowDeleteOption,
 }) {
   // UseState
   const [isProjectCompleted, setIsProjectCompleted] = useState(

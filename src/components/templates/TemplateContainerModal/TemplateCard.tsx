@@ -2,7 +2,7 @@
 // Import
 
 // React
-import React, { useState, ReactNode } from "react";
+import React, { useState } from "react";
 
 // Material UI
 import Typography from "@material-ui/core/Typography";
@@ -13,11 +13,10 @@ import Card from "@material-ui/core/Card";
 import MaterialUI_modal from "../../modal/MaterialUI_modal";
 import { TemplateInfoCard } from "./TemplateModal/TemplateInfoCard";
 import TransparentButton from "../../button/TransparentButton";
+import { AccordionHeader } from "./TemplateModal/AccordionHeader";
 
 // Icon
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import SaveIcon from "@mui/icons-material/Save";
-import { AccordionHeader } from "./TemplateModal/AccordionHeader";
 
 // TYPE
 type Props = {
@@ -54,7 +53,6 @@ export const TemplateCard = (props: Props) => {
     setModal(!modal);
   };
 
-  console.log(subjectsAndTopics, "card");
   return (
     <>
       <Grid item xs={5}>

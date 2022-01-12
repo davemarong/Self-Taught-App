@@ -7,6 +7,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
+
 // Icon
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,12 +18,14 @@ import InputFields from "./InputFields";
 
 // Custom hooks
 import useCreateProjectLogic from "./useCreateProjectLogic.js";
+
 // Utils
 import { createEditableListOfTopics } from "../Utils/EditProjectUtils";
 import {
   createSubjectsMemo,
   createEditableSubjectsMemo,
 } from "../Utils/MemoUtils";
+
 // Redux
 import { useSelector } from "react-redux";
 
@@ -31,8 +34,6 @@ export default function CreateProject({
   project,
   closeCreateProjectModal,
 }) {
-  console.log("createproject");
-
   // Custom hooks
   const { saveProject, inputFieldsProps } = useCreateProjectLogic(project);
 
@@ -84,7 +85,6 @@ export default function CreateProject({
       );
   }
 
-  console.log(project);
   return (
     <>
       <Container maxWidth="md" style={{ marginTop: 70 }}>
@@ -111,7 +111,6 @@ export default function CreateProject({
               closeCreateProjectModal();
             }}
           >
-            {" "}
             Save project
           </GreenButton>
         </Card>

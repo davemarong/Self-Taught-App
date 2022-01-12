@@ -24,7 +24,6 @@ export default function TopicsTable({
   setProjectTopics,
   editableSubjects,
 }) {
-  console.log("topicstable");
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -76,7 +75,6 @@ export default function TopicsTable({
                     <TableCell
                       style={{
                         padding: "0 5px 0 10px",
-                        // border: "1px solid rgba(224, 224, 224, 1)",
                       }}
                     >
                       {topic.learned ? "Yes" : "No"}

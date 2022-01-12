@@ -20,9 +20,7 @@ type Props = {
 };
 
 export const AccordionHeader = ({ data }: Props) => {
-  console.log(data);
   return (
-    // <Card>
     <Grid container item justify="space-evenly">
       {data.map((itemContainer: any) => {
         return (
@@ -52,6 +50,5 @@ export const AccordionHeader = ({ data }: Props) => {
         );
       })}
     </Grid>
-    // </Card>
   );
 };
