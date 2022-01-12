@@ -17,7 +17,6 @@ export default function Nav() {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const handleShowSidebar = () => {
-    console.log(matches);
     setSidebar(!sidebar);
   };
   const matches = useMediaQuery("(min-width:1224px)");

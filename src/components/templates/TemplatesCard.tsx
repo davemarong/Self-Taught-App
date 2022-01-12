@@ -81,7 +81,7 @@ export const TemplatesCard = ({ children, templateData }: Props) => {
         </Card>
       </Grid>
       <MaterialUI_modal stateValue={modal} modalFunction={toggleModal}>
-        <TemplateCardContainer>
+        <TemplateCardContainer toggleModal={toggleModal}>
           <TemplateHeader>{templateData.name} templates</TemplateHeader>
           {templateData.templates.map((template) => {
             return <TemplateCard {...template} />;

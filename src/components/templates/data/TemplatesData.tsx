@@ -7,8 +7,8 @@ export const TemplatesData = [
   {
     name: "Complete",
     description:
-      "Complete Templates packages for Projects, Main subjects and Secondary subjects",
-    icon: <AccountTreeIcon color="primary" style={{ fontSize: 100 }} />,
+      "Complete Templates packages for both main subjects and secondary subjects",
+    icon: <ListAltIcon color="success" style={{ fontSize: 100 }} />,
     templates: [
       {
         title: "Front end developer",
@@ -17,7 +17,7 @@ export const TemplatesData = [
         summary:
           "A perfect package for people with little/no experience. Focused on HTML and CSS.",
         description:
-          "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all subject, topics and projects that will take you from a complete beginner to being able to create websites with whatever design you like.",
+          "This package focuses mostly on HTML and CSS, with some simple JavaScript for smaller tasks. Here you have all subjects and topics that will take you from a complete beginner to being able to create websites with whatever design you like.",
         subjectsAndTopics: [
           [
             "Main subjects",
@@ -31,75 +31,75 @@ export const TemplatesData = [
                 [
                   {
                     title: "Attributes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Charset",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "File paths",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Formatting",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Head",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Headings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Id",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Iframes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Images",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Layout",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Paragraphs",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Semantics",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -112,11 +112,11 @@ export const TemplatesData = [
                 [
                   {
                     title: "!important",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Align",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Animation",
@@ -124,63 +124,63 @@ export const TemplatesData = [
                   },
                   {
                     title: "Backgrounds",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Borders",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Box model",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Button",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Colors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Display",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dropdown",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Flexbox",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fonts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Gradient",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Grid",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Height",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Icons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Image",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Inline",
@@ -188,47 +188,47 @@ export const TemplatesData = [
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Margins",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Max",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Media queries",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Navigation",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Opacity",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Outline",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Overflow",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Padding",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Position",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Psuedo-class",
@@ -240,7 +240,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Selectors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Shadow",
@@ -248,7 +248,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
@@ -256,7 +256,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Text",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Transition",
@@ -264,7 +264,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Width",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -277,7 +277,7 @@ export const TemplatesData = [
                 {
                   title: "VSCode",
                   totalSkills: 6,
-                  learnedSkills: 3,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -290,11 +290,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Keyboard shortcuts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Live server",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -302,7 +302,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Git",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -310,32 +310,32 @@ export const TemplatesData = [
                 {
                   title: "Web browser",
                   totalSkills: 7,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Chrome",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dev tools",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Cookie",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sessions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Local storage",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "HTTPS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loading time",
@@ -357,7 +357,7 @@ export const TemplatesData = [
         summary:
           "A perfect package for people with experience with HTML and CSS. A diver deep in JavaScript and related technologies/frameworks",
         description:
-          "Here you have all subjects, topics and projects that will expand your knowledge in JavaScript, the framework React, Typescript, deployment and more. You will learn to build complex and large-scale web application, with clean and readable code.",
+          "Here you have all subjects and topics that will expand your knowledge in JavaScript, the framework React, Typescript, deployment and more. You will learn to build complex and large-scale web application, with clean and readable code.",
         subjectsAndTopics: [
           [
             "Main subjects",
@@ -366,80 +366,80 @@ export const TemplatesData = [
                 {
                   title: "HTML",
                   totalSkills: 18,
-                  learnedSkills: 18,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Attributes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Charset",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "File paths",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Formatting",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Head",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Headings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Id",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Iframes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Images",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Layout",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Paragraphs",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Semantics",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -447,16 +447,16 @@ export const TemplatesData = [
                 {
                   title: "CSS",
                   totalSkills: 39,
-                  learnedSkills: 32,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "!important",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Align",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Animation",
@@ -464,63 +464,63 @@ export const TemplatesData = [
                   },
                   {
                     title: "Backgrounds",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Borders",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Box model",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Button",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Colors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Display",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dropdown",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Flexbox",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fonts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Gradient",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Grid",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Height",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Icons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Image",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Inline",
@@ -528,47 +528,47 @@ export const TemplatesData = [
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Margins",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Max",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Media queries",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Navigation",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Opacity",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Outline",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Overflow",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Padding",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Position",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Psuedo-class",
@@ -580,7 +580,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Selectors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Shadow",
@@ -588,7 +588,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
@@ -596,7 +596,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Text",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Transition",
@@ -604,7 +604,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Width",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -612,7 +612,7 @@ export const TemplatesData = [
                 {
                   title: "JavaScript",
                   totalSkills: 45,
-                  learnedSkills: 27,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -621,23 +621,23 @@ export const TemplatesData = [
                   },
                   {
                     title: "Array Iteration",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Array methods",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Array sort",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Arrays",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Assignment",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Async-Await",
@@ -649,11 +649,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Booleans",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Break",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
@@ -661,27 +661,27 @@ export const TemplatesData = [
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comparisons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Conditions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Const",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Data types",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dates",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -693,15 +693,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Events",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fetch",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Functions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Hoisting",
@@ -709,15 +709,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "JSON",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Let",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loop For",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loop For In",
@@ -733,7 +733,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Math",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Number methods",
@@ -741,15 +741,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Numbers",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Objects",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Operators",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Promises",
@@ -773,11 +773,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "String methods",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Strings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Switch",
@@ -785,11 +785,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Variables",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "this Keyword",
@@ -801,44 +801,44 @@ export const TemplatesData = [
                 {
                   title: "React",
                   totalSkills: 15,
-                  learnedSkills: 14,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "CSS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Components",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Composition",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "ES6",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Events",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Filter",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Forms",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Hooks",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "JSX",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lifecycle",
@@ -846,23 +846,23 @@ export const TemplatesData = [
                   },
                   {
                     title: "Map",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Props",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Reduce",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Render",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "State",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -870,7 +870,7 @@ export const TemplatesData = [
                 {
                   title: "Typescript",
                   totalSkills: 8,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -879,11 +879,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Array of objects",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Functional Components",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Interface",
@@ -891,19 +891,19 @@ export const TemplatesData = [
                   },
                   {
                     title: "Nested arrays",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Props",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "State",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Type",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -916,36 +916,36 @@ export const TemplatesData = [
                 {
                   title: "Git",
                   totalSkills: 7,
-                  learnedSkills: 7,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Github",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Push",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Pull",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Commit",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Branch",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Merge",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Terminal commands",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -953,32 +953,32 @@ export const TemplatesData = [
                 {
                   title: "Terminal",
                   totalSkills: 6,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Bash",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "cd",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "ls",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "git",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "npm",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "dir",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -986,12 +986,12 @@ export const TemplatesData = [
                 {
                   title: "Design tool",
                   totalSkills: 6,
-                  learnedSkills: 4,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Adobe XD",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sketch",
@@ -1003,15 +1003,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Mockup",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Prototype",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Wireframe",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1019,16 +1019,16 @@ export const TemplatesData = [
                 {
                   title: "Deployment",
                   totalSkills: 6,
-                  learnedSkills: 5,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Heroku",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Netlify",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "AWS",
@@ -1036,15 +1036,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "FTP",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Web host",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Domain",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1052,7 +1052,7 @@ export const TemplatesData = [
                 {
                   title: "VSCode",
                   totalSkills: 6,
-                  learnedSkills: 3,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -1065,11 +1065,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Keyboard shortcuts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Live server",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -1077,7 +1077,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Git",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1085,32 +1085,32 @@ export const TemplatesData = [
                 {
                   title: "Web browser",
                   totalSkills: 7,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Chrome",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dev tools",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Cookie",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sessions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Local storage",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "HTTPS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loading time",
@@ -1122,12 +1122,12 @@ export const TemplatesData = [
                 {
                   title: "Chrome dev tools",
                   totalSkills: 11,
-                  learnedSkills: 1,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Scources",
@@ -1209,8 +1209,8 @@ export const TemplatesData = [
   // },
   {
     name: "Main Subjects",
-    description: "Templates for the most popular Main Subjects",
-    icon: <SubjectIcon color="secondary" style={{ fontSize: 100 }} />,
+    description: "Templates for the most popular main subjects",
+    icon: <AccountTreeIcon color="primary" style={{ fontSize: 100 }} />,
     templates: [
       {
         title: "Front end developer",
@@ -1233,75 +1233,75 @@ export const TemplatesData = [
                 [
                   {
                     title: "Attributes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Charset",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "File paths",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Formatting",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Head",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Headings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Id",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Iframes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Images",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Layout",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Paragraphs",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Semantics",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1314,11 +1314,11 @@ export const TemplatesData = [
                 [
                   {
                     title: "!important",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Align",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Animation",
@@ -1326,63 +1326,63 @@ export const TemplatesData = [
                   },
                   {
                     title: "Backgrounds",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Borders",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Box model",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Button",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Colors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Display",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dropdown",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Flexbox",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fonts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Gradient",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Grid",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Height",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Icons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Image",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Inline",
@@ -1390,47 +1390,47 @@ export const TemplatesData = [
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Margins",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Max",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Media queries",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Navigation",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Opacity",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Outline",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Overflow",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Padding",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Position",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Psuedo-class",
@@ -1442,7 +1442,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Selectors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Shadow",
@@ -1450,7 +1450,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
@@ -1458,7 +1458,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Text",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Transition",
@@ -1466,7 +1466,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Width",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1492,80 +1492,80 @@ export const TemplatesData = [
                 {
                   title: "HTML",
                   totalSkills: 18,
-                  learnedSkills: 18,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Attributes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Charset",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "File paths",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Formatting",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Head",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Headings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Id",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Iframes",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Images",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Layout",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Paragraphs",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Semantics",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1573,16 +1573,16 @@ export const TemplatesData = [
                 {
                   title: "CSS",
                   totalSkills: 39,
-                  learnedSkills: 32,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "!important",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Align",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Animation",
@@ -1590,63 +1590,63 @@ export const TemplatesData = [
                   },
                   {
                     title: "Backgrounds",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Borders",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Box model",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Button",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Colors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Display",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dropdown",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Flexbox",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fonts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Gradient",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Grid",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Height",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Icons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Image",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Inline",
@@ -1654,47 +1654,47 @@ export const TemplatesData = [
                   },
                   {
                     title: "Links",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lists",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Margins",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Max",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Media queries",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Navigation",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Opacity",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Outline",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Overflow",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Padding",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Position",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Psuedo-class",
@@ -1706,7 +1706,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Selectors",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Shadow",
@@ -1714,7 +1714,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Tables",
@@ -1722,7 +1722,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Text",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Transition",
@@ -1730,7 +1730,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Width",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1738,7 +1738,7 @@ export const TemplatesData = [
                 {
                   title: "JavaScript",
                   totalSkills: 45,
-                  learnedSkills: 27,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -1747,23 +1747,23 @@ export const TemplatesData = [
                   },
                   {
                     title: "Array Iteration",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Array methods",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Array sort",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Arrays",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Assignment",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Async-Await",
@@ -1775,11 +1775,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Booleans",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Break",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Classes",
@@ -1787,27 +1787,27 @@ export const TemplatesData = [
                   },
                   {
                     title: "Comments",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Comparisons",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Conditions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Const",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Data types",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dates",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -1819,15 +1819,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Events",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Fetch",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Functions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Hoisting",
@@ -1835,15 +1835,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "JSON",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Let",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loop For",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loop For In",
@@ -1859,7 +1859,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Math",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Number methods",
@@ -1867,15 +1867,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Numbers",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Objects",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Operators",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Promises",
@@ -1899,11 +1899,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "String methods",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Strings",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Switch",
@@ -1911,11 +1911,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Syntax",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Variables",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "this Keyword",
@@ -1927,44 +1927,44 @@ export const TemplatesData = [
                 {
                   title: "React",
                   totalSkills: 15,
-                  learnedSkills: 14,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "CSS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Components",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Composition",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "ES6",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Events",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Filter",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Forms",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Hooks",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "JSX",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Lifecycle",
@@ -1972,23 +1972,23 @@ export const TemplatesData = [
                   },
                   {
                     title: "Map",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Props",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Reduce",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Render",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "State",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -1996,7 +1996,7 @@ export const TemplatesData = [
                 {
                   title: "Typescript",
                   totalSkills: 8,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -2005,11 +2005,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Array of objects",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Functional Components",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Interface",
@@ -2017,19 +2017,19 @@ export const TemplatesData = [
                   },
                   {
                     title: "Nested arrays",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Props",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "State",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Type",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2041,7 +2041,7 @@ export const TemplatesData = [
   },
   {
     name: "Secondary Subjects",
-    description: "Templates for the most used Secondary subjects",
+    description: "Templates for the most used secondary subjects",
     icon: <SubjectIcon color="secondary" style={{ fontSize: 100 }} />,
     templates: [
       {
@@ -2060,7 +2060,7 @@ export const TemplatesData = [
                 {
                   title: "VSCode",
                   totalSkills: 6,
-                  learnedSkills: 3,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -2073,11 +2073,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Keyboard shortcuts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Live server",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -2085,7 +2085,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Git",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2093,32 +2093,32 @@ export const TemplatesData = [
                 {
                   title: "Web browser",
                   totalSkills: 7,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Chrome",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dev tools",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Cookie",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sessions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Local storage",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "HTTPS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loading time",
@@ -2148,36 +2148,36 @@ export const TemplatesData = [
                 {
                   title: "Git",
                   totalSkills: 7,
-                  learnedSkills: 7,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Github",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Push",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Pull",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Commit",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Branch",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Merge",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Terminal commands",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2185,32 +2185,32 @@ export const TemplatesData = [
                 {
                   title: "Terminal",
                   totalSkills: 6,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Bash",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "cd",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "ls",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "git",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "npm",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "dir",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2218,12 +2218,12 @@ export const TemplatesData = [
                 {
                   title: "Design tool",
                   totalSkills: 6,
-                  learnedSkills: 4,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Adobe XD",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sketch",
@@ -2235,15 +2235,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "Mockup",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Prototype",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Wireframe",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2251,16 +2251,16 @@ export const TemplatesData = [
                 {
                   title: "Deployment",
                   totalSkills: 6,
-                  learnedSkills: 5,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Heroku",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Netlify",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "AWS",
@@ -2268,15 +2268,15 @@ export const TemplatesData = [
                   },
                   {
                     title: "FTP",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Web host",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Domain",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2284,7 +2284,7 @@ export const TemplatesData = [
                 {
                   title: "VSCode",
                   totalSkills: 6,
-                  learnedSkills: 3,
+                  learnedSkills: 0,
                 },
                 [
                   {
@@ -2297,11 +2297,11 @@ export const TemplatesData = [
                   },
                   {
                     title: "Keyboard shortcuts",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Live server",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Debugging",
@@ -2309,7 +2309,7 @@ export const TemplatesData = [
                   },
                   {
                     title: "Git",
-                    learned: true,
+                    learned: false,
                   },
                 ],
               ],
@@ -2317,32 +2317,32 @@ export const TemplatesData = [
                 {
                   title: "Web browser",
                   totalSkills: 7,
-                  learnedSkills: 6,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Chrome",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Dev tools",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Cookie",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Sessions",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Local storage",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "HTTPS",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Loading time",
@@ -2354,12 +2354,12 @@ export const TemplatesData = [
                 {
                   title: "Chrome dev tools",
                   totalSkills: 11,
-                  learnedSkills: 1,
+                  learnedSkills: 0,
                 },
                 [
                   {
                     title: "Elements",
-                    learned: true,
+                    learned: false,
                   },
                   {
                     title: "Scources",

@@ -17,6 +17,7 @@ import TransparentButton from "../../button/TransparentButton";
 // Icon
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import SaveIcon from "@mui/icons-material/Save";
+import { AccordionHeader } from "./TemplateModal/AccordionHeader";
 
 // TYPE
 type Props = {
@@ -43,7 +44,7 @@ type Props = {
 
 export const TemplateCard = (props: Props) => {
   // Props
-  const { title, level, summary, icon } = props;
+  const { title, level, summary, icon, subjectsAndTopics } = props;
 
   // State
   const [modal, setModal] = useState(false);
@@ -52,6 +53,8 @@ export const TemplateCard = (props: Props) => {
   const toggleModal = () => {
     setModal(!modal);
   };
+
+  console.log(subjectsAndTopics, "card");
   return (
     <>
       <Grid item xs={5}>
@@ -77,9 +80,7 @@ export const TemplateCard = (props: Props) => {
       </Grid>
       <MaterialUI_modal stateValue={modal} modalFunction={toggleModal}>
         <TemplateInfoCard {...props} toggleModal={toggleModal}>
-          <TransparentButton func={null} icon={<SaveIcon />}>
-            Use
-          </TransparentButton>
+          <AccordionHeader data={subjectsAndTopics} />
         </TemplateInfoCard>
       </MaterialUI_modal>
     </>
