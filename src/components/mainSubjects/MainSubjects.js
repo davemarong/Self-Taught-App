@@ -127,7 +127,7 @@ export default function MainSubjects() {
         }}
       >
         <Zoom timeout={300} in={createSubjectModal}>
-          <div style={{ maxWidth: 560, margin: "auto", outline: "none" }}>
+          <div style={{ maxWidth: 700, margin: "auto", outline: "none" }}>
             <CreateSubjectModal
               subjectsType={subjectsType}
               closeCreateSubjectModal={closeCreateSubjectModal}
@@ -166,7 +166,7 @@ export default function MainSubjects() {
         <Zoom timeout={300} in={mainSubjectModal.boolean}>
           <div
             style={{
-              maxWidth: 850,
+              // maxWidth: 850,
               margin: "auto",
               padding: 0,
               outline: "none",

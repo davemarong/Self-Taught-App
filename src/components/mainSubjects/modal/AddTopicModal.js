@@ -47,10 +47,22 @@ export default function AddTopicModal({
     }
   };
   return (
-    <Container style={{ marginTop: 200, maxWidth: 400 }}>
+    <Container maxWidth="sm" style={{ marginTop: 200 }}>
       <Card>
-        <Grid container direction="column" alignItems="center" spacing={3}>
-          <Grid container justify="flex-end" item style={{ paddingBottom: 0 }}>
+        <Grid
+          style={{ height: 300 }}
+          container
+          direction="column"
+          justify="space-evenly"
+          alignItems="center"
+          spacing={3}
+        >
+          <Grid
+            container
+            justify="flex-end"
+            item
+            style={{ paddingBottom: 0, marginTop: 10 }}
+          >
             <IconButton onClick={closeAddTopicModal}>
               <CloseIcon />
             </IconButton>

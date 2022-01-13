@@ -49,6 +49,8 @@ export default function ProjectModal({
     update: update,
     setShowDeleteOption: setShowDeleteOption,
   };
+  console.log("project modal");
+
   return (
     <>
       <MaterialUI_Modal
@@ -61,7 +63,7 @@ export default function ProjectModal({
           setBackdrop={setBackdrop}
         />
       </MaterialUI_Modal>
-      <Container maxWidth="md" style={{ marginTop: 70 }}>
+      <Container maxWidth="lg" style={{ marginTop: 70 }}>
         <Card style={{ padding: 20, maxHeight: 600, overflowY: "auto" }}>
           <Grid container direction="column" alignItems="center" spacing={2}>
             <Grid container justify="flex-end" item>
@@ -101,7 +103,7 @@ export default function ProjectModal({
             <Grid item container direction="row" spacing={2}>
               {project.topics.map((subject, id) => {
                 return (
-                  <Grid key={id} item md={6} xs={9}>
+                  <Grid key={subject[0].title} item md={6} xs={9}>
                     <TopicsTable subject={subject} />
                   </Grid>
                 );

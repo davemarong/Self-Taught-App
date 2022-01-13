@@ -52,8 +52,8 @@ export default function InputFields({
 
   console.log(projectFinalDate);
   return (
-    <Grid container direction="column" spacing={4}>
-      <Grid item md={4} sm={5} xs={7}>
+    <Grid container direction="row" justify="center" spacing={4}>
+      <Grid item md={6} sm={5} xs={7}>
         <TextField
           onChange={handleProjectNameUserInput}
           value={projectName}
@@ -83,7 +83,7 @@ export default function InputFields({
           rows={10}
         />
       </Grid>
-      <Grid item>
+      <Grid container justify="center" item xs={6}>
         <LocalizationProvider dateAdapter={DateAdapter}>
           <DatePicker
             label="Project due date"

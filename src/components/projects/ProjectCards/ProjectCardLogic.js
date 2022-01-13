@@ -13,6 +13,7 @@ import ProjectCardButtons from "./ProjectCardButtons";
 
 export default function ProjectCard({
   project,
+  projects,
   closeCreateProjectModal,
   showDeleteOption,
   setUpdate,
@@ -40,6 +41,7 @@ export default function ProjectCard({
     setUpdate: setUpdate,
     update: update,
     setShowDeleteOption: setShowDeleteOption,
+    projects: projects,
   };
 
   const projectCardButtons = {
@@ -48,6 +50,8 @@ export default function ProjectCard({
     toggleDeleteProjectModal: toggleDeleteProjectModal,
     setShowDeleteOption: setShowDeleteOption,
   };
+  console.log("logic");
+
   return (
     <>
       <MaterialUI_modal

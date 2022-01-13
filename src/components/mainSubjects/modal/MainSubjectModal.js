@@ -81,7 +81,7 @@ export default function MainSubjectModal({
     }
   };
   return (
-    <Container maxWidth="md" style={{ marginTop: 70 }}>
+    <Container maxWidth="lg" style={{ marginTop: 70, maxWidth: 1100 }}>
       <Modal open={addTopicModal} onClose={closeAddTopicModal}>
         <Zoom timeout={300} in={addTopicModal}>
           <div>
@@ -92,8 +92,8 @@ export default function MainSubjectModal({
           </div>
         </Zoom>
       </Modal>
-      <Card style={{ maxHeight: 600, overflowY: "auto" }}>
-        <Grid container direction="row">
+      <Card style={{ height: 600, overflowY: "auto" }}>
+        <Grid container direction="row" style={{ minHeight: 600 }}>
           <Grid container justify="flex-end" item xs={12}>
             <IconButton onClick={closeMainSubjectModal}>
               <CloseIcon title="Close window" />
@@ -112,7 +112,7 @@ export default function MainSubjectModal({
             />
           </Grid>
           <Grid container justify="flex-end" item xs={12} sm={6}>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{ maxHeight: 100 }}>
               <IconButton
                 title="Add topics"
                 onClick={() => {
@@ -148,7 +148,7 @@ export default function MainSubjectModal({
                 <SortByAlphaRoundedIcon />
               </IconButton>
             </Grid>
-            <Grid container item xs={12} spacing={0} style={{ marginTop: 30 }}>
+            <Grid container item xs={12} spacing={0} style={{ marginTop: 0 }}>
               <Grid
                 container
                 direction="column"
@@ -178,7 +178,12 @@ export default function MainSubjectModal({
           </Grid>
           <Grid item xs={12} sm={6}>
             <TableContainer
-              style={{ height: 400, overflowY: "auto", paddingRight: 10 }}
+              style={{
+                height: 400,
+                overflowY: "auto",
+                paddingRight: 10,
+                border: "1px solid #ebebeb",
+              }}
             >
               <Table>
                 <TableHead>

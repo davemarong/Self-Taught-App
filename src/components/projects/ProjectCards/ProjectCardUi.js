@@ -38,7 +38,7 @@ export default function ProjectCardUi({ project, color, children }) {
       <Grid container direction="row" item spacing={2}>
         {project.topics.map((subject, id) => {
           return (
-            <Grid key={id} item xs={12}>
+            <Grid key={subject[0].title} item xs={12}>
               <Card>
                 <Typography align="center">{subject[0].title}</Typography>
               </Card>

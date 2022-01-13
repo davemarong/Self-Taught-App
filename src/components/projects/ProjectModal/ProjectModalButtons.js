@@ -33,6 +33,7 @@ export default function ProjectModalButtons({
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log("Modal buttons");
 
   return (
     <>

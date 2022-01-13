@@ -46,7 +46,7 @@ export default function MenuItems({
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
     toggleProjectModal();
-    setUpdate(update + 1);
+    setTimeout(reRenderPage, 300);
   };
 
   const saveProjectCompleteDate = (project) => {
@@ -54,6 +54,12 @@ export default function MenuItems({
       project[0].finishedDate = new Date().toISOString().slice(0, 10);
     }
   };
+  // BAD PRACTISE!!!
+  const reRenderPage = () => {
+    setUpdate([...update, "hei"]);
+  };
+  console.log("menu items");
+
   return (
     <div>
       <Tooltip title="Edit this project" placement="left-end">

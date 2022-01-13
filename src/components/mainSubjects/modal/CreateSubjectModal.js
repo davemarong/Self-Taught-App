@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -42,9 +43,9 @@ export default function CreateSubjectModal({
   }, []);
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: 100 }}>
+    <Container maxWidth="md" style={{ marginTop: 100 }}>
       <Card>
-        <Grid container direction="row" style={{ maxHeight: 400 }}>
+        <Grid container direction="row" style={{ minHeight: 400 }}>
           <Grid container justify="flex-end" item xs={12}>
             <IconButton onClick={closeCreateSubjectModal}>
               <CloseIcon />
@@ -57,9 +58,14 @@ export default function CreateSubjectModal({
             xs={12}
             style={{ position: "relative", bottom: 20 }}
           >
+            <Grid item xs={12} style={{ margin: 20 }}>
+              <Typography align="center" variant="h4">
+                Create new subject
+              </Typography>
+            </Grid>
             <TextField
               inputRef={mainSubjectNameRef}
-              label="Name"
+              label="Subject name"
               onChange={handleMainSubjectName}
               variant="outlined"
               value={mainSubjectName}

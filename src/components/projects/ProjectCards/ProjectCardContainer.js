@@ -27,7 +27,7 @@ export default function ProjectsCard({
 }) {
   // UseState
   const [showDeleteOption, setShowDeleteOption] = useState(false);
-  const [update, setUpdate] = useState();
+  const [update, setUpdate] = useState([]);
 
   // Functions
   const toggleDeleteOption = () => {
@@ -45,7 +45,7 @@ export default function ProjectsCard({
   };
   // Redux
   const projects = useSelector((state) => state.projects);
-
+  console.log("container");
   return (
     <>
       <Card style={{ marginBottom: 100, paddingBottom: 50 }}>
@@ -66,8 +66,9 @@ export default function ProjectsCard({
           </Grid>
           {projects.futureProjects.map((project, id) => {
             return (
-              <React.Fragment key={id}>
+              <React.Fragment key={project.title}>
                 <ProjectCardLogic
+                  projects={projects}
                   project={project}
                   {...projectCardProps}
                   color="#ff9c36"
@@ -102,8 +103,9 @@ export default function ProjectsCard({
           </Grid>
           {projects.completedProjects.map((project, id) => {
             return (
-              <React.Fragment key={id}>
+              <React.Fragment key={project.title}>
                 <ProjectCardLogic
+                  projects={projects}
                   project={project}
                   {...projectCardProps}
                   color="#41dcff"
