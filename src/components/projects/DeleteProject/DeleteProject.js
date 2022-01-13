@@ -24,10 +24,16 @@ import { findIndexOfProject } from "../Utils/UniversalUtils";
 import { useSelector, useDispatch } from "react-redux";
 import { change_projects } from "../../../redux/actions";
 
-export default function DeleteProject({ toggleDeleteProjectModal, project }) {
+export default function DeleteProject({
+  toggleDeleteProjectModal,
+  project,
+  projects,
+  update,
+  setUpdate,
+}) {
   // Redux
   const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects);
+  // const projects = useSelector((state) => state.projects);
 
   // Custom hooks
   const { updateProjectsInServer } = usePushDataToServer();
@@ -47,8 +53,12 @@ export default function DeleteProject({ toggleDeleteProjectModal, project }) {
     projectType.splice(indexOfProject, 1);
     dispatch(change_projects(projects));
     updateProjectsInServer(projects);
+    setTimeout(reRenderPage, 300);
   };
-
+  // BAD PRACTISE!!!
+  const reRenderPage = () => {
+    setUpdate([...update, "hei"]);
+  };
   return (
     <Container style={{ marginTop: 200, maxWidth: 400 }}>
       <Card>

@@ -65,6 +65,9 @@ export default function ProjectCard({
         modalFunction={toggleDeleteProjectModal}
       >
         <DeleteProject
+          setUpdate={setUpdate}
+          update={update}
+          projects={projects}
           project={project}
           toggleDeleteProjectModal={toggleDeleteProjectModal}
         />
