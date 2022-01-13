@@ -19,6 +19,9 @@ import { AllSecondarySubjects } from "../components/stats/StatsCategories/AllSec
 import { AllTopicsLearned } from "../components/stats/StatsCategories/AllTopicsLearned";
 import useScrollToTop from "../components/customHooks/useScrollToTop";
 
+// Google analytics
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -44,6 +47,9 @@ interface TopicInfo {
 }
 
 export const Stats = () => {
+  // Google analytics
+  ReactGA.pageview(window.location.pathname);
+
   // Custom hook
   useScrollToTop();
 

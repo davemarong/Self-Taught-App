@@ -4,6 +4,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollToTop from "../components/customHooks/useScrollToTop";
 
+// Google analytics
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -14,6 +17,9 @@ const useStyles = makeStyles({
   },
 });
 export default function LoginPage() {
+  // Google analytics
+  ReactGA.pageview(window.location.pathname);
+
   // Custom hook
   useScrollToTop();
 

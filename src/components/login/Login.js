@@ -43,7 +43,7 @@ export default function Login() {
   const handleSignIn = () => {
     setLoading(true);
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post("https://self-taught-web-dev.herokuapp.com/auth/local", {
         identifier: email,
         password: password,
       })

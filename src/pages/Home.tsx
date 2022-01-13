@@ -8,6 +8,9 @@ import { UpdateYourSubject } from "../components/home/UpdateYourSubject";
 import { Header } from "../components/home/Header";
 import useScrollToTop from "../components/customHooks/useScrollToTop";
 
+// Google analytics
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -19,6 +22,9 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
+  // Google analytics
+  ReactGA.pageview(window.location.pathname);
+
   // Custom hook
   useScrollToTop();
 

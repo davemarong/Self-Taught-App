@@ -6,6 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Projects from "../components/projects/Projects";
 import useScrollToTop from "../components/customHooks/useScrollToTop";
 
+// Google analytics
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -16,6 +19,9 @@ const useStyles = makeStyles({
   },
 });
 export default function ProjectsPage() {
+  // Google analytics
+  ReactGA.pageview(window.location.pathname);
+
   // Custom hook
   useScrollToTop();
 

@@ -19,6 +19,9 @@ import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 // Data
 import { TemplatesData } from "../components/templates/data/TemplatesData";
 
+// Google analytics
+import ReactGA from "react-ga";
+
 const useStyles = makeStyles({
   full: {
     paddingLeft: 270,
@@ -38,6 +41,9 @@ type TemplatesCardProps = {
 };
 
 export const Templates = () => {
+  // Google analytics
+  ReactGA.pageview(window.location.pathname);
+
   // Custom hook
   useScrollToTop();
 

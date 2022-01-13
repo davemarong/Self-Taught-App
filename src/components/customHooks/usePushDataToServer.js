@@ -10,7 +10,7 @@ export default function usePushDataToServer() {
   const updateMainSubjectsInServer = async (newSubject) => {
     await axios
       .put(
-        `http://localhost:1337/users/${id}`,
+        `https://self-taught-web-dev.herokuapp.com/users/${id}`,
         {
           mainSubjects: newSubject,
         },
@@ -26,7 +26,7 @@ export default function usePushDataToServer() {
   const updateSecondarySubjectsInServer = async (newSubject) => {
     await axios
       .put(
-        `http://localhost:1337/users/${id}`,
+        `https://self-taught-web-dev.herokuapp.com/users/${id}`,
         {
           secondarySubjects: newSubject,
         },
@@ -42,7 +42,7 @@ export default function usePushDataToServer() {
   const updateProjectsInServer = async (projects) => {
     await axios
       .put(
-        `http://localhost:1337/users/${id}`,
+        `https://self-taught-web-dev.herokuapp.com/users/${id}`,
         {
           projects: projects,
         },
